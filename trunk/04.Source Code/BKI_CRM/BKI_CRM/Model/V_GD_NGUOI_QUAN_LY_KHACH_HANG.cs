@@ -12,18 +12,15 @@ namespace BKI_CRM.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class GD_NGUOI_QUAN_LY_KHACH_HANG
+    public partial class V_GD_NGUOI_QUAN_LY_KHACH_HANG
     {
         public System.Guid ID { get; set; }
         public System.Guid ID_KHACH_HANG { get; set; }
         public System.Guid ID_NGUOI_SU_DUNG { get; set; }
         public Nullable<System.Guid> ID_QUYEN_QUAN_LY { get; set; }
-        public Nullable<System.DateTime> NGAY_CAP_QUYEN { get; set; }
         public bool ACTIVE_YN { get; set; }
-        public string GHI_CHU { get; set; }
-    
-        public virtual CM_DM_TU_DIEN CM_DM_TU_DIEN { get; set; }
-        public virtual HT_USER HT_USER { get; set; }
-        public virtual DM_KHACH_HANG DM_KHACH_HANG { get; set; }
+        public string HO_TEN_NHAN_VIEN { get; set; }
+        public System.Guid ID_USER { get; set; }
+        public string TEN_TU_DIEN { get; set; }
     }
 }

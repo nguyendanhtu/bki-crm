@@ -171,6 +171,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\KhachHangModel.cs" />
+    <Compile Include="Models\ThongTinKhachHang.cs" />
     <Compile Include="Model\CM_DM_LOAI_TD.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
@@ -219,6 +220,9 @@
     <Compile Include="Model\GD_CHUYEN_TRANG_THAI.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GD_KHACH_HANG_SU_DUNG_SAN_PHAM.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GD_NGUOI_QUAN_LY_KHACH_HANG.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
@@ -237,10 +241,19 @@
     <Compile Include="Model\sysdiagram.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\V_DM_YEU_CAU_TRANG_THAI.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\V_GD_CHUYEN_TRANG_THAI.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_GD_KHACH_HANG_CHUYEN_TRANG_THAI.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_GD_LICH_SU_KHACH_HANG.cs">
+      <DependentUpon>CRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_GD_NGUOI_QUAN_LY_KHACH_HANG.cs">
       <DependentUpon>CRM.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
