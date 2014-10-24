@@ -29,7 +29,6 @@ namespace BKI_CRM.Model
         public DbSet<CM_DM_TU_DIEN> CM_DM_TU_DIEN { get; set; }
         public DbSet<DM_CHUYEN_TRANG_THAI> DM_CHUYEN_TRANG_THAI { get; set; }
         public DbSet<DM_CONG_TY> DM_CONG_TY { get; set; }
-        public DbSet<DM_KHACH_HANG> DM_KHACH_HANG { get; set; }
         public DbSet<DM_NHOM_SAN_PHAM> DM_NHOM_SAN_PHAM { get; set; }
         public DbSet<DM_PHONG_BAN> DM_PHONG_BAN { get; set; }
         public DbSet<DM_SAN_PHAM> DM_SAN_PHAM { get; set; }
@@ -42,7 +41,12 @@ namespace BKI_CRM.Model
         public DbSet<HT_USER> HT_USER { get; set; }
         public DbSet<HT_USER_GROUP> HT_USER_GROUP { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
-        public DbSet<V_GD_KHACH_HANG_CHUYEN_TRANG_THAI> V_GD_KHACH_HANG_CHUYEN_TRANG_THAI { get; set; }
         public DbSet<V_GD_CHUYEN_TRANG_THAI> V_GD_CHUYEN_TRANG_THAI { get; set; }
+        public DbSet<V_DM_YEU_CAU_TRANG_THAI> V_DM_YEU_CAU_TRANG_THAI { get; set; }
+        public DbSet<GD_KHACH_HANG_SU_DUNG_SAN_PHAM> GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
+        public DbSet<DM_KHACH_HANG> DM_KHACH_HANG { get; set; }
+        public DbSet<V_GD_KHACH_HANG_CHUYEN_TRANG_THAI> V_GD_KHACH_HANG_CHUYEN_TRANG_THAI { get; set; }
+        public DbSet<V_GD_LICH_SU_KHACH_HANG> V_GD_LICH_SU_KHACH_HANG { get; set; }
+        public DbSet<V_GD_NGUOI_QUAN_LY_KHACH_HANG> V_GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
     }
 }

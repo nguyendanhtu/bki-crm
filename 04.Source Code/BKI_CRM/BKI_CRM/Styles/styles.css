@@ -249,3 +249,12 @@ td input{
 	color:black;
 	font-size:12px;
 }
+
+#note
+{
+    width:670px !important;
+}
+#money
+{
+    width:80px;
+}

@@ -17,6 +17,7 @@ namespace BKI_CRM.Model
         public DM_KHACH_HANG()
         {
             this.GD_CHUYEN_TRANG_THAI = new HashSet<GD_CHUYEN_TRANG_THAI>();
+            this.GD_KHACH_HANG_SU_DUNG_SAN_PHAM = new HashSet<GD_KHACH_HANG_SU_DUNG_SAN_PHAM>();
             this.GD_NGUOI_QUAN_LY_KHACH_HANG = new HashSet<GD_NGUOI_QUAN_LY_KHACH_HANG>();
         }
     
@@ -33,12 +34,10 @@ namespace BKI_CRM.Model
         public string THONG_TIN_BO_SUNG_03 { get; set; }
         public string THONG_TIN_BO_SUNG_04 { get; set; }
         public string THONG_TIN_BO_SUNG_05 { get; set; }
-        public string SAN_PHAM_SU_DUNG { get; set; }
-        public Nullable<System.Guid> ID_SAN_PHAM_SU_DUNG { get; set; }
     
         public virtual CM_DM_TU_DIEN CM_DM_TU_DIEN { get; set; }
-        public virtual DM_SAN_PHAM DM_SAN_PHAM { get; set; }
         public virtual ICollection<GD_CHUYEN_TRANG_THAI> GD_CHUYEN_TRANG_THAI { get; set; }
+        public virtual ICollection<GD_KHACH_HANG_SU_DUNG_SAN_PHAM> GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
         public virtual ICollection<GD_NGUOI_QUAN_LY_KHACH_HANG> GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
     }
 }

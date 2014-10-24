@@ -12,15 +12,11 @@ namespace BKI_CRM.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class V_GD_KHACH_HANG_CHUYEN_TRANG_THAI
+    public partial class V_DM_YEU_CAU_TRANG_THAI
     {
         public System.Guid ID { get; set; }
-        public string TEN_KHACH_HANG { get; set; }
-        public string MA_TRANG_THAI { get; set; }
-        public string TEN_SAN_PHAM { get; set; }
-        public Nullable<decimal> SO_TIEN_DA_NHAN { get; set; }
-        public string GHI_CHU { get; set; }
         public System.Guid ID_TRANG_THAI { get; set; }
-        public string TEN_SAN_PHAM_CHI_TIET { get; set; }
+        public string MA_TRANG_THAI { get; set; }
+        public string YEU_CAU { get; set; }
     }
 }
