@@ -192,6 +192,10 @@ td input{
 	margin-bottom: 0px !important;
 }
 
+input[type=text]{
+	height:30px !important;
+}
+
 #search{
 	float:right;
 	margin-bottom: 5px;
@@ -229,6 +233,10 @@ td input{
 .div50{
 	width:50px;
 }
+.div160{
+	width:160px;
+	line-height:35px;
+}
 
 .modal-body textarea{
 	resize:none;
@@ -246,4 +254,8 @@ td input{
 .right-menu{
 	color:black;
 	font-size:12px;
+}
+
+.inputInfo{
+	margin-bottom:10px;
 }
