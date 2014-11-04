@@ -259,3 +259,23 @@ input[type=text]{
 .inputInfo{
 	margin-bottom:10px;
 }
+.lb{
+	padding-top: 5px;
+	width:110px;
+}
+.input{
+	width:400px;
+}
+
+.width205{
+	width:205px !important;
+}
+.margin{
+	margin-left:5px;
+}
+.mgr{
+	margin-right:150px;
+}
+.mgb{
+	margin-bottom:10px ! important;
+}
