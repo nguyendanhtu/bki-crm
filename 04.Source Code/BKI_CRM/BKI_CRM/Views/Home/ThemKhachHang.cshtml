@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "ThemKhachHang";
+    Layout = "~/Views/_LayoutCRM.cshtml";
+    var lst_trang_thai = ViewBag.LstTrangThai as List<BKI_CRM.Model.DM_TRANG_THAI>;
+    var lst_san_pham = ViewBag.LstSanPham as List<BKI_CRM.Model.DM_SAN_PHAM>;
+    var lst_quan_ly = ViewBag.LstNhanVien as List<BKI_CRM.Model.V_DM_NHAN_VIEN_CONG_TY>;
+    var lst_khach_hang = ViewBag.LstKhachHang as List<BKI_CRM.Model.DM_KHACH_HANG>;
+}
+			<fieldset>
+				<legend> Thông tin sử dụng sản phẩm </legend>
+                    <label> Khách hàng </label>
+					<select id="khachhang">
+						@foreach (var item in lst_khach_hang)
+                          {
+                                <option value="@item.ID">@item.TEN_KHACH_HANG</option>
+                          }
+					</select>
+					<label> Sản phẩm khách hàng sử dụng </label>
+					<select id="sanphamsudung">
+						@foreach (var item in lst_san_pham)
+                          {
+                                <option value="@item.ID">@item.TEN_SAN_PHAM</option>
+                          }
+					</select>
+					<input type="text" id="tensanpham"/>
+					<label> Người quản lý khách hàng </label>
+					<select id="nguoiquanly">
+						@foreach (var item in lst_quan_ly)
+                          {
+                                <option value="@item.ID_NHAN_VIEN">@item.HO_TEN_NHAN_VIEN</option>
+                          }
+					</select>
+					<div>
+						<label> Trạng thái hiện tại </label>
+                        <select id="trangthai">
+						@foreach (var item in lst_trang_thai)
+                          {
+                                <option value="@item.ID">@item.MA_TRANG_THAI</option>
+                          }
+                        </select>
+					</div>
+					<div class="left clear-both">
+						<label> Số tiền đã nhận </label>
+						<input type="text" value="0" id="sotien"/>
+					</div>
+					<div class="left margin ">
+					<label> Ghi chú</label>
+					<input type="text" id="ghichu"/>
+					</div>
+                    <div class="left clear-both">
+						<label> Người giới thiệu </label>
+						<input type="text" id="nguoigioithieu"/>
+					</div>
+                    <div class="clear-both">
+                        Đang chăm sóc <input type="checkbox" id="dangchamsoc" checked="checked"/>
+                    </div>
+			</fieldset>
+			<button class="btn btn-primary mgr right mgb" onclick="themkhachhang()"> Xong </button>
+            <input type="hidden" id="ip_id">
+<script>
+    $(document).ready(function () {
+        $("#trangthai").select2();
+        $("#nguoiquanly").select2();
+        $("#khachhang").select2();
+        $("#sanphamsudung").select2();
+    });
+    function themkhachhang() {
+        $.ajax({
+            url: '/Home/ThemKhachHangSuDungSanPham',
+            data: { ip_id_khach_hang: khachhang.value, ip_str_nguoi_gioi_thieu: nguoigioithieu.value, ip_id_san_pham_su_dung: sanphamsudung.value, ip_str_ten_san_pham: tensanpham.value, ip_id_nguoi_quan_ly: nguoiquanly.value, ip_id_trang_thai: trangthai.value, ip_str_so_tien: sotien.value, ip_str_ghi_chu: ghichu.value, ip_str_dang_cham_soc: dangchamsoc.checked },
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                alert("success")
+            }
+        });
+    }
+</script>
+
