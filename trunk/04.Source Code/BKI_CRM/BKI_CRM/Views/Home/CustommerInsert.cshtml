@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "CustommerInsert";
+    Layout = "~/Views/_LayoutCRM.cshtml";
+    var lst_loai_khach_hang = ViewBag.LstLoaiKhachHang as List<BKI_CRM.Model.CM_DM_TU_DIEN>;    
+}
+
+            <fieldset>
+				<legend> Thông tin cá nhân  </legend>
+					<div class="left lb">
+						<label> Họ tên </label>
+					</div>
+					<div class="left input">
+						<input type="text" placeholder="Nhập họ tên" id="hoten">
+					</div>
+					<div class="left lb">
+						<label> Số điện thoại </label>
+					</div>
+					<div class="left input">
+						<input type="text" placeholder="Số điện thọai" id="sdt">
+					</div>
+					<div class="left lb">
+						<label> Địa chỉ </label>
+					</div>
+					<div class="left input">
+						<input type="text" placeholder="Địa chỉ" id="diachi">
+					</div>
+					<div class="left lb">
+						<label> Công ty </label>
+					</div>
+					<div class="left input">
+						<input type="text" placeholder="Tên công ty" id="tencongty">
+					</div>
+					<div class="left lb">
+						<label> Email </label>
+					</div>
+					<div class="left input">
+						<input type="text" placeholder="Email" id="email">
+					</div>
+					<div class="left lb ">
+						<label>Loại khách hàng </label>
+					</div>
+					<div class="left input">
+						<select id="loaiKhachHang">
+							@foreach (var item in lst_loai_khach_hang)
+                               {
+                                    <option value="@item.ID">@item.TEN_TU_DIEN</option>
+                               }
+						</select>
+					</div>
+                    <div class="left lb">
+						<label> Ảnh khách hàng </label>
+					</div>
+					<div class="left input">
+						<input type="text" placeholder="Ảnh khách hàng" id="image">
+					</div>
+			</fieldset>
+            <button class="btn btn-primary mgr right mgb" onclick="themkhachhang()"> Xong </button>
+<script>
+    function themkhachhang() {
+        $.ajax({
+            url: '/Home/InsertCustommer',
+            data: { ip_str_ten_khach_hang: hoten.value, ip_id_loai_khach_hang: loaiKhachHang.value, ip_str_sdt: sdt.value, ip_str_email: email.value, ip_str_dia_chi: diachi.value, ip_str_ten_cong_ty: tencongty.value, ip_str_anh_khach_hang:image.value},
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                alert("success")
+            }
+        });
+    }
+</script>
