@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="41c2293d3def42e4af9913ba89b88bb1" Name="Diagram1">
+        <EntityTypeShape EntityType="BKI_CRMModel.CM_DM_LOAI_TD" Width="1.5" PointX="1.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.CM_DM_TU_DIEN" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.DM_CHUYEN_TRANG_THAI" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.DM_CONG_TY" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.DM_KHACH_HANG" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.DM_NHOM_SAN_PHAM" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.DM_PHONG_BAN" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.DM_SAN_PHAM" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.DM_TRANG_THAI" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.DM_YEU_CAU_TRANG_THAI" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.GD_CHUYEN_TRANG_THAI" Width="1.5" PointX="10.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.GD_KHACH_HANG_SU_DUNG_SAN_PHAM" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.GD_NGUOI_QUAN_LY_KHACH_HANG" Width="1.5" PointX="13.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.HT_PHAN_QUYEN_CHO_NHOM" Width="1.5" PointX="5.25" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.HT_PHAN_QUYEN_HE_THONG" Width="1.5" PointX="3" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.HT_USER" Width="1.5" PointX="8.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.HT_USER_GROUP" Width="1.5" PointX="3" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.V_DM_NHAN_VIEN_CONG_TY" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.V_DM_YEU_CAU_TRANG_THAI" Width="1.5" PointX="3.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.V_GD_CHUYEN_TRANG_THAI" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.V_GD_KHACH_HANG_CHUYEN_TRANG_THAI" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BKI_CRMModel.V_GD_LICH_SU_KHACH_HANG" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BKI_CRMModel.FK_CM_DM_TU_DIEN_CM_DM_LOAI_TD" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_DM_KHACH_HANG_CM_DM_TU_DIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_GD_NGUOI_QUAN_LY_KHACH_HANG_CM_DM_TU_DIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_DM_CHUYEN_TRANG_THAI_DM_TRANG_THAI" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_DM_CHUYEN_TRANG_THAI_DM_TRANG_THAI1" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_DM_KHACH_HANG_DM_CONG_TY" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_DM_NHOM_SAN_PHAM_DM_CONG_TY" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_DM_PHONG_BAN_DM_CONG_TY" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_DM_TRANG_THAI_DM_CONG_TY" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_HT_USER_GROUP_DM_CONG_TY" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_GD_KHACH_HANG_SU_DUNG_SAN_PHAM_DM_KHACH_HANG" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_DM_SAN_PHAM_DM_NHOM_SAN_PHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_HT_USER_DM_PHONG_BAN" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_GD_KHACH_HANG_SU_DUNG_SAN_PHAM_DM_SAN_PHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_DM_YEU_CAU_TRANG_THAI_DM_TRANG_THAI" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_GD_CHUYEN_TRANG_THAI_DM_TRANG_THAI" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_GD_CHUYEN_TRANG_THAI_GD_KHACH_HANG_SU_DUNG_SAN_PHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_GD_CHUYEN_TRANG_THAI_HT_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_GD_NGUOI_QUAN_LY_KHACH_HANG_GD_KHACH_HANG_SU_DUNG_SAN_PHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_GD_NGUOI_QUAN_LY_KHACH_HANG_HT_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_HT_PHAN_QUYEN_CHO_NHOM_HT_PHAN_QUYEN_HE_THONG" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_HT_PHAN_QUYEN_CHO_NHOM_HT_USER_GROUP" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_HT_USER_HT_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="BKI_CRMModel.FK_HT_USER_HT_USER_GROUP" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BKI_CRMModel.V_GD_NGUOI_QUAN_LY_KHACH_HANG" Width="1.5" PointX="1.8059855726575411" PointY="25.256898727853269" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

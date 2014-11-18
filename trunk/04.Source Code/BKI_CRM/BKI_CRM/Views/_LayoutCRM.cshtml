@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8"/>
+    <link href="~/Styles/styles.css" rel="stylesheet" />
+    <link href="~/Styles/select2.css" rel="stylesheet" />
+    <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/select2.js"></script>
+</head>
+<body>
+    <div class="main">
+		<div class="menu">
+			<div class="home"><a href="#"><b class="icon-home"> </b> Trang chủ</a></div>
+			<div class="home"><a href="#"><b class="icon-user"> </b> Các khách hàng của tôi</a></div>
+			<div class="home"><a href="#"><b class="icon-list"> </b> Báo cáo</a></div>
+			<div class="home"><a href="#"><b class="icon-book"> </b> Trợ giúp</a></div>
+			<div class="logout">
+				<button class="btn btn-danger" type="button">Log out</button>
+			</div>			
+			<div class="profile">
+				<a href="#">Phạm Hoàng Thái</a>
+			</div>
+		</div>
+		<div class="content-left">
+			<div class="accordion" id="accordion2" style="margin-top:50px;">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+					  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+						<b>QUẢN LÝ KHÁCH HÀNG</b>
+					  </a>
+					</div>
+					<div id="collapseThree" class="accordion-body collapse out">
+						<div class="accordion-inner">
+							<ul style="list-style-type:none;margin:0px;">
+								<li><i class="icon-hand-right"></i> @Html.ActionLink("Chuyển trạng thái khách hàng", "Index", "home", null, new { @class= "right-menu"} )
+								<li><i class="icon-hand-right"></i> @Html.ActionLink("Thêm khách hàng", "CustommerInsert", "home", null, new { @class= "right-menu"} )
+                                <li><i class="icon-hand-right"></i> @Html.ActionLink("Khách hàng sử dụng dịch vụ", "ThemKhachHang", "home", null, new { @class= "right-menu"} )
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+					  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+						<b>TRẠNG THÁI</b>
+					  </a>
+					</div>
+					<div id="collapseOne" class="accordion-body collapse out">
+						<div class="accordion-inner">
+							<ul style="list-style-type:none;margin:0px;">
+								<li><i class="icon-hand-right"></i> @Html.ActionLink("Định nghĩa trạng thái", "DinhNghiaTrangThai", "home", null, new { @class= "right-menu"} )
+								<li><i class="icon-hand-right"></i> <a href="#" class="right-menu">Sơ đồ chuyển trạng thái</a>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+					  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+						<b>BÁO CÁO</b>
+					  </a>
+					</div>
+					<div id="collapseTwo" class="accordion-body collapse out">
+						<div class="accordion-inner">
+							<ul style="list-style-type:none;margin:0px;">
+									<li><i class="icon-hand-right"></i> <a href="#" class="right-menu">Báo cáo 01</a>
+									<li><i class="icon-hand-right"></i> <a href="#" class="right-menu">Báo cáo 02</a>
+									<li><i class="icon-hand-right"></i> <a href="#" class="right-menu">Báo cáo 03</a>
+									<li><i class="icon-hand-right"></i> <a href="#" class="right-menu">Báo cáo 04</a>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+					  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+						<b>HỆ THỐNG</b>
+					  </a>
+					</div>
+					<div id="collapseFour" class="accordion-body collapse out">
+						<div class="accordion-inner">
+							<ul style="list-style-type:none;margin:0px;">
+									<li><i class="icon-hand-right"></i> <a href="#" class="right-menu">Quản lý người dùng</a>
+									<li><i class="icon-hand-right"></i> <a href="#" class="right-menu">Quản lý nhóm người dùng</a>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content-right">
+			@RenderBody()
+		</div>
+		<div class="footer">
+			<b>BKINDEX GROUP</b><br/>
+			Địa chỉ: 7b/36 Lương Đình Của
+		</div>
+	</div>
+</body>
+</html>
