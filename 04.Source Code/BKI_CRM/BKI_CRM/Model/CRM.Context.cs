@@ -49,5 +49,7 @@ namespace BKI_CRM.Model
         public DbSet<V_GD_KHACH_HANG_CHUYEN_TRANG_THAI> V_GD_KHACH_HANG_CHUYEN_TRANG_THAI { get; set; }
         public DbSet<V_GD_LICH_SU_KHACH_HANG> V_GD_LICH_SU_KHACH_HANG { get; set; }
         public DbSet<V_GD_NGUOI_QUAN_LY_KHACH_HANG> V_GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
+        public DbSet<V_RPT_LUY_KE> V_RPT_LUY_KE { get; set; }
+        public DbSet<V_RPT_PHAT_SINH_TRONG_THANG> V_RPT_PHAT_SINH_TRONG_THANG { get; set; }
     }
 }
