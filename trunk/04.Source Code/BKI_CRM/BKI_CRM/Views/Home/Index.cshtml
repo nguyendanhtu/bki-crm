@@ -10,48 +10,44 @@
 		</div> 
 		<div class="content">
 			<div class="data">
-				<div class="control-group">
-					<div class="controls">
-						<div class="input-prepend">
-							<input class="span3" id="inputIcon" type="text">
-							<span class="add-on"><i class="icon-search"></i></span>							
-						</div>
-					</div>
-				</div>
-				<table class="table table-condensed table-font-size">
-					<tr class="table_header">
-						<td>Tên khách hàng</td>
-						<td>Sản phẩm - Dịch vụ</td>
-						<td>Hiện tại</td>
-						<td>Tiếp theo</td>
-						<td>Ghi chú</td>
-						<td>Chia sẻ</td>
-					</tr>
-                    @foreach (var item in lst_khach_hang)
-                    {
-                        <tr class="item-table">
-						    <td><button class="btn btn-success btn120" type="button" onclick="LayThongTinKhachHang('@item.ID_KHACH_HANG')">@item.TEN_KHACH_HANG</button></td>
-						    <td>@item.TEN_SAN_PHAM @item.TEN_SAN_PHAM_CHI_TIET</td>
-						    <td><a href="#" id="@item.ID_TRANG_THAI" onclick="showLevelDefine()">@item.MA_TRANG_THAI</a></td>
-						    <td>
-                                @foreach (var item2 in item.LstChuyenTrangThai)
-                                {
-                                    if (item2.LOAI_TRANG_THAI_YN)
-                                    {
-                                        <button class="btn btn-success btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><i class="icon-hand-up"></i> @item2.MA_TRANG_THAI</button>    
-                                    }
-                                    else
-                                    {
-                                        <button class="btn btn-danger btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><i class="icon-hand-down"></i> @item2.MA_TRANG_THAI</button>
-                                    }                                    
-                                }
-						    </td>
-						    <td>@item.GHI_CHU</td>
-						    <td>
-							    <button class="btn btn-primary" type="button" onclick="LayThongTinNguoiQuanLy('@item.ID_KHACH_HANG','@item.TEN_KHACH_HANG','@item.ID_CONG_TY','@item.ID_KHACH_HANG_SU_DUNG_SAN_PHAM')"><i class="icon-share"></i> Chia sẻ</button>
-						    </td>
+				<table class="table table-condensed table-font-size" id="myTable">
+                    <thead>
+					    <tr class="table_header">
+						    <td>Tên khách hàng</td>
+						    <td>Sản phẩm - Dịch vụ</td>
+						    <td>Hiện tại</td>
+						    <td>Tiếp theo</td>
+						    <td>Ghi chú</td>
+						    <td>Chia sẻ</td>
 					    </tr>
-                    }					
+                    </thead>
+                    <tbody>
+                        @foreach (var item in lst_khach_hang)
+                        {
+                            <tr class="item-table">
+						        <td><button class="btn btn-success btn120" type="button" onclick="LayThongTinKhachHang('@item.ID_KHACH_HANG')">@item.TEN_KHACH_HANG</button></td>
+						        <td>@item.TEN_SAN_PHAM @item.TEN_SAN_PHAM_CHI_TIET</td>
+						        <td><a href="#" id="@item.ID_TRANG_THAI" onclick="showLevelDefine()">@item.MA_TRANG_THAI</a></td>
+						        <td>
+                                    @foreach (var item2 in item.LstChuyenTrangThai)
+                                    {
+                                        if (item2.LOAI_TRANG_THAI_YN)
+                                        {
+                                            <button class="btn btn-success btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><i class="icon-hand-up"></i> @item2.MA_TRANG_THAI</button>    
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-danger btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><i class="icon-hand-down"></i> @item2.MA_TRANG_THAI</button>
+                                        }                                    
+                                    }
+						        </td>
+						        <td>@item.GHI_CHU</td>
+						        <td>
+							        <button class="btn btn-primary" type="button" onclick="LayThongTinNguoiQuanLy('@item.ID_KHACH_HANG','@item.TEN_KHACH_HANG','@item.ID_CONG_TY','@item.ID_KHACH_HANG_SU_DUNG_SAN_PHAM')"><i class="icon-share"></i> Chia sẻ</button>
+						        </td>
+					        </tr>
+                        }
+                    </tbody>					
 				</table>
 			</div>
 		</div>
@@ -177,6 +173,8 @@
 	</div>
     <div id="hiddenfield"></div>
     <script type="text/javascript">
+        
+
         function LayThongTinKhachHang(id_khach_hang) {
             $.ajax({
                 url: '/Home/LayThongTinKhachHang',
@@ -386,4 +384,8 @@
 	    function hideNote(){
 		    $('#note').modal('hide');
 	    }
+
+	    $(document).ready(function () {
+	        $('#myTable').DataTable();
+	    });
     </script>

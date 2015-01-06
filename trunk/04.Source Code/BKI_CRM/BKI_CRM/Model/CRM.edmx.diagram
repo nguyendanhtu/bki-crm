@@ -53,6 +53,8 @@
         <AssociationConnector Association="BKI_CRMModel.FK_HT_USER_HT_USER" ManuallyRouted="false" />
         <AssociationConnector Association="BKI_CRMModel.FK_HT_USER_HT_USER_GROUP" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BKI_CRMModel.V_GD_NGUOI_QUAN_LY_KHACH_HANG" Width="1.5" PointX="1.8059855726575411" PointY="25.256898727853269" />
+        <EntityTypeShape EntityType="BKI_CRMModel.V_RPT_LUY_KE" Width="1.5" PointX="10.652862505359977" PointY="13.516547775602223" />
+        <EntityTypeShape EntityType="BKI_CRMModel.V_RPT_PHAT_SINH_TRONG_THANG" Width="1.5" PointX="11.818882277151049" PointY="3.756996469459029" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

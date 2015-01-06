@@ -60,7 +60,13 @@
       [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[ID_TRANG_THAI] AS [ID_TRANG_THAI], 
       [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[MA_TRANG_THAI] AS [MA_TRANG_THAI], 
       [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[ID_KHACH_HANG_SU_DUNG_SAN_PHAM] AS [ID_KHACH_HANG_SU_DUNG_SAN_PHAM], 
-      [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[TRANG_THAI_HIEN_TAI_YN] AS [TRANG_THAI_HIEN_TAI_YN]
+      [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[TRANG_THAI_HIEN_TAI_YN] AS [TRANG_THAI_HIEN_TAI_YN], 
+      [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[ID_NGUOI_SU_DUNG] AS [ID_NGUOI_SU_DUNG], 
+      [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[HO_TEN_NHAN_VIEN] AS [HO_TEN_NHAN_VIEN], 
+      [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[ID_PHONG_BAN] AS [ID_PHONG_BAN], 
+      [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[TEN_PHONG_BAN] AS [TEN_PHONG_BAN], 
+      [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[MA_PHONG_BAN] AS [MA_PHONG_BAN], 
+      [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[TEN_CONG_TY] AS [TEN_CONG_TY]
       FROM [dbo].[V_GD_KHACH_HANG_CHUYEN_TRANG_THAI] AS [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_GD_LICH_SU_KHACH_HANG" EntityType="BKI_CRMModel.Store.V_GD_LICH_SU_KHACH_HANG" store:Type="Views" store:Schema="dbo" store:Name="V_GD_LICH_SU_KHACH_HANG">
@@ -86,6 +92,18 @@
       [V_GD_NGUOI_QUAN_LY_KHACH_HANG].[ID_USER] AS [ID_USER], 
       [V_GD_NGUOI_QUAN_LY_KHACH_HANG].[ID_KHACH_HANG_SU_DUNG_SAN_PHAM] AS [ID_KHACH_HANG_SU_DUNG_SAN_PHAM]
       FROM [dbo].[V_GD_NGUOI_QUAN_LY_KHACH_HANG] AS [V_GD_NGUOI_QUAN_LY_KHACH_HANG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_RPT_LUY_KE" EntityType="BKI_CRMModel.Store.V_RPT_LUY_KE" store:Type="Views" store:Schema="dbo" store:Name="V_RPT_LUY_KE">
+            <DefiningQuery>SELECT 
+      [V_RPT_LUY_KE].[MA_TRANG_THAI] AS [MA_TRANG_THAI], 
+      [V_RPT_LUY_KE].[LUY_KE] AS [LUY_KE]
+      FROM [dbo].[V_RPT_LUY_KE] AS [V_RPT_LUY_KE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_RPT_PHAT_SINH_TRONG_THANG" EntityType="BKI_CRMModel.Store.V_RPT_PHAT_SINH_TRONG_THANG" store:Type="Views" store:Schema="dbo" store:Name="V_RPT_PHAT_SINH_TRONG_THANG">
+            <DefiningQuery>SELECT 
+      [V_RPT_PHAT_SINH_TRONG_THANG].[MA_TRANG_THAI] AS [MA_TRANG_THAI], 
+      [V_RPT_PHAT_SINH_TRONG_THANG].[LUY_KE] AS [LUY_KE]
+      FROM [dbo].[V_RPT_PHAT_SINH_TRONG_THANG] AS [V_RPT_PHAT_SINH_TRONG_THANG]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CM_DM_TU_DIEN_CM_DM_LOAI_TD" Association="BKI_CRMModel.Store.FK_CM_DM_TU_DIEN_CM_DM_LOAI_TD">
             <End Role="CM_DM_LOAI_TD" EntitySet="CM_DM_LOAI_TD" />
@@ -435,6 +453,10 @@
             <PropertyRef Name="ID_TRANG_THAI" />
             <PropertyRef Name="MA_TRANG_THAI" />
             <PropertyRef Name="TRANG_THAI_HIEN_TAI_YN" />
+            <PropertyRef Name="ID_NGUOI_SU_DUNG" />
+            <PropertyRef Name="HO_TEN_NHAN_VIEN" />
+            <PropertyRef Name="TEN_PHONG_BAN" />
+            <PropertyRef Name="TEN_CONG_TY" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="TEN_SAN_PHAM" Type="nvarchar" Nullable="false" MaxLength="100" />
@@ -445,6 +467,12 @@
           <Property Name="MA_TRANG_THAI" Type="nchar" Nullable="false" MaxLength="15" />
           <Property Name="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" Type="uniqueidentifier" />
           <Property Name="TRANG_THAI_HIEN_TAI_YN" Type="bit" Nullable="false" />
+          <Property Name="ID_NGUOI_SU_DUNG" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HO_TEN_NHAN_VIEN" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ID_PHONG_BAN" Type="uniqueidentifier" />
+          <Property Name="TEN_PHONG_BAN" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="MA_PHONG_BAN" Type="nchar" MaxLength="15" />
+          <Property Name="TEN_CONG_TY" Type="nvarchar" Nullable="false" MaxLength="500" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'BKI_CRM.dbo.V_GD_LICH_SU_KHACH_HANG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -488,6 +516,26 @@
           <Property Name="HO_TEN_NHAN_VIEN" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="ID_USER" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" Type="uniqueidentifier" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BKI_CRM.dbo.V_RPT_LUY_KE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_RPT_LUY_KE">
+          <Key>
+            <PropertyRef Name="MA_TRANG_THAI" />
+          </Key>
+          <Property Name="MA_TRANG_THAI" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="LUY_KE" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BKI_CRM.dbo.V_RPT_PHAT_SINH_TRONG_THANG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_RPT_PHAT_SINH_TRONG_THANG">
+          <Key>
+            <PropertyRef Name="MA_TRANG_THAI" />
+          </Key>
+          <Property Name="MA_TRANG_THAI" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="LUY_KE" Type="int" />
         </EntityType>
         <Association Name="FK_CM_DM_TU_DIEN_CM_DM_LOAI_TD">
           <End Role="CM_DM_LOAI_TD" Type="BKI_CRMModel.Store.CM_DM_LOAI_TD" Multiplicity="1" />
@@ -902,6 +950,8 @@
             <End Role="HT_USER" EntitySet="HT_USER" />
           </AssociationSet>
           <EntitySet Name="V_GD_NGUOI_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.V_GD_NGUOI_QUAN_LY_KHACH_HANG" />
+          <EntitySet Name="V_RPT_LUY_KE" EntityType="BKI_CRMModel.V_RPT_LUY_KE" />
+          <EntitySet Name="V_RPT_PHAT_SINH_TRONG_THANG" EntityType="BKI_CRMModel.V_RPT_PHAT_SINH_TRONG_THANG" />
         </EntityContainer>
         <EntityType Name="CM_DM_LOAI_TD">
           <Key>
@@ -1190,6 +1240,10 @@
             <PropertyRef Name="ID_TRANG_THAI" />
             <PropertyRef Name="MA_TRANG_THAI" />
             <PropertyRef Name="TRANG_THAI_HIEN_TAI_YN" />
+            <PropertyRef Name="ID_NGUOI_SU_DUNG" />
+            <PropertyRef Name="HO_TEN_NHAN_VIEN" />
+            <PropertyRef Name="TEN_PHONG_BAN" />
+            <PropertyRef Name="TEN_CONG_TY" />
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="TEN_SAN_PHAM" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
@@ -1200,6 +1254,12 @@
           <Property Name="MA_TRANG_THAI" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="true" />
           <Property Name="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" Type="Guid" />
           <Property Name="TRANG_THAI_HIEN_TAI_YN" Type="Boolean" Nullable="false" />
+          <Property Type="Guid" Name="ID_NGUOI_SU_DUNG" Nullable="false" />
+          <Property Type="String" Name="HO_TEN_NHAN_VIEN" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID_PHONG_BAN" />
+          <Property Type="String" Name="TEN_PHONG_BAN" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MA_PHONG_BAN" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="TEN_CONG_TY" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="V_GD_LICH_SU_KHACH_HANG">
           <Key>
@@ -1526,6 +1586,20 @@
           <Property Type="Guid" Name="ID_USER" Nullable="false" />
           <Property Type="Guid" Name="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" />
         </EntityType>
+        <EntityType Name="V_RPT_LUY_KE">
+          <Key>
+            <PropertyRef Name="MA_TRANG_THAI" />
+          </Key>
+          <Property Type="String" Name="MA_TRANG_THAI" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LUY_KE" />
+        </EntityType>
+        <EntityType Name="V_RPT_PHAT_SINH_TRONG_THANG">
+          <Key>
+            <PropertyRef Name="MA_TRANG_THAI" />
+          </Key>
+          <Property Type="String" Name="MA_TRANG_THAI" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LUY_KE" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1778,6 +1852,12 @@
           <EntitySetMapping Name="V_GD_KHACH_HANG_CHUYEN_TRANG_THAI">
             <EntityTypeMapping TypeName="BKI_CRMModel.V_GD_KHACH_HANG_CHUYEN_TRANG_THAI">
               <MappingFragment StoreEntitySet="V_GD_KHACH_HANG_CHUYEN_TRANG_THAI">
+                <ScalarProperty Name="TEN_CONG_TY" ColumnName="TEN_CONG_TY" />
+                <ScalarProperty Name="MA_PHONG_BAN" ColumnName="MA_PHONG_BAN" />
+                <ScalarProperty Name="TEN_PHONG_BAN" ColumnName="TEN_PHONG_BAN" />
+                <ScalarProperty Name="ID_PHONG_BAN" ColumnName="ID_PHONG_BAN" />
+                <ScalarProperty Name="HO_TEN_NHAN_VIEN" ColumnName="HO_TEN_NHAN_VIEN" />
+                <ScalarProperty Name="ID_NGUOI_SU_DUNG" ColumnName="ID_NGUOI_SU_DUNG" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TEN_SAN_PHAM" ColumnName="TEN_SAN_PHAM" />
                 <ScalarProperty Name="TEN_SAN_PHAM_CHI_TIET" ColumnName="TEN_SAN_PHAM_CHI_TIET" />
@@ -1815,6 +1895,22 @@
                 <ScalarProperty Name="ID_QUYEN_QUAN_LY" ColumnName="ID_QUYEN_QUAN_LY" />
                 <ScalarProperty Name="ID_NGUOI_SU_DUNG" ColumnName="ID_NGUOI_SU_DUNG" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_RPT_LUY_KE">
+            <EntityTypeMapping TypeName="BKI_CRMModel.V_RPT_LUY_KE">
+              <MappingFragment StoreEntitySet="V_RPT_LUY_KE">
+                <ScalarProperty Name="LUY_KE" ColumnName="LUY_KE" />
+                <ScalarProperty Name="MA_TRANG_THAI" ColumnName="MA_TRANG_THAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_RPT_PHAT_SINH_TRONG_THANG">
+            <EntityTypeMapping TypeName="BKI_CRMModel.V_RPT_PHAT_SINH_TRONG_THANG">
+              <MappingFragment StoreEntitySet="V_RPT_PHAT_SINH_TRONG_THANG">
+                <ScalarProperty Name="LUY_KE" ColumnName="LUY_KE" />
+                <ScalarProperty Name="MA_TRANG_THAI" ColumnName="MA_TRANG_THAI" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

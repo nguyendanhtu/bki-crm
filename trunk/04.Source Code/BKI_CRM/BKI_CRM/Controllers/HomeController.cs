@@ -16,7 +16,8 @@ namespace BKI_CRM.Controllers
         public ActionResult Index()
         {
             BKI_CRMEntities v_model = new BKI_CRMEntities();
-            List<V_GD_KHACH_HANG_CHUYEN_TRANG_THAI> v_lst_khach_hang = v_model.V_GD_KHACH_HANG_CHUYEN_TRANG_THAI.ToList();
+            string v_id_user = Session["IdUser"].ToString();
+            List<V_GD_KHACH_HANG_CHUYEN_TRANG_THAI> v_lst_khach_hang = v_model.V_GD_KHACH_HANG_CHUYEN_TRANG_THAI.Where(x => x.ID_NGUOI_SU_DUNG == new Guid(v_id_user)).ToList();
             List<KhachHangModel> v_lst_khach_hang_model = new List<KhachHangModel>();
             foreach (var item in v_lst_khach_hang)
             {
