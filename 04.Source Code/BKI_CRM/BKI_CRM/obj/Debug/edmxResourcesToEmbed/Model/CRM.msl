@@ -247,6 +247,12 @@
     <EntitySetMapping Name="V_GD_KHACH_HANG_CHUYEN_TRANG_THAI">
       <EntityTypeMapping TypeName="BKI_CRMModel.V_GD_KHACH_HANG_CHUYEN_TRANG_THAI">
         <MappingFragment StoreEntitySet="V_GD_KHACH_HANG_CHUYEN_TRANG_THAI">
+          <ScalarProperty Name="TEN_CONG_TY" ColumnName="TEN_CONG_TY" />
+          <ScalarProperty Name="MA_PHONG_BAN" ColumnName="MA_PHONG_BAN" />
+          <ScalarProperty Name="TEN_PHONG_BAN" ColumnName="TEN_PHONG_BAN" />
+          <ScalarProperty Name="ID_PHONG_BAN" ColumnName="ID_PHONG_BAN" />
+          <ScalarProperty Name="HO_TEN_NHAN_VIEN" ColumnName="HO_TEN_NHAN_VIEN" />
+          <ScalarProperty Name="ID_NGUOI_SU_DUNG" ColumnName="ID_NGUOI_SU_DUNG" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TEN_SAN_PHAM" ColumnName="TEN_SAN_PHAM" />
           <ScalarProperty Name="TEN_SAN_PHAM_CHI_TIET" ColumnName="TEN_SAN_PHAM_CHI_TIET" />
@@ -284,6 +290,22 @@
           <ScalarProperty Name="ID_QUYEN_QUAN_LY" ColumnName="ID_QUYEN_QUAN_LY" />
           <ScalarProperty Name="ID_NGUOI_SU_DUNG" ColumnName="ID_NGUOI_SU_DUNG" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_RPT_LUY_KE">
+      <EntityTypeMapping TypeName="BKI_CRMModel.V_RPT_LUY_KE">
+        <MappingFragment StoreEntitySet="V_RPT_LUY_KE">
+          <ScalarProperty Name="LUY_KE" ColumnName="LUY_KE" />
+          <ScalarProperty Name="MA_TRANG_THAI" ColumnName="MA_TRANG_THAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_RPT_PHAT_SINH_TRONG_THANG">
+      <EntityTypeMapping TypeName="BKI_CRMModel.V_RPT_PHAT_SINH_TRONG_THANG">
+        <MappingFragment StoreEntitySet="V_RPT_PHAT_SINH_TRONG_THANG">
+          <ScalarProperty Name="LUY_KE" ColumnName="LUY_KE" />
+          <ScalarProperty Name="MA_TRANG_THAI" ColumnName="MA_TRANG_THAI" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

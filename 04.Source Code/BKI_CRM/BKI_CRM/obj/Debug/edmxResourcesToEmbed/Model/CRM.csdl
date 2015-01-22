@@ -121,6 +121,8 @@
       <End Role="HT_USER" EntitySet="HT_USER" />
     </AssociationSet>
     <EntitySet Name="V_GD_NGUOI_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.V_GD_NGUOI_QUAN_LY_KHACH_HANG" />
+    <EntitySet Name="V_RPT_LUY_KE" EntityType="BKI_CRMModel.V_RPT_LUY_KE" />
+    <EntitySet Name="V_RPT_PHAT_SINH_TRONG_THANG" EntityType="BKI_CRMModel.V_RPT_PHAT_SINH_TRONG_THANG" />
   </EntityContainer>
   <EntityType Name="CM_DM_LOAI_TD">
     <Key>
@@ -409,6 +411,10 @@
       <PropertyRef Name="ID_TRANG_THAI" />
       <PropertyRef Name="MA_TRANG_THAI" />
       <PropertyRef Name="TRANG_THAI_HIEN_TAI_YN" />
+      <PropertyRef Name="ID_NGUOI_SU_DUNG" />
+      <PropertyRef Name="HO_TEN_NHAN_VIEN" />
+      <PropertyRef Name="TEN_PHONG_BAN" />
+      <PropertyRef Name="TEN_CONG_TY" />
     </Key>
     <Property Name="ID" Type="Guid" Nullable="false" />
     <Property Name="TEN_SAN_PHAM" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
@@ -419,6 +425,12 @@
     <Property Name="MA_TRANG_THAI" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="true" />
     <Property Name="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" Type="Guid" />
     <Property Name="TRANG_THAI_HIEN_TAI_YN" Type="Boolean" Nullable="false" />
+    <Property Type="Guid" Name="ID_NGUOI_SU_DUNG" Nullable="false" />
+    <Property Type="String" Name="HO_TEN_NHAN_VIEN" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="ID_PHONG_BAN" />
+    <Property Type="String" Name="TEN_PHONG_BAN" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MA_PHONG_BAN" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="TEN_CONG_TY" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="V_GD_LICH_SU_KHACH_HANG">
     <Key>
@@ -744,5 +756,19 @@
     <Property Type="String" Name="HO_TEN_NHAN_VIEN" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Type="Guid" Name="ID_USER" Nullable="false" />
     <Property Type="Guid" Name="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" />
+  </EntityType>
+  <EntityType Name="V_RPT_LUY_KE">
+    <Key>
+      <PropertyRef Name="MA_TRANG_THAI" />
+    </Key>
+    <Property Type="String" Name="MA_TRANG_THAI" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="LUY_KE" />
+  </EntityType>
+  <EntityType Name="V_RPT_PHAT_SINH_TRONG_THANG">
+    <Key>
+      <PropertyRef Name="MA_TRANG_THAI" />
+    </Key>
+    <Property Type="String" Name="MA_TRANG_THAI" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="LUY_KE" />
   </EntityType>
 </Schema>
