@@ -98,4 +98,3 @@ F:\BKIndex\PRO\BKI_CRM\04.Source Code\BKI_CRM\BKI_CRM\bin\DotNetOpenAuth.OpenId.
 F:\BKIndex\PRO\BKI_CRM\04.Source Code\BKI_CRM\BKI_CRM\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 F:\BKIndex\PRO\BKI_CRM\04.Source Code\BKI_CRM\BKI_CRM\obj\Debug\BKI_CRM.dll
 F:\BKIndex\PRO\BKI_CRM\04.Source Code\BKI_CRM\BKI_CRM\obj\Debug\BKI_CRM.pdb
-F:\BKIndex\PRO\BKI_CRM\04.Source Code\BKI_CRM\BKI_CRM\obj\Debug\BKI_CRM.csprojResolveAssemblyReference.cache
