@@ -424,6 +424,7 @@
     <Content Include="Views\Home\DinhNghiaTrangThai.cshtml" />
     <Content Include="Views\Home\bao_cao_01.cshtml" />
     <Content Include="Views\Home\quanLyNguoiSuDung.cshtml" />
+    <Content Include="Views\Home\taiKhoanCaNhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
