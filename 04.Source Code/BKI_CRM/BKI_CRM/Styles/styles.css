@@ -291,7 +291,47 @@ td input{
     width:220px;
 }
 
-#tensanpham
+#tensanpham {
+    margin-top: 10px;
+}
+#nhap {
+    margin:0px 0px 0px 50px; 
+    font-weight:bold;
+    width:900px;
+    height:auto;
+}
+.content_1 {
+    width:450px;
+    float:left;
+    height:auto;
+}
+.thong_tin
 {
+    float:left;
+    clear:left;
     margin-top:10px;
+}
+.thong_tin_1 {
+    float:left;
+    clear:left;
+    margin-top:0px;
+}
+.info {
+    float:left; 
+    width:150px; 
+}
+.khung {
+    float:left; 
+    width:250px; 
+}
+.nut {
+    margin-left:100px;
+    margin-top:20px;
+    width:100px;
+}
+.hvn {
+    width:160px;
+}
+.table {
+    margin-top:20px;
 }
