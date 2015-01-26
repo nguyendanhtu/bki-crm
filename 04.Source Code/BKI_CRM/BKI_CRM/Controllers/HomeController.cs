@@ -469,5 +469,10 @@ namespace BKI_CRM.Controllers
             return View();
             
         }
+
+        public ActionResult taiKhoanCaNhan()
+        {
+            return View();
+        }
     }
 }
