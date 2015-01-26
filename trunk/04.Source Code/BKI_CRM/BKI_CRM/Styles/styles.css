@@ -335,3 +335,77 @@ td input{
 .table {
     margin-top:20px;
 }
+
+
+/******MAI*********/
+form 
+{
+    width:900px;
+    font-weight:bold;
+}
+
+fieldset 
+{
+    margin-top:100px;
+}
+#anh 
+{
+    width:140px;
+    float:left;
+}
+
+#anh_dai_dien 
+{
+    float:left;
+    height:100px;
+    width:100px;
+    margin-right:40px;
+    border:1px solid;
+    border-color:#000000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+     
+}
+
+#nut_chon 
+{
+    margin-top:5px;
+    margin-left:20px;
+    float:left;
+    width:140px;
+}
+
+#tieu_de_1
+{
+    width:100px;
+    float: left;
+}
+
+
+#tieu_de_2
+{
+    width:100px;
+    float: left;
+    margin-left:50px;
+}
+.tieude 
+{
+    height:42px;
+}
+
+#noidung1
+{
+    width:200px;
+    float:left;
+}
+
+#noidung2
+{
+    width:200px;
+    float:right;
+    margin-right:100px;
+}
+
+.node {
+    margin: 30px 0px 0px 450px;
+}
