@@ -12,13 +12,16 @@ namespace BKI_CRM.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class HT_PHAN_QUYEN_CHO_NHOM
+    public partial class HT_CONTROLLER
     {
-        public System.Guid ID { get; set; }
-        public System.Guid ID_ACTION { get; set; }
-        public System.Guid ID_USER_GROUP { get; set; }
+        public HT_CONTROLLER()
+        {
+            this.HT_ACTION = new HashSet<HT_ACTION>();
+        }
     
-        public virtual HT_ACTION HT_ACTION { get; set; }
-        public virtual HT_USER_GROUP HT_USER_GROUP { get; set; }
+        public System.Guid ID { get; set; }
+        public string CONTROLLER_NAME { get; set; }
+    
+        public virtual ICollection<HT_ACTION> HT_ACTION { get; set; }
     }
 }
