@@ -501,5 +501,85 @@ namespace BKI_CRM.Controllers
             }
             return View();
         }
+        public ActionResult UploadFile(HttpPostedFileBase excelFile)
+        {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+
+            m_p = new PhanQuyenHeThong();
+            string v_actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+            string v_controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+            var v_c = m_p.checkQuyenTruyCap(
+                Session["IdUserGroup"].ToString()
+                , v_controllerName
+                , v_actionName);
+            if (v_c == false)
+            {
+                return RedirectToAction("login", "admin");
+            }
+            var data = (new SLExcelReader()).ReadExcel(excelFile);
+            Session["SessionExcelData"] = data;
+            return RedirectToAction("ExcelToDB");
+        }
+
+        //private List<NhanVienModel> Lay_danh_sach_nhan_vien(string ip_dc_id_user_cap_tren)
+        //{
+        //    //List<NhanVienModel> op_lst_nv = new List<NhanVienModel>();
+        //    //BKI_CRMEntities v_model = new BKI_CRMEntities();
+        //    //var v_lst_ht_user = v_model.HT_USER.Where(x => x.ID_USER_CAP_TREN == ip_dc_id_nhan_vien || ip_dc_id_nhan_vien == -1).ToList();
+        //    //foreach (var item in v_lst_ht_user)
+        //    //{
+        //    //    NhanVienModel v_nv = new NhanVienModel();
+        //    //    v_nv = item.CopyAs<NhanVienModel>();
+        //    //    op_lst_nv.Add(v_nv);
+        //    //}
+
+        //    //return op_lst_nv;
+        //}
+        [HttpPost]
+        public ActionResult ExcelToTable()
+        {
+            var data = Session["SessionExcelData"];
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        private List<ColumnsModel> Lay_danh_sach_cot_table_khach_hang()
+        {
+            List<ColumnsModel> op_lst_col_kh = new List<ColumnsModel>();
+            BKI_CRMEntities v_model = new BKI_CRMEntities();
+            var v_guid = new Guid("d63820f1-b56a-4553-a488-d3b79b27f4f1");
+            var v_lst_col_kh = v_model.CM_DM_TU_DIEN.Where(x => x.ID_LOAI_TU_DIEN == v_guid).ToList();
+            foreach (var item in v_lst_col_kh)
+            {
+                ColumnsModel v_col_kh = new ColumnsModel();
+                v_col_kh = item.CopyAs<ColumnsModel>();
+                op_lst_col_kh.Add(v_col_kh);
+            }
+            return op_lst_col_kh;
+        }
+
+        public ActionResult ExcelToDB()
+        {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+
+            m_p = new PhanQuyenHeThong();
+            string v_actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+            string v_controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+            var v_c = m_p.checkQuyenTruyCap(
+                Session["IdUserGroup"].ToString()
+                , v_controllerName
+                , v_actionName);
+            if (v_c == false)
+            {
+                return RedirectToAction("login", "admin");
+            }
+            //ViewBag.LstNhanVien = Lay_danh_sach_nhan_vien("");
+            ViewBag.LstColumn = Lay_danh_sach_cot_table_khach_hang();
+            return View();
+        }
     }
 }
