@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "ExcelToDB";
+    Layout = "~/Views/_LayoutCRM.cshtml";
+    var lst_nhan_vien = ViewBag.LstNhanVien as List<BKI_CRM.Models.NhanVienModel>;
+    var lst_column = ViewBag.LstColumn as List<BKI_CRM.Models.ColumnsModel>;
+}
+
+<style>
+    table {
+        min-width:1100px;
+        margin-top:50px !important;
+    }
+
+    th, td {
+        min-width:70px;
+    }
+
+    .loai {
+        text-align:center;
+    }
+
+    .selectColumn select{
+        width:100px;
+    }
+</style>
+
+<select id="selectColumn" class="ColumnSelect">
+    @foreach (var item in lst_column)
+    {
+        <option value="@item.MA_TU_DIEN">@item.TEN_TU_DIEN</option>
+    }
+</select>
+<table id="myTable">
+
+</table>
+<div style="text-align:right; margin:15px;">
+    <button class="btn btn-primary" id="saveData">Lưu danh sách</button>
+</div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Home/ExcelToTable',
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                veHeader(data);
+                veData(data);
+
+                var el = $("#selectColumn").clone();
+                el.removeAttr("id")
+                $(".selectColumn").append(el);
+                $("#selectColumn").remove();
+
+                $('#myTable').dataTable({
+                    "scrollY": 400,
+                    "scrollX": true,
+                    "ordering": false,
+                    "paging": false,
+                    "info": false,
+                    "bFilter": false
+                });
+            }
+        });
+
+        function veHeader(data) {
+            var count_header_cell = data.Headers.length;
+            var htmlheadertable = "<thead><tr>";
+            htmlheadertable += "<th>Loại</th>";
+            for (var i = 0; i < count_header_cell; i++) {
+                htmlheadertable += "<th class='selectColumn'></th>";
+            }
+            htmlheadertable += "</tr></thead>";
+            $("#myTable").append(htmlheadertable);
+        }
+
+        function veData(data) {
+            var count_header_cell = data.Headers.length;
+            var count_data_row = data.DataRows.length;
+            var htmlbodytable = "<tbody>";
+            for (var i = 0; i < count_data_row; i++) {
+                htmlbodytable += "<tr>";
+                var datarow = data.DataRows[i];
+                htmlbodytable += "<td class='loai'><button class='btn btn-danger'>Loại</button></td>";
+                for (var j = 0; j < count_header_cell; j++) {
+                    htmlbodytable += "<td>" + datarow[j] + "</td>";
+                }
+                htmlbodytable += "</tr>";
+            }
+            htmlbodytable += "</tbody>";
+            $("#myTable").append(htmlbodytable);
+        }
+
+        $(document).on("click", ".loai", function (e) {
+            e.preventDefault();
+            $(this).parent("tr").remove();
+        });
+
+        $(document).on("click", "#saveData", function (e) {
+            e.preventDefault();
+        
+            var lst_row = $("#myTable tbody tr");
+            var row_count = lst_row.length;
+            var col_count = $("#myTable thead th").length;
+            lst_row.each(function (index) {
+
+                var query = "insert into DM_KHACH_HANG(";
+                var lst_cols = $("select");
+                for (var i = 0; i < col_count - 2; i++) {
+                    query += lst_cols[i].value + ',';
+                }
+                query += lst_cols[col_count - 2].value;
+                query += ") VALUES(";
+
+                var lst_data = $(this).children("td");
+                for (var i = 1; i < lst_data.length - 1; i++) {
+                    query += "'"+ lst_data[i].innerHTML +"',";
+                }
+                query += "'"+lst_data[lst_data.length - 1].innerHTML + "')";
+                insertKhachHang(query);
+            });
+        });
+
+        function insertKhachHang(ip_str_query) {
+            $.ajax({
+                url: '/Home/execQueryThemKhachHang',
+                data: {
+                    ip_str_query_insert: ip_str_query
+                },
+                dataType: "json",
+                type: "POST",
+                error: function () {
+                    alert("Xay ra loi");
+                },
+                success: function (data) {
+                }
+            });
+        }
+
+    });
+</script>
+
+

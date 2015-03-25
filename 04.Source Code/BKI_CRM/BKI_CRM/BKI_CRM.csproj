@@ -178,8 +178,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ColumnsModel.cs" />
     <Compile Include="Models\DanhSachTrangThaiModel.cs" />
     <Compile Include="Models\KhachHangModel.cs" />
+    <Compile Include="Models\NhanVienModel.cs" />
     <Compile Include="Models\PhanQuyenHeThong.cs" />
     <Compile Include="Models\ThongTinKhachHang.cs" />
     <Compile Include="Models\TrangThaiHienTaiModel.cs" />
@@ -290,6 +292,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_HT_USER.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_NHAN_VIEN_QUAN_LY_KHACH_HANG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_RPT_LUY_KE.cs">
@@ -406,6 +411,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\OpenXMLExcelAppScript.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Styles\image\background-menu.png" />
     <Content Include="Styles\jquery.dataTables.min.css" />
@@ -453,6 +459,7 @@
     <Content Include="Views\Home\quanLyNguoiSuDung.cshtml" />
     <Content Include="Views\Home\taiKhoanCaNhan.cshtml" />
     <Content Include="Views\Home\importExcel.cshtml" />
+    <Content Include="Views\Home\ExcelToDB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

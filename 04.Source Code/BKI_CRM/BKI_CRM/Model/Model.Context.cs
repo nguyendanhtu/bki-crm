@@ -59,6 +59,7 @@ namespace BKI_CRM.Model
         public DbSet<V_HT_USER> V_HT_USER { get; set; }
         public DbSet<V_RPT_LUY_KE> V_RPT_LUY_KE { get; set; }
         public DbSet<V_RPT_PHAT_SINH_TRONG_THANG> V_RPT_PHAT_SINH_TRONG_THANG { get; set; }
+        public DbSet<V_NHAN_VIEN_QUAN_LY_KHACH_HANG> V_NHAN_VIEN_QUAN_LY_KHACH_HANG { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

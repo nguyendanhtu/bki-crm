@@ -4,30 +4,30 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BKI_CRMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="BKI_CRMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BKI_CRMModelStoreContainer">
-          <EntitySet Name="CM_DM_LOAI_TD" EntityType="BKI_CRMModel.Store.CM_DM_LOAI_TD" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="CM_DM_TU_DIEN" EntityType="BKI_CRMModel.Store.CM_DM_TU_DIEN" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="DM_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.DM_CHUYEN_TRANG_THAI" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="DM_CONG_TY" EntityType="BKI_CRMModel.Store.DM_CONG_TY" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="DM_KHACH_HANG" EntityType="BKI_CRMModel.Store.DM_KHACH_HANG" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="DM_NHOM_SAN_PHAM" EntityType="BKI_CRMModel.Store.DM_NHOM_SAN_PHAM" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="DM_PHONG_BAN" EntityType="BKI_CRMModel.Store.DM_PHONG_BAN" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="DM_SAN_PHAM" EntityType="BKI_CRMModel.Store.DM_SAN_PHAM" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="DM_TRANG_THAI" EntityType="BKI_CRMModel.Store.DM_TRANG_THAI" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="DM_YEU_CAU_TRANG_THAI" EntityType="BKI_CRMModel.Store.DM_YEU_CAU_TRANG_THAI" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="GD_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.GD_CHUYEN_TRANG_THAI" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="GD_KHACH_HANG_SU_DUNG_SAN_PHAM" EntityType="BKI_CRMModel.Store.GD_KHACH_HANG_SU_DUNG_SAN_PHAM" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="GD_NGUOI_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.Store.GD_NGUOI_QUAN_LY_KHACH_HANG" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="GD_PHIEN_LAM_VIEC" EntityType="BKI_CRMModel.Store.GD_PHIEN_LAM_VIEC" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="HT_ACTION" EntityType="BKI_CRMModel.Store.HT_ACTION" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="HT_CONTROLLER" EntityType="BKI_CRMModel.Store.HT_CONTROLLER" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="HT_LOG" EntityType="BKI_CRMModel.Store.HT_LOG" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="HT_PHAN_QUYEN_CHO_NHOM" EntityType="BKI_CRMModel.Store.HT_PHAN_QUYEN_CHO_NHOM" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="HT_USER" EntityType="BKI_CRMModel.Store.HT_USER" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="HT_USER_GROUP" EntityType="BKI_CRMModel.Store.HT_USER_GROUP" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="sysdiagrams" EntityType="BKI_CRMModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="V_DM_NHAN_VIEN_CONG_TY" EntityType="BKI_CRMModel.Store.V_DM_NHAN_VIEN_CONG_TY" store:Type="Views" store:Schema="dbo" store:Name="V_DM_NHAN_VIEN_CONG_TY" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="CM_DM_LOAI_TD" EntityType="BKI_CRMModel.Store.CM_DM_LOAI_TD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CM_DM_TU_DIEN" EntityType="BKI_CRMModel.Store.CM_DM_TU_DIEN" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DM_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.DM_CHUYEN_TRANG_THAI" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DM_CONG_TY" EntityType="BKI_CRMModel.Store.DM_CONG_TY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DM_KHACH_HANG" EntityType="BKI_CRMModel.Store.DM_KHACH_HANG" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DM_NHOM_SAN_PHAM" EntityType="BKI_CRMModel.Store.DM_NHOM_SAN_PHAM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DM_PHONG_BAN" EntityType="BKI_CRMModel.Store.DM_PHONG_BAN" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DM_SAN_PHAM" EntityType="BKI_CRMModel.Store.DM_SAN_PHAM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DM_TRANG_THAI" EntityType="BKI_CRMModel.Store.DM_TRANG_THAI" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DM_YEU_CAU_TRANG_THAI" EntityType="BKI_CRMModel.Store.DM_YEU_CAU_TRANG_THAI" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GD_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.GD_CHUYEN_TRANG_THAI" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GD_KHACH_HANG_SU_DUNG_SAN_PHAM" EntityType="BKI_CRMModel.Store.GD_KHACH_HANG_SU_DUNG_SAN_PHAM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GD_NGUOI_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.Store.GD_NGUOI_QUAN_LY_KHACH_HANG" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GD_PHIEN_LAM_VIEC" EntityType="BKI_CRMModel.Store.GD_PHIEN_LAM_VIEC" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HT_ACTION" EntityType="BKI_CRMModel.Store.HT_ACTION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HT_CONTROLLER" EntityType="BKI_CRMModel.Store.HT_CONTROLLER" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HT_LOG" EntityType="BKI_CRMModel.Store.HT_LOG" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HT_PHAN_QUYEN_CHO_NHOM" EntityType="BKI_CRMModel.Store.HT_PHAN_QUYEN_CHO_NHOM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HT_USER" EntityType="BKI_CRMModel.Store.HT_USER" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HT_USER_GROUP" EntityType="BKI_CRMModel.Store.HT_USER_GROUP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="BKI_CRMModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="V_DM_NHAN_VIEN_CONG_TY" EntityType="BKI_CRMModel.Store.V_DM_NHAN_VIEN_CONG_TY" store:Type="Views" store:Schema="dbo" store:Name="V_DM_NHAN_VIEN_CONG_TY">
             <DefiningQuery>SELECT 
       [V_DM_NHAN_VIEN_CONG_TY].[ID] AS [ID], 
       [V_DM_NHAN_VIEN_CONG_TY].[HO_TEN_NHAN_VIEN] AS [HO_TEN_NHAN_VIEN], 
@@ -35,7 +35,7 @@
       [V_DM_NHAN_VIEN_CONG_TY].[TEN_CONG_TY] AS [TEN_CONG_TY]
       FROM [dbo].[V_DM_NHAN_VIEN_CONG_TY] AS [V_DM_NHAN_VIEN_CONG_TY]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="V_DM_YEU_CAU_TRANG_THAI" EntityType="BKI_CRMModel.Store.V_DM_YEU_CAU_TRANG_THAI" store:Type="Views" store:Schema="dbo" store:Name="V_DM_YEU_CAU_TRANG_THAI" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="V_DM_YEU_CAU_TRANG_THAI" EntityType="BKI_CRMModel.Store.V_DM_YEU_CAU_TRANG_THAI" store:Type="Views" store:Schema="dbo" store:Name="V_DM_YEU_CAU_TRANG_THAI">
             <DefiningQuery>SELECT 
       [V_DM_YEU_CAU_TRANG_THAI].[ID] AS [ID], 
       [V_DM_YEU_CAU_TRANG_THAI].[ID_TRANG_THAI] AS [ID_TRANG_THAI], 
@@ -44,7 +44,7 @@
       [V_DM_YEU_CAU_TRANG_THAI].[THU_TU] AS [THU_TU]
       FROM [dbo].[V_DM_YEU_CAU_TRANG_THAI] AS [V_DM_YEU_CAU_TRANG_THAI]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="V_GD_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.V_GD_CHUYEN_TRANG_THAI" store:Type="Views" store:Schema="dbo" store:Name="V_GD_CHUYEN_TRANG_THAI" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="V_GD_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.V_GD_CHUYEN_TRANG_THAI" store:Type="Views" store:Schema="dbo" store:Name="V_GD_CHUYEN_TRANG_THAI">
             <DefiningQuery>SELECT 
       [V_GD_CHUYEN_TRANG_THAI].[ID_TRANG_THAI_BAN_DAU] AS [ID_TRANG_THAI_BAN_DAU], 
       [V_GD_CHUYEN_TRANG_THAI].[ID_TRANG_THAI_SAU] AS [ID_TRANG_THAI_SAU], 
@@ -53,7 +53,7 @@
       [V_GD_CHUYEN_TRANG_THAI].[LOAI_TRANG_THAI_YN] AS [LOAI_TRANG_THAI_YN]
       FROM [dbo].[V_GD_CHUYEN_TRANG_THAI] AS [V_GD_CHUYEN_TRANG_THAI]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="V_GD_KHACH_HANG_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.V_GD_KHACH_HANG_CHUYEN_TRANG_THAI" store:Type="Views" store:Schema="dbo" store:Name="V_GD_KHACH_HANG_CHUYEN_TRANG_THAI" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="V_GD_KHACH_HANG_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.V_GD_KHACH_HANG_CHUYEN_TRANG_THAI" store:Type="Views" store:Schema="dbo" store:Name="V_GD_KHACH_HANG_CHUYEN_TRANG_THAI">
             <DefiningQuery>SELECT 
       [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[ID] AS [ID], 
       [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[TEN_SAN_PHAM] AS [TEN_SAN_PHAM], 
@@ -72,7 +72,7 @@
       [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI].[TEN_CONG_TY] AS [TEN_CONG_TY]
       FROM [dbo].[V_GD_KHACH_HANG_CHUYEN_TRANG_THAI] AS [V_GD_KHACH_HANG_CHUYEN_TRANG_THAI]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="V_GD_LICH_SU_KHACH_HANG" EntityType="BKI_CRMModel.Store.V_GD_LICH_SU_KHACH_HANG" store:Type="Views" store:Schema="dbo" store:Name="V_GD_LICH_SU_KHACH_HANG" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="V_GD_LICH_SU_KHACH_HANG" EntityType="BKI_CRMModel.Store.V_GD_LICH_SU_KHACH_HANG" store:Type="Views" store:Schema="dbo" store:Name="V_GD_LICH_SU_KHACH_HANG">
             <DefiningQuery>SELECT 
       [V_GD_LICH_SU_KHACH_HANG].[ID] AS [ID], 
       [V_GD_LICH_SU_KHACH_HANG].[ID_KHACH_HANG] AS [ID_KHACH_HANG], 
@@ -84,7 +84,7 @@
       [V_GD_LICH_SU_KHACH_HANG].[LOAI_TRANG_THAI_YN] AS [LOAI_TRANG_THAI_YN]
       FROM [dbo].[V_GD_LICH_SU_KHACH_HANG] AS [V_GD_LICH_SU_KHACH_HANG]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="V_GD_NGUOI_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.Store.V_GD_NGUOI_QUAN_LY_KHACH_HANG" store:Type="Views" store:Schema="dbo" store:Name="V_GD_NGUOI_QUAN_LY_KHACH_HANG" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="V_GD_NGUOI_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.Store.V_GD_NGUOI_QUAN_LY_KHACH_HANG" store:Type="Views" store:Schema="dbo" store:Name="V_GD_NGUOI_QUAN_LY_KHACH_HANG">
             <DefiningQuery>SELECT 
       [V_GD_NGUOI_QUAN_LY_KHACH_HANG].[ID] AS [ID], 
       [V_GD_NGUOI_QUAN_LY_KHACH_HANG].[ID_NGUOI_SU_DUNG] AS [ID_NGUOI_SU_DUNG], 
@@ -96,7 +96,7 @@
       [V_GD_NGUOI_QUAN_LY_KHACH_HANG].[ID_KHACH_HANG_SU_DUNG_SAN_PHAM] AS [ID_KHACH_HANG_SU_DUNG_SAN_PHAM]
       FROM [dbo].[V_GD_NGUOI_QUAN_LY_KHACH_HANG] AS [V_GD_NGUOI_QUAN_LY_KHACH_HANG]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="V_HT_PHAN_QUYEN_CHI_TIET" EntityType="BKI_CRMModel.Store.V_HT_PHAN_QUYEN_CHI_TIET" store:Type="Views" store:Schema="dbo" store:Name="V_HT_PHAN_QUYEN_CHI_TIET" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="V_HT_PHAN_QUYEN_CHI_TIET" EntityType="BKI_CRMModel.Store.V_HT_PHAN_QUYEN_CHI_TIET" store:Type="Views" store:Schema="dbo" store:Name="V_HT_PHAN_QUYEN_CHI_TIET">
             <DefiningQuery>SELECT 
       [V_HT_PHAN_QUYEN_CHI_TIET].[ID] AS [ID], 
       [V_HT_PHAN_QUYEN_CHI_TIET].[ID_ACTION] AS [ID_ACTION], 
@@ -107,7 +107,7 @@
       [V_HT_PHAN_QUYEN_CHI_TIET].[CONTROLLER_NAME] AS [CONTROLLER_NAME]
       FROM [dbo].[V_HT_PHAN_QUYEN_CHI_TIET] AS [V_HT_PHAN_QUYEN_CHI_TIET]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="V_HT_USER" EntityType="BKI_CRMModel.Store.V_HT_USER" store:Type="Views" store:Schema="dbo" store:Name="V_HT_USER" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="V_HT_USER" EntityType="BKI_CRMModel.Store.V_HT_USER" store:Type="Views" store:Schema="dbo" store:Name="V_HT_USER">
             <DefiningQuery>SELECT 
       [V_HT_USER].[ID] AS [ID], 
       [V_HT_USER].[ID_USER_GROUP] AS [ID_USER_GROUP], 
@@ -129,13 +129,46 @@
       [V_HT_USER].[ID_CONG_TY] AS [ID_CONG_TY]
       FROM [dbo].[V_HT_USER] AS [V_HT_USER]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="V_RPT_LUY_KE" EntityType="BKI_CRMModel.Store.V_RPT_LUY_KE" store:Type="Views" store:Schema="dbo" store:Name="V_RPT_LUY_KE" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="V_NHAN_VIEN_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.Store.V_NHAN_VIEN_QUAN_LY_KHACH_HANG" store:Type="Views" store:Schema="dbo" store:Name="V_NHAN_VIEN_QUAN_LY_KHACH_HANG">
+            <DefiningQuery>SELECT 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID] AS [ID], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_USER_GROUP] AS [ID_USER_GROUP], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[TEN_NHOM_NGUOI_SU_DUNG] AS [TEN_NHOM_NGUOI_SU_DUNG], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[USERNAME] AS [USERNAME], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[PASSWORD] AS [PASSWORD], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ACTIVE_YN_USER] AS [ACTIVE_YN_USER], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_USER_CAP_TREN] AS [ID_USER_CAP_TREN], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[HO_TEN_NHAN_VIEN] AS [HO_TEN_NHAN_VIEN], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_PHONG_BAN] AS [ID_PHONG_BAN], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[SDT01] AS [SDT01], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[SDT02] AS [SDT02], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[EMAIL] AS [EMAIL], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ANH_CA_NHAN] AS [ANH_CA_NHAN], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_GD_NGUOI_QUAN_LY_KHACH_HANG] AS [ID_GD_NGUOI_QUAN_LY_KHACH_HANG], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_QUYEN_QUAN_LY] AS [ID_QUYEN_QUAN_LY], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[TEN_QUYEN_QUAN_LY] AS [TEN_QUYEN_QUAN_LY], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[NGAY_CAP_QUYEN] AS [NGAY_CAP_QUYEN], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ACTIVE_YN_NGUOI_QL_KH] AS [ACTIVE_YN_NGUOI_QL_KH], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[GHI_CHU] AS [GHI_CHU], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_KHACH_HANG_SU_DUNG_SAN_PHAM] AS [ID_KHACH_HANG_SU_DUNG_SAN_PHAM], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_KHACH_HANG] AS [ID_KHACH_HANG], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[TEN_KHACH_HANG] AS [TEN_KHACH_HANG], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_LOAI_KHACH_HANG] AS [ID_LOAI_KHACH_HANG], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[TEN_LOAI_KHACH_HANG] AS [TEN_LOAI_KHACH_HANG], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_SAN_PHAM] AS [ID_SAN_PHAM], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[TEN_SAN_PHAM] AS [TEN_SAN_PHAM], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[GIA_SAN_PHAM] AS [GIA_SAN_PHAM], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[ID_NHOM_SAN_PHAM] AS [ID_NHOM_SAN_PHAM], 
+      [V_NHAN_VIEN_QUAN_LY_KHACH_HANG].[TEN_NHOM_SAN_PHAM] AS [TEN_NHOM_SAN_PHAM]
+      FROM [dbo].[V_NHAN_VIEN_QUAN_LY_KHACH_HANG] AS [V_NHAN_VIEN_QUAN_LY_KHACH_HANG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_RPT_LUY_KE" EntityType="BKI_CRMModel.Store.V_RPT_LUY_KE" store:Type="Views" store:Schema="dbo" store:Name="V_RPT_LUY_KE">
             <DefiningQuery>SELECT 
       [V_RPT_LUY_KE].[MA_TRANG_THAI] AS [MA_TRANG_THAI], 
       [V_RPT_LUY_KE].[LUY_KE] AS [LUY_KE]
       FROM [dbo].[V_RPT_LUY_KE] AS [V_RPT_LUY_KE]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="V_RPT_PHAT_SINH_TRONG_THANG" EntityType="BKI_CRMModel.Store.V_RPT_PHAT_SINH_TRONG_THANG" store:Type="Views" store:Schema="dbo" store:Name="V_RPT_PHAT_SINH_TRONG_THANG" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+          <EntitySet Name="V_RPT_PHAT_SINH_TRONG_THANG" EntityType="BKI_CRMModel.Store.V_RPT_PHAT_SINH_TRONG_THANG" store:Type="Views" store:Schema="dbo" store:Name="V_RPT_PHAT_SINH_TRONG_THANG">
             <DefiningQuery>SELECT 
       [V_RPT_PHAT_SINH_TRONG_THANG].[MA_TRANG_THAI] AS [MA_TRANG_THAI], 
       [V_RPT_PHAT_SINH_TRONG_THANG].[LUY_KE] AS [LUY_KE]
@@ -644,6 +677,48 @@
           <Property Name="ID_CONG_TY" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+      warning 6002: The table/view 'BKI_CRM.dbo.V_NHAN_VIEN_QUAN_LY_KHACH_HANG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_NHAN_VIEN_QUAN_LY_KHACH_HANG">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_USER_GROUP" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PASSWORD" />
+            <PropertyRef Name="ACTIVE_YN_USER" />
+            <PropertyRef Name="HO_TEN_NHAN_VIEN" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_USER_GROUP" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TEN_NHOM_NGUOI_SU_DUNG" Type="nvarchar" MaxLength="100" />
+          <Property Name="USERNAME" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="PASSWORD" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ACTIVE_YN_USER" Type="bit" Nullable="false" />
+          <Property Name="ID_USER_CAP_TREN" Type="uniqueidentifier" />
+          <Property Name="HO_TEN_NHAN_VIEN" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ID_PHONG_BAN" Type="uniqueidentifier" />
+          <Property Name="SDT01" Type="nchar" MaxLength="15" />
+          <Property Name="SDT02" Type="nchar" MaxLength="15" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="ANH_CA_NHAN" Type="nvarchar" MaxLength="500" />
+          <Property Name="ID_GD_NGUOI_QUAN_LY_KHACH_HANG" Type="uniqueidentifier" />
+          <Property Name="ID_QUYEN_QUAN_LY" Type="uniqueidentifier" />
+          <Property Name="TEN_QUYEN_QUAN_LY" Type="nvarchar" MaxLength="100" />
+          <Property Name="NGAY_CAP_QUYEN" Type="datetime" />
+          <Property Name="ACTIVE_YN_NGUOI_QL_KH" Type="bit" />
+          <Property Name="GHI_CHU" Type="nvarchar" MaxLength="500" />
+          <Property Name="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" Type="uniqueidentifier" />
+          <Property Name="ID_KHACH_HANG" Type="uniqueidentifier" />
+          <Property Name="TEN_KHACH_HANG" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_LOAI_KHACH_HANG" Type="uniqueidentifier" />
+          <Property Name="TEN_LOAI_KHACH_HANG" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_SAN_PHAM" Type="uniqueidentifier" />
+          <Property Name="TEN_SAN_PHAM" Type="nvarchar" MaxLength="100" />
+          <Property Name="GIA_SAN_PHAM" Type="decimal" Scale="4" />
+          <Property Name="ID_NHOM_SAN_PHAM" Type="uniqueidentifier" />
+          <Property Name="TEN_NHOM_SAN_PHAM" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
       warning 6002: The table/view 'BKI_CRM.dbo.V_RPT_LUY_KE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="V_RPT_LUY_KE">
@@ -994,8 +1069,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BKI_CRMModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -1161,6 +1235,7 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="V_NHAN_VIEN_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.V_NHAN_VIEN_QUAN_LY_KHACH_HANG" />
         </EntityContainer>
         <EntityType Name="CM_DM_LOAI_TD">
           <Key>
@@ -1914,6 +1989,45 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="V_NHAN_VIEN_QUAN_LY_KHACH_HANG">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_USER_GROUP" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PASSWORD" />
+            <PropertyRef Name="ACTIVE_YN_USER" />
+            <PropertyRef Name="HO_TEN_NHAN_VIEN" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_USER_GROUP" Nullable="false" />
+          <Property Type="String" Name="TEN_NHOM_NGUOI_SU_DUNG" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PASSWORD" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="ACTIVE_YN_USER" Nullable="false" />
+          <Property Type="Guid" Name="ID_USER_CAP_TREN" />
+          <Property Type="String" Name="HO_TEN_NHAN_VIEN" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID_PHONG_BAN" />
+          <Property Type="String" Name="SDT01" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="SDT02" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="EMAIL" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ANH_CA_NHAN" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID_GD_NGUOI_QUAN_LY_KHACH_HANG" />
+          <Property Type="Guid" Name="ID_QUYEN_QUAN_LY" />
+          <Property Type="String" Name="TEN_QUYEN_QUAN_LY" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="NGAY_CAP_QUYEN" Precision="3" />
+          <Property Type="Boolean" Name="ACTIVE_YN_NGUOI_QL_KH" />
+          <Property Type="String" Name="GHI_CHU" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" />
+          <Property Type="Guid" Name="ID_KHACH_HANG" />
+          <Property Type="String" Name="TEN_KHACH_HANG" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID_LOAI_KHACH_HANG" />
+          <Property Type="String" Name="TEN_LOAI_KHACH_HANG" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID_SAN_PHAM" />
+          <Property Type="String" Name="TEN_SAN_PHAM" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="GIA_SAN_PHAM" Precision="18" Scale="4" />
+          <Property Type="Guid" Name="ID_NHOM_SAN_PHAM" />
+          <Property Type="String" Name="TEN_NHOM_SAN_PHAM" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2322,6 +2436,41 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BKI_CRMModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BKI_CRMModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="V_NHAN_VIEN_QUAN_LY_KHACH_HANG">
+            <EntityTypeMapping TypeName="BKI_CRMModel.V_NHAN_VIEN_QUAN_LY_KHACH_HANG">
+              <MappingFragment StoreEntitySet="V_NHAN_VIEN_QUAN_LY_KHACH_HANG">
+                <ScalarProperty Name="TEN_NHOM_SAN_PHAM" ColumnName="TEN_NHOM_SAN_PHAM" />
+                <ScalarProperty Name="ID_NHOM_SAN_PHAM" ColumnName="ID_NHOM_SAN_PHAM" />
+                <ScalarProperty Name="GIA_SAN_PHAM" ColumnName="GIA_SAN_PHAM" />
+                <ScalarProperty Name="TEN_SAN_PHAM" ColumnName="TEN_SAN_PHAM" />
+                <ScalarProperty Name="ID_SAN_PHAM" ColumnName="ID_SAN_PHAM" />
+                <ScalarProperty Name="TEN_LOAI_KHACH_HANG" ColumnName="TEN_LOAI_KHACH_HANG" />
+                <ScalarProperty Name="ID_LOAI_KHACH_HANG" ColumnName="ID_LOAI_KHACH_HANG" />
+                <ScalarProperty Name="TEN_KHACH_HANG" ColumnName="TEN_KHACH_HANG" />
+                <ScalarProperty Name="ID_KHACH_HANG" ColumnName="ID_KHACH_HANG" />
+                <ScalarProperty Name="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" ColumnName="ID_KHACH_HANG_SU_DUNG_SAN_PHAM" />
+                <ScalarProperty Name="GHI_CHU" ColumnName="GHI_CHU" />
+                <ScalarProperty Name="ACTIVE_YN_NGUOI_QL_KH" ColumnName="ACTIVE_YN_NGUOI_QL_KH" />
+                <ScalarProperty Name="NGAY_CAP_QUYEN" ColumnName="NGAY_CAP_QUYEN" />
+                <ScalarProperty Name="TEN_QUYEN_QUAN_LY" ColumnName="TEN_QUYEN_QUAN_LY" />
+                <ScalarProperty Name="ID_QUYEN_QUAN_LY" ColumnName="ID_QUYEN_QUAN_LY" />
+                <ScalarProperty Name="ID_GD_NGUOI_QUAN_LY_KHACH_HANG" ColumnName="ID_GD_NGUOI_QUAN_LY_KHACH_HANG" />
+                <ScalarProperty Name="ANH_CA_NHAN" ColumnName="ANH_CA_NHAN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT02" ColumnName="SDT02" />
+                <ScalarProperty Name="SDT01" ColumnName="SDT01" />
+                <ScalarProperty Name="ID_PHONG_BAN" ColumnName="ID_PHONG_BAN" />
+                <ScalarProperty Name="HO_TEN_NHAN_VIEN" ColumnName="HO_TEN_NHAN_VIEN" />
+                <ScalarProperty Name="ID_USER_CAP_TREN" ColumnName="ID_USER_CAP_TREN" />
+                <ScalarProperty Name="ACTIVE_YN_USER" ColumnName="ACTIVE_YN_USER" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="TEN_NHOM_NGUOI_SU_DUNG" ColumnName="TEN_NHOM_NGUOI_SU_DUNG" />
+                <ScalarProperty Name="ID_USER_GROUP" ColumnName="ID_USER_GROUP" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
