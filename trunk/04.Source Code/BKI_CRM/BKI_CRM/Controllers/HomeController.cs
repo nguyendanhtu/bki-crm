@@ -5,14 +5,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using BKI_CRM.Model;
 using BKI_CRM.Models;
+using BKI_CRM.Model;
 using Framework.Extensions;
+using System.IO;
+using OpenXMLExcel.SLExcelUtility;
+using BKI_CRM.Controllers;
+using System.Net.Mail;
+using System.Text;
 
 namespace BKI_CRM.Controllers
 {
     public class HomeController : Controller
     {
+        PhanQuyenHeThong m_p;
         public ActionResult Index()
         {
             BKI_CRMEntities v_model = new BKI_CRMEntities();
@@ -472,6 +478,27 @@ namespace BKI_CRM.Controllers
 
         public ActionResult taiKhoanCaNhan()
         {
+            return View();
+        }
+
+        public ActionResult importExcel()
+        {
+
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+            m_p = new PhanQuyenHeThong();
+            string v_actionName = this.ControllerContext.RouteData.Values["action"].ToString();
+            string v_controllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+            var v_c = m_p.checkQuyenTruyCap(
+                Session["IdUserGroup"].ToString()
+                , v_controllerName
+                , v_actionName);
+            if (v_c == false)
+            {
+                return RedirectToAction("login", "admin");
+            }
             return View();
         }
     }

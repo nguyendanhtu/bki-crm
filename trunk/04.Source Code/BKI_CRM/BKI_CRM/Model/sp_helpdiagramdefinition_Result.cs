@@ -10,15 +10,10 @@
 namespace BKI_CRM.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class HT_PHAN_QUYEN_CHO_NHOM
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public System.Guid ID { get; set; }
-        public System.Guid ID_ACTION { get; set; }
-        public System.Guid ID_USER_GROUP { get; set; }
-    
-        public virtual HT_ACTION HT_ACTION { get; set; }
-        public virtual HT_USER_GROUP HT_USER_GROUP { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

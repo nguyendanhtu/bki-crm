@@ -21,10 +21,13 @@ namespace BKI_CRM.Model
     
         public System.Guid ID { get; set; }
         public string TEN_KHACH_HANG { get; set; }
+        public string MA_SO_THUE { get; set; }
         public System.Guid ID_LOAI_KHACH_HANG { get; set; }
         public string SDT { get; set; }
+        public string SDT_02 { get; set; }
         public string EMAIL { get; set; }
         public string DIA_CHI { get; set; }
+        public Nullable<System.DateTime> HAN_KHACH_HANG { get; set; }
         public Nullable<bool> GIOI_TINH { get; set; }
         public string THONG_TIN_BO_SUNG_01 { get; set; }
         public string THONG_TIN_BO_SUNG_02 { get; set; }

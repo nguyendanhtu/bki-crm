@@ -10,19 +10,13 @@
 namespace BKI_CRM.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class HT_PHAN_QUYEN_HE_THONG
+    public partial class sp_helpdiagrams_Result
     {
-        public HT_PHAN_QUYEN_HE_THONG()
-        {
-            this.HT_PHAN_QUYEN_CHO_NHOM = new HashSet<HT_PHAN_QUYEN_CHO_NHOM>();
-        }
-    
-        public System.Guid ID { get; set; }
-        public string TEN_QUYEN { get; set; }
-        public string MA_QUYEN { get; set; }
-    
-        public virtual ICollection<HT_PHAN_QUYEN_CHO_NHOM> HT_PHAN_QUYEN_CHO_NHOM { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

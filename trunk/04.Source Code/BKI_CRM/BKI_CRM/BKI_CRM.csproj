@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="Framework.Extensions">
       <HintPath>F:\BKIndex\PRO\BKI_CRM\bki-crm\04.Source Code\BKI_CRM\BKI_CRM\bin\Framework.Extensions.dll</HintPath>
     </Reference>
@@ -175,101 +179,123 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\DanhSachTrangThaiModel.cs" />
     <Compile Include="Models\KhachHangModel.cs" />
+    <Compile Include="Models\PhanQuyenHeThong.cs" />
     <Compile Include="Models\ThongTinKhachHang.cs" />
     <Compile Include="Models\TrangThaiHienTaiModel.cs" />
     <Compile Include="Models\TrangThaiModel.cs" />
     <Compile Include="Model\CM_DM_LOAI_TD.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CM_DM_TU_DIEN.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CRM.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CRM.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CRM.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CRM.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CRM.edmx</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DM_CHUYEN_TRANG_THAI.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DM_CONG_TY.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DM_KHACH_HANG.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DM_NHOM_SAN_PHAM.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DM_PHONG_BAN.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DM_SAN_PHAM.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DM_TRANG_THAI.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DM_YEU_CAU_TRANG_THAI.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GD_CHUYEN_TRANG_THAI.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GD_KHACH_HANG_SU_DUNG_SAN_PHAM.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GD_NGUOI_QUAN_LY_KHACH_HANG.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GD_PHIEN_LAM_VIEC.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HT_ACTION.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HT_CONTROLLER.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HT_LOG.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HT_PHAN_QUYEN_CHO_NHOM.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\HT_PHAN_QUYEN_HE_THONG.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HT_USER.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HT_USER_GROUP.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_DM_NHAN_VIEN_CONG_TY.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_DM_YEU_CAU_TRANG_THAI.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_GD_CHUYEN_TRANG_THAI.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_GD_KHACH_HANG_CHUYEN_TRANG_THAI.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_GD_LICH_SU_KHACH_HANG.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_GD_NGUOI_QUAN_LY_KHACH_HANG.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_HT_PHAN_QUYEN_CHI_TIET.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_HT_USER.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_RPT_LUY_KE.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_RPT_PHAT_SINH_TRONG_THANG.cs">
-      <DependentUpon>CRM.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -345,22 +371,22 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Model\CRM.edmx">
+    <EntityDeploy Include="Model\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CRM.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Model\CRM.Context.tt">
+    <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CRM.edmx</DependentUpon>
-      <LastGenOutput>CRM.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\CRM.edmx.diagram">
-      <DependentUpon>CRM.edmx</DependentUpon>
+    <Content Include="Model\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </Content>
-    <Content Include="Model\CRM.tt">
+    <Content Include="Model\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CRM.edmx</DependentUpon>
-      <LastGenOutput>CRM.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
@@ -425,6 +451,7 @@
     <Content Include="Views\Home\bao_cao_01.cshtml" />
     <Content Include="Views\Home\quanLyNguoiSuDung.cshtml" />
     <Content Include="Views\Home\taiKhoanCaNhan.cshtml" />
+    <Content Include="Views\Home\importExcel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -434,6 +461,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\5 CRM Ver 2\trunk\04.Source Code\BKI_CRM\SLExcelUtility\SLExcelUtility.csproj">
+      <Project>{93e7096f-4da6-45ad-b680-7bc3e26a6b7e}</Project>
+      <Name>SLExcelUtility</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
