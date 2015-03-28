@@ -481,6 +481,12 @@ namespace BKI_CRM.Controllers
             return View();
         }
 
+        public ActionResult thongTinLienHe()
+        {
+            layDanhMucLoaiKhachHang();
+            return View();
+        }
+
         public ActionResult importExcel()
         {
 
