@@ -460,6 +460,7 @@
     <Content Include="Views\Home\taiKhoanCaNhan.cshtml" />
     <Content Include="Views\Home\importExcel.cshtml" />
     <Content Include="Views\Home\ExcelToDB.cshtml" />
+    <Content Include="Views\Home\thongTinLienHe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
