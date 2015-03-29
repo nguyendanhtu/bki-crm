@@ -192,6 +192,9 @@
     <Compile Include="Model\CM_DM_TU_DIEN.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DM_ACTION.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DM_CHUYEN_TRANG_THAI.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -216,6 +219,9 @@
     <Compile Include="Model\DM_YEU_CAU_TRANG_THAI.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GD_ACTION.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GD_CHUYEN_TRANG_THAI.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -226,6 +232,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\GD_PHIEN_LAM_VIEC.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GD_THONG_TIN_HOP_DONG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HT_ACTION.cs">

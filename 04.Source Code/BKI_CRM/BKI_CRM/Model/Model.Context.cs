@@ -16,10 +16,10 @@ namespace BKI_CRM.Model
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class BKI_CRMEntities : DbContext
+    public partial class BKI_CRMEntities1 : DbContext
     {
-        public BKI_CRMEntities()
-            : base("name=BKI_CRMEntities")
+        public BKI_CRMEntities1()
+            : base("name=BKI_CRMEntities1")
         {
         }
     
@@ -60,6 +60,9 @@ namespace BKI_CRM.Model
         public DbSet<V_RPT_LUY_KE> V_RPT_LUY_KE { get; set; }
         public DbSet<V_RPT_PHAT_SINH_TRONG_THANG> V_RPT_PHAT_SINH_TRONG_THANG { get; set; }
         public DbSet<V_NHAN_VIEN_QUAN_LY_KHACH_HANG> V_NHAN_VIEN_QUAN_LY_KHACH_HANG { get; set; }
+        public DbSet<DM_ACTION> DM_ACTION { get; set; }
+        public DbSet<GD_ACTION> GD_ACTION { get; set; }
+        public DbSet<GD_THONG_TIN_HOP_DONG> GD_THONG_TIN_HOP_DONG { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

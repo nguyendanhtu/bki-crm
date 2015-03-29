@@ -32,5 +32,6 @@ namespace BKI_CRM.Model
         public virtual ICollection<DM_PHONG_BAN> DM_PHONG_BAN { get; set; }
         public virtual ICollection<DM_TRANG_THAI> DM_TRANG_THAI { get; set; }
         public virtual ICollection<HT_USER_GROUP> HT_USER_GROUP { get; set; }
+        public virtual DM_ACTION DM_ACTION { get; set; }
     }
 }
