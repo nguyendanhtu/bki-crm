@@ -16,10 +16,10 @@ namespace BKI_CRM.Model
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class BKI_CRMEntities1 : DbContext
+    public partial class BKI_CRMEntities : DbContext
     {
-        public BKI_CRMEntities1()
-            : base("name=BKI_CRMEntities1")
+        public BKI_CRMEntities()
+            : base("name=BKI_CRMEntities")
         {
         }
     
