@@ -6,21 +6,26 @@
 }
 
 <style>
+    table.dataTable thead th, table.dataTable thead td {
+        padding: 10px 7px;
+        border-bottom: 1px solid #111;
+    }
+
     table {
-        min-width:1100px;
-        margin-top:50px !important;
+        min-width: 1100px;
+        margin-top: 50px !important;
     }
 
     th, td {
-        min-width:70px;
+        min-width: 70px;
     }
 
     .loai {
-        text-align:center;
+        text-align: center;
     }
 
-    .selectColumn select{
-        width:100px;
+    .selectColumn select {
+        width: 100px;
     }
 </style>
 
@@ -31,9 +36,8 @@
     }
 </select>
 <table id="myTable">
-
 </table>
-<div style="text-align:right; margin:15px;">
+<div style="text-align: right; margin: 15px;">
     <button class="btn btn-primary" id="saveData">Lưu danh sách</button>
 </div>
 <script>
@@ -48,12 +52,10 @@
             success: function (data) {
                 veHeader(data);
                 veData(data);
-
                 var el = $("#selectColumn").clone();
                 el.removeAttr("id")
                 $(".selectColumn").append(el);
                 $("#selectColumn").remove();
-
                 $('#myTable').dataTable({
                     "scrollY": 400,
                     "scrollX": true,
@@ -62,6 +64,8 @@
                     "info": false,
                     "bFilter": false
                 });
+                $('#myTable').addClass('table table-bordered');
+
             }
         });
 
@@ -70,7 +74,7 @@
             var htmlheadertable = "<thead><tr>";
             htmlheadertable += "<th>Loại</th>";
             for (var i = 0; i < count_header_cell; i++) {
-                htmlheadertable += "<th class='selectColumn'></th>";
+                htmlheadertable += "<th class='selectColumn' style='text-align:left'></th>";
             }
             htmlheadertable += "</tr></thead>";
             $("#myTable").append(htmlheadertable);
@@ -100,7 +104,7 @@
 
         $(document).on("click", "#saveData", function (e) {
             e.preventDefault();
-        
+
             var lst_row = $("#myTable tbody tr");
             var row_count = lst_row.length;
             var col_count = $("#myTable thead th").length;
@@ -116,9 +120,9 @@
 
                 var lst_data = $(this).children("td");
                 for (var i = 1; i < lst_data.length - 1; i++) {
-                    query += "'"+ lst_data[i].innerHTML +"',";
+                    query += "'" + lst_data[i].innerHTML + "',";
                 }
-                query += "'"+lst_data[lst_data.length - 1].innerHTML + "')";
+                query += "'" + lst_data[lst_data.length - 1].innerHTML + "')";
                 insertKhachHang(query);
             });
         });

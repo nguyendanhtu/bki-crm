@@ -8,6 +8,7 @@
         <EntityContainer Name="BKI_CRMModelStoreContainer">
           <EntitySet Name="CM_DM_LOAI_TD" EntityType="BKI_CRMModel.Store.CM_DM_LOAI_TD" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CM_DM_TU_DIEN" EntityType="BKI_CRMModel.Store.CM_DM_TU_DIEN" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DM_ACTION" EntityType="BKI_CRMModel.Store.DM_ACTION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DM_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.DM_CHUYEN_TRANG_THAI" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DM_CONG_TY" EntityType="BKI_CRMModel.Store.DM_CONG_TY" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DM_KHACH_HANG" EntityType="BKI_CRMModel.Store.DM_KHACH_HANG" store:Type="Tables" Schema="dbo" />
@@ -16,10 +17,12 @@
           <EntitySet Name="DM_SAN_PHAM" EntityType="BKI_CRMModel.Store.DM_SAN_PHAM" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DM_TRANG_THAI" EntityType="BKI_CRMModel.Store.DM_TRANG_THAI" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DM_YEU_CAU_TRANG_THAI" EntityType="BKI_CRMModel.Store.DM_YEU_CAU_TRANG_THAI" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GD_ACTION" EntityType="BKI_CRMModel.Store.GD_ACTION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GD_CHUYEN_TRANG_THAI" EntityType="BKI_CRMModel.Store.GD_CHUYEN_TRANG_THAI" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GD_KHACH_HANG_SU_DUNG_SAN_PHAM" EntityType="BKI_CRMModel.Store.GD_KHACH_HANG_SU_DUNG_SAN_PHAM" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GD_NGUOI_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.Store.GD_NGUOI_QUAN_LY_KHACH_HANG" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GD_PHIEN_LAM_VIEC" EntityType="BKI_CRMModel.Store.GD_PHIEN_LAM_VIEC" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GD_THONG_TIN_HOP_DONG" EntityType="BKI_CRMModel.Store.GD_THONG_TIN_HOP_DONG" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="HT_ACTION" EntityType="BKI_CRMModel.Store.HT_ACTION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="HT_CONTROLLER" EntityType="BKI_CRMModel.Store.HT_CONTROLLER" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="HT_LOG" EntityType="BKI_CRMModel.Store.HT_LOG" store:Type="Tables" Schema="dbo" />
@@ -178,6 +181,14 @@
             <End Role="CM_DM_LOAI_TD" EntitySet="CM_DM_LOAI_TD" />
             <End Role="CM_DM_TU_DIEN" EntitySet="CM_DM_TU_DIEN" />
           </AssociationSet>
+          <AssociationSet Name="FK_DM_ACTION_CM_DM_TU_DIEN" Association="BKI_CRMModel.Store.FK_DM_ACTION_CM_DM_TU_DIEN">
+            <End Role="CM_DM_TU_DIEN" EntitySet="CM_DM_TU_DIEN" />
+            <End Role="DM_ACTION" EntitySet="DM_ACTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DM_ACTION_DM_CONG_TY" Association="BKI_CRMModel.Store.FK_DM_ACTION_DM_CONG_TY">
+            <End Role="DM_CONG_TY" EntitySet="DM_CONG_TY" />
+            <End Role="DM_ACTION" EntitySet="DM_ACTION" />
+          </AssociationSet>
           <AssociationSet Name="FK_DM_CHUYEN_TRANG_THAI_DM_TRANG_THAI" Association="BKI_CRMModel.Store.FK_DM_CHUYEN_TRANG_THAI_DM_TRANG_THAI">
             <End Role="DM_TRANG_THAI" EntitySet="DM_TRANG_THAI" />
             <End Role="DM_CHUYEN_TRANG_THAI" EntitySet="DM_CHUYEN_TRANG_THAI" />
@@ -213,6 +224,10 @@
           <AssociationSet Name="FK_DM_YEU_CAU_TRANG_THAI_DM_TRANG_THAI" Association="BKI_CRMModel.Store.FK_DM_YEU_CAU_TRANG_THAI_DM_TRANG_THAI">
             <End Role="DM_TRANG_THAI" EntitySet="DM_TRANG_THAI" />
             <End Role="DM_YEU_CAU_TRANG_THAI" EntitySet="DM_YEU_CAU_TRANG_THAI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GD_ACTION_GD_ACTION" Association="BKI_CRMModel.Store.FK_GD_ACTION_GD_ACTION">
+            <End Role="HT_USER" EntitySet="HT_USER" />
+            <End Role="GD_ACTION" EntitySet="GD_ACTION" />
           </AssociationSet>
           <AssociationSet Name="FK_GD_CHUYEN_TRANG_THAI_DM_TRANG_THAI" Association="BKI_CRMModel.Store.FK_GD_CHUYEN_TRANG_THAI_DM_TRANG_THAI">
             <End Role="DM_TRANG_THAI" EntitySet="DM_TRANG_THAI" />
@@ -293,6 +308,19 @@
           <Property Name="ID_LOAI_TU_DIEN" Type="uniqueidentifier" Nullable="false" />
           <Property Name="GHI_CHU" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="DM_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_CONG_TY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_LOAI_ACTION" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MA_ACTION" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TEN_ACTION" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="GHI_CHU_1" Type="nvarchar" MaxLength="200" />
+          <Property Name="GHI_CHU_2" Type="nvarchar" MaxLength="200" />
+          <Property Name="GHI_CHU_3" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="DM_CHUYEN_TRANG_THAI">
           <Key>
             <PropertyRef Name="ID" />
@@ -330,6 +358,11 @@
           <Property Name="THONG_TIN_BO_SUNG_04" Type="nvarchar" MaxLength="500" />
           <Property Name="THONG_TIN_BO_SUNG_05" Type="nvarchar" MaxLength="500" />
           <Property Name="ID_CONG_TY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IMAGE" Type="nvarchar" />
+          <Property Name="NOI_CONG_TAC" Type="nvarchar" MaxLength="100" />
+          <Property Name="FACEBOOK" Type="nvarchar" MaxLength="50" />
+          <Property Name="SKYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="NGAY_SINH" Type="datetime" />
         </EntityType>
         <EntityType Name="DM_NHOM_SAN_PHAM">
           <Key>
@@ -382,6 +415,17 @@
           <Property Name="YEU_CAU" Type="nvarchar" Nullable="false" MaxLength="500" />
           <Property Name="THU_TU" Type="int" />
         </EntityType>
+        <EntityType Name="GD_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TAI_NGAY" Type="datetime" Nullable="false" />
+          <Property Name="ID_USER" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LAM_GI" Type="nvarchar" Nullable="false" MaxLength="400" />
+          <Property Name="GHI_CHU_1" Type="nvarchar" MaxLength="200" />
+          <Property Name="GHI_CHU_2" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="GD_CHUYEN_TRANG_THAI">
           <Key>
             <PropertyRef Name="ID" />
@@ -427,6 +471,20 @@
           <Property Name="ID_NHAN_VIEN" Type="uniqueidentifier" />
           <Property Name="ID_KHACH_HANG" Type="uniqueidentifier" />
           <Property Name="NOI_DUNG_PHIEN_LAM_VIEC" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="GD_THONG_TIN_HOP_DONG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NGAY_BAT_DAU" Type="datetime" />
+          <Property Name="NGAY_KET_THUC" Type="datetime" />
+          <Property Name="SO_HOP_DONG" Type="numeric" Nullable="false" />
+          <Property Name="NOI_DUNG" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="GHI_CHU_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="GHI_CHU_2" Type="nvarchar" MaxLength="50" />
+          <Property Name="GHI_CHU_3" Type="nvarchar" MaxLength="50" />
+          <Property Name="GHI_CHU_4" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="HT_ACTION">
           <Key>
@@ -750,6 +808,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DM_ACTION_CM_DM_TU_DIEN">
+          <End Role="CM_DM_TU_DIEN" Type="BKI_CRMModel.Store.CM_DM_TU_DIEN" Multiplicity="1" />
+          <End Role="DM_ACTION" Type="BKI_CRMModel.Store.DM_ACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CM_DM_TU_DIEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DM_ACTION">
+              <PropertyRef Name="ID_LOAI_ACTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DM_ACTION_DM_CONG_TY">
+          <End Role="DM_CONG_TY" Type="BKI_CRMModel.Store.DM_CONG_TY" Multiplicity="1" />
+          <End Role="DM_ACTION" Type="BKI_CRMModel.Store.DM_ACTION" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="DM_CONG_TY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DM_ACTION">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DM_CHUYEN_TRANG_THAI_DM_TRANG_THAI">
           <End Role="DM_TRANG_THAI" Type="BKI_CRMModel.Store.DM_TRANG_THAI" Multiplicity="1" />
           <End Role="DM_CHUYEN_TRANG_THAI" Type="BKI_CRMModel.Store.DM_CHUYEN_TRANG_THAI" Multiplicity="*" />
@@ -855,6 +937,18 @@
             </Principal>
             <Dependent Role="DM_YEU_CAU_TRANG_THAI">
               <PropertyRef Name="ID_TRANG_THAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GD_ACTION_GD_ACTION">
+          <End Role="HT_USER" Type="BKI_CRMModel.Store.HT_USER" Multiplicity="1" />
+          <End Role="GD_ACTION" Type="BKI_CRMModel.Store.GD_ACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HT_USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GD_ACTION">
+              <PropertyRef Name="ID_USER" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1236,6 +1330,21 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="V_NHAN_VIEN_QUAN_LY_KHACH_HANG" EntityType="BKI_CRMModel.V_NHAN_VIEN_QUAN_LY_KHACH_HANG" />
+          <EntitySet Name="DM_ACTION" EntityType="BKI_CRMModel.DM_ACTION" />
+          <EntitySet Name="GD_ACTION" EntityType="BKI_CRMModel.GD_ACTION" />
+          <EntitySet Name="GD_THONG_TIN_HOP_DONG" EntityType="BKI_CRMModel.GD_THONG_TIN_HOP_DONG" />
+          <AssociationSet Name="FK_DM_ACTION_CM_DM_TU_DIEN" Association="BKI_CRMModel.FK_DM_ACTION_CM_DM_TU_DIEN">
+            <End Role="CM_DM_TU_DIEN" EntitySet="CM_DM_TU_DIEN" />
+            <End Role="DM_ACTION" EntitySet="DM_ACTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DM_ACTION_DM_CONG_TY" Association="BKI_CRMModel.FK_DM_ACTION_DM_CONG_TY">
+            <End Role="DM_CONG_TY" EntitySet="DM_CONG_TY" />
+            <End Role="DM_ACTION" EntitySet="DM_ACTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GD_ACTION_GD_ACTION" Association="BKI_CRMModel.FK_GD_ACTION_GD_ACTION">
+            <End Role="HT_USER" EntitySet="HT_USER" />
+            <End Role="GD_ACTION" EntitySet="GD_ACTION" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CM_DM_LOAI_TD">
           <Key>
@@ -1258,6 +1367,7 @@
           <NavigationProperty Name="CM_DM_LOAI_TD" Relationship="BKI_CRMModel.FK_CM_DM_TU_DIEN_CM_DM_LOAI_TD" FromRole="CM_DM_TU_DIEN" ToRole="CM_DM_LOAI_TD" />
           <NavigationProperty Name="DM_KHACH_HANG" Relationship="BKI_CRMModel.FK_DM_KHACH_HANG_CM_DM_TU_DIEN" FromRole="CM_DM_TU_DIEN" ToRole="DM_KHACH_HANG" />
           <NavigationProperty Name="GD_NGUOI_QUAN_LY_KHACH_HANG" Relationship="BKI_CRMModel.FK_GD_NGUOI_QUAN_LY_KHACH_HANG_CM_DM_TU_DIEN" FromRole="CM_DM_TU_DIEN" ToRole="GD_NGUOI_QUAN_LY_KHACH_HANG" />
+          <NavigationProperty Name="DM_ACTION" Relationship="BKI_CRMModel.FK_DM_ACTION_CM_DM_TU_DIEN" FromRole="CM_DM_TU_DIEN" ToRole="DM_ACTION" />
         </EntityType>
         <EntityType Name="DM_CHUYEN_TRANG_THAI">
           <Key>
@@ -1282,6 +1392,7 @@
           <NavigationProperty Name="DM_PHONG_BAN" Relationship="BKI_CRMModel.FK_DM_PHONG_BAN_DM_CONG_TY" FromRole="DM_CONG_TY" ToRole="DM_PHONG_BAN" />
           <NavigationProperty Name="DM_TRANG_THAI" Relationship="BKI_CRMModel.FK_DM_TRANG_THAI_DM_CONG_TY" FromRole="DM_CONG_TY" ToRole="DM_TRANG_THAI" />
           <NavigationProperty Name="HT_USER_GROUP" Relationship="BKI_CRMModel.FK_HT_USER_GROUP_DM_CONG_TY" FromRole="DM_CONG_TY" ToRole="HT_USER_GROUP" />
+          <NavigationProperty Name="DM_ACTION" Relationship="BKI_CRMModel.FK_DM_ACTION_DM_CONG_TY" FromRole="DM_CONG_TY" ToRole="DM_ACTION" />
         </EntityType>
         <EntityType Name="DM_KHACH_HANG">
           <Key>
@@ -1306,6 +1417,11 @@
           <NavigationProperty Name="CM_DM_TU_DIEN" Relationship="BKI_CRMModel.FK_DM_KHACH_HANG_CM_DM_TU_DIEN" FromRole="DM_KHACH_HANG" ToRole="CM_DM_TU_DIEN" />
           <NavigationProperty Name="DM_CONG_TY" Relationship="BKI_CRMModel.FK_DM_KHACH_HANG_DM_CONG_TY" FromRole="DM_KHACH_HANG" ToRole="DM_CONG_TY" />
           <NavigationProperty Name="GD_KHACH_HANG_SU_DUNG_SAN_PHAM" Relationship="BKI_CRMModel.FK_GD_KHACH_HANG_SU_DUNG_SAN_PHAM_DM_KHACH_HANG" FromRole="DM_KHACH_HANG" ToRole="GD_KHACH_HANG_SU_DUNG_SAN_PHAM" />
+          <Property Type="String" Name="IMAGE" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NOI_CONG_TAC" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FACEBOOK" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SKYPE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="NGAY_SINH" Precision="3" />
         </EntityType>
         <EntityType Name="DM_NHOM_SAN_PHAM">
           <Key>
@@ -1487,6 +1603,7 @@
           <NavigationProperty Name="HT_USER1" Relationship="BKI_CRMModel.FK_HT_USER_HT_USER" FromRole="HT_USER" ToRole="HT_USER1" />
           <NavigationProperty Name="HT_USER2" Relationship="BKI_CRMModel.FK_HT_USER_HT_USER" FromRole="HT_USER1" ToRole="HT_USER" />
           <NavigationProperty Name="HT_USER_GROUP" Relationship="BKI_CRMModel.FK_HT_USER_HT_USER_GROUP" FromRole="HT_USER" ToRole="HT_USER_GROUP" />
+          <NavigationProperty Name="GD_ACTION" Relationship="BKI_CRMModel.FK_GD_ACTION_GD_ACTION" FromRole="HT_USER" ToRole="GD_ACTION" />
         </EntityType>
         <EntityType Name="HT_USER_GROUP">
           <Key>
@@ -2028,6 +2145,83 @@
           <Property Type="Guid" Name="ID_NHOM_SAN_PHAM" />
           <Property Type="String" Name="TEN_NHOM_SAN_PHAM" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="DM_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_CONG_TY" Nullable="false" />
+          <Property Type="Guid" Name="ID_LOAI_ACTION" Nullable="false" />
+          <Property Type="String" Name="MA_ACTION" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TEN_ACTION" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GHI_CHU_1" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GHI_CHU_2" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GHI_CHU_3" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CM_DM_TU_DIEN" Relationship="BKI_CRMModel.FK_DM_ACTION_CM_DM_TU_DIEN" FromRole="DM_ACTION" ToRole="CM_DM_TU_DIEN" />
+          <NavigationProperty Name="DM_CONG_TY" Relationship="BKI_CRMModel.FK_DM_ACTION_DM_CONG_TY" FromRole="DM_ACTION" ToRole="DM_CONG_TY" />
+        </EntityType>
+        <EntityType Name="GD_ACTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="DateTime" Name="TAI_NGAY" Nullable="false" Precision="3" />
+          <Property Type="Guid" Name="ID_USER" Nullable="false" />
+          <Property Type="String" Name="LAM_GI" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GHI_CHU_1" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GHI_CHU_2" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HT_USER" Relationship="BKI_CRMModel.FK_GD_ACTION_GD_ACTION" FromRole="GD_ACTION" ToRole="HT_USER" />
+        </EntityType>
+        <EntityType Name="GD_THONG_TIN_HOP_DONG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="DateTime" Name="NGAY_BAT_DAU" Precision="3" />
+          <Property Type="DateTime" Name="NGAY_KET_THUC" Precision="3" />
+          <Property Type="Decimal" Name="SO_HOP_DONG" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="NOI_DUNG" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GHI_CHU_1" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GHI_CHU_2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GHI_CHU_3" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GHI_CHU_4" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_DM_ACTION_CM_DM_TU_DIEN">
+          <End Type="BKI_CRMModel.CM_DM_TU_DIEN" Role="CM_DM_TU_DIEN" Multiplicity="1" />
+          <End Type="BKI_CRMModel.DM_ACTION" Role="DM_ACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CM_DM_TU_DIEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DM_ACTION">
+              <PropertyRef Name="ID_LOAI_ACTION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DM_ACTION_DM_CONG_TY">
+          <End Type="BKI_CRMModel.DM_CONG_TY" Role="DM_CONG_TY" Multiplicity="1" />
+          <End Type="BKI_CRMModel.DM_ACTION" Role="DM_ACTION" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="DM_CONG_TY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DM_ACTION">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GD_ACTION_GD_ACTION">
+          <End Type="BKI_CRMModel.HT_USER" Role="HT_USER" Multiplicity="1" />
+          <End Type="BKI_CRMModel.GD_ACTION" Role="GD_ACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HT_USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GD_ACTION">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2076,6 +2270,11 @@
           <EntitySetMapping Name="DM_KHACH_HANG">
             <EntityTypeMapping TypeName="BKI_CRMModel.DM_KHACH_HANG">
               <MappingFragment StoreEntitySet="DM_KHACH_HANG">
+                <ScalarProperty Name="NGAY_SINH" ColumnName="NGAY_SINH" />
+                <ScalarProperty Name="SKYPE" ColumnName="SKYPE" />
+                <ScalarProperty Name="FACEBOOK" ColumnName="FACEBOOK" />
+                <ScalarProperty Name="NOI_CONG_TAC" ColumnName="NOI_CONG_TAC" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TEN_KHACH_HANG" ColumnName="TEN_KHACH_HANG" />
                 <ScalarProperty Name="MA_SO_THUE" ColumnName="MA_SO_THUE" />
@@ -2467,6 +2666,47 @@
                 <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
                 <ScalarProperty Name="TEN_NHOM_NGUOI_SU_DUNG" ColumnName="TEN_NHOM_NGUOI_SU_DUNG" />
                 <ScalarProperty Name="ID_USER_GROUP" ColumnName="ID_USER_GROUP" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DM_ACTION">
+            <EntityTypeMapping TypeName="BKI_CRMModel.DM_ACTION">
+              <MappingFragment StoreEntitySet="DM_ACTION">
+                <ScalarProperty Name="GHI_CHU_3" ColumnName="GHI_CHU_3" />
+                <ScalarProperty Name="GHI_CHU_2" ColumnName="GHI_CHU_2" />
+                <ScalarProperty Name="GHI_CHU_1" ColumnName="GHI_CHU_1" />
+                <ScalarProperty Name="TEN_ACTION" ColumnName="TEN_ACTION" />
+                <ScalarProperty Name="MA_ACTION" ColumnName="MA_ACTION" />
+                <ScalarProperty Name="ID_LOAI_ACTION" ColumnName="ID_LOAI_ACTION" />
+                <ScalarProperty Name="ID_CONG_TY" ColumnName="ID_CONG_TY" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GD_ACTION">
+            <EntityTypeMapping TypeName="BKI_CRMModel.GD_ACTION">
+              <MappingFragment StoreEntitySet="GD_ACTION">
+                <ScalarProperty Name="GHI_CHU_2" ColumnName="GHI_CHU_2" />
+                <ScalarProperty Name="GHI_CHU_1" ColumnName="GHI_CHU_1" />
+                <ScalarProperty Name="LAM_GI" ColumnName="LAM_GI" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="TAI_NGAY" ColumnName="TAI_NGAY" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GD_THONG_TIN_HOP_DONG">
+            <EntityTypeMapping TypeName="BKI_CRMModel.GD_THONG_TIN_HOP_DONG">
+              <MappingFragment StoreEntitySet="GD_THONG_TIN_HOP_DONG">
+                <ScalarProperty Name="GHI_CHU_4" ColumnName="GHI_CHU_4" />
+                <ScalarProperty Name="GHI_CHU_3" ColumnName="GHI_CHU_3" />
+                <ScalarProperty Name="GHI_CHU_2" ColumnName="GHI_CHU_2" />
+                <ScalarProperty Name="GHI_CHU_1" ColumnName="GHI_CHU_1" />
+                <ScalarProperty Name="NOI_DUNG" ColumnName="NOI_DUNG" />
+                <ScalarProperty Name="SO_HOP_DONG" ColumnName="SO_HOP_DONG" />
+                <ScalarProperty Name="NGAY_KET_THUC" ColumnName="NGAY_KET_THUC" />
+                <ScalarProperty Name="NGAY_BAT_DAU" ColumnName="NGAY_BAT_DAU" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

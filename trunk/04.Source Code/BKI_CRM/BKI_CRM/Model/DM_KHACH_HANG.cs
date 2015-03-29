@@ -35,6 +35,11 @@ namespace BKI_CRM.Model
         public string THONG_TIN_BO_SUNG_04 { get; set; }
         public string THONG_TIN_BO_SUNG_05 { get; set; }
         public System.Guid ID_CONG_TY { get; set; }
+        public string IMAGE { get; set; }
+        public string NOI_CONG_TAC { get; set; }
+        public string FACEBOOK { get; set; }
+        public string SKYPE { get; set; }
+        public Nullable<System.DateTime> NGAY_SINH { get; set; }
     
         public virtual CM_DM_TU_DIEN CM_DM_TU_DIEN { get; set; }
         public virtual DM_CONG_TY DM_CONG_TY { get; set; }
