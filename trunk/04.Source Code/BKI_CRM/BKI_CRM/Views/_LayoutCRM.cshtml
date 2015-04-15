@@ -13,6 +13,37 @@
     <script src="~/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/Scripts/select2.js"></script>
     <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dntt').click(function () {
+                $.ajax({
+                    url: "/Home/DinhNghiaTrangThai",
+                    type: "Get",
+                    success: function (view) {
+                        $('#body').html(view);
+                    }
+                });
+            });
+            $('#tkh').click(function () {
+                $.ajax({
+                    url: "/Home/CustommerInsert",
+                    type: "Get",
+                    success: function (view) {
+                        $('#body').html(view);
+                    }
+                });
+            });
+            $('#khssdv').click(function () {
+                $.ajax({
+                    url: "/Home/ThemKhachHang",
+                    type: "Get",
+                    success: function (view) {
+                        $('#body').html(view);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="main">
@@ -43,9 +74,11 @@
 					<div id="collapseThree" class="accordion-body collapse out">
 						<div class="accordion-inner">
 							<ul style="list-style-type:none;margin:0px;">
-								<li><i class="icon-hand-right"></i> @Html.ActionLink("Chuyển trạng thái khách hàng", "Index", "home", null, new { @class= "right-menu"} )
-								<li><i class="icon-hand-right"></i> @Html.ActionLink("Thêm khách hàng", "CustommerInsert", "home", null, new { @class= "right-menu"} )
-                                <li><i class="icon-hand-right"></i> @Html.ActionLink("Khách hàng sử dụng dịch vụ", "ThemKhachHang", "home", null, new { @class= "right-menu"} )
+								<li><i class="icon-hand-right"></i>@Html.ActionLink("Chuyển trạng thái khách hàng", "Index", "home", null, new { @class= "right-menu"} )
+								<li><i class="icon-hand-right"></i><a href="#" id="tkh" class="right-menu">Thêm khách hàng</a> 
+                                @*@Html.ActionLink("Thêm khách hàng", "CustommerInsert", "home", null, new { @class= "right-menu"} )*@
+                                <li><i class="icon-hand-right"></i><a href="#" id="khssdv" class="right-menu">Khách hàng sử dụng dịch vụ</a> 
+                                @*@Html.ActionLink("Khách hàng sử dụng dịch vụ", "ThemKhachHang", "home", null, new { @class= "right-menu"} )*@
 							</ul>
 						</div>
 					</div>
@@ -59,7 +92,7 @@
 					<div id="collapseOne" class="accordion-body collapse out">
 						<div class="accordion-inner">
 							<ul style="list-style-type:none;margin:0px;">
-								<li><i class="icon-hand-right"></i> @Html.ActionLink("Định nghĩa trạng thái", "DinhNghiaTrangThai", "home", null, new { @class= "right-menu"} )
+								<li><i class="icon-hand-right"></i><a href="#" id="dntt" class="right-menu">Định nghĩa trạng thái</a>
 								<li><i class="icon-hand-right"></i> <a href="#" class="right-menu">Sơ đồ chuyển trạng thái</a>
 							</ul>
 						</div>
@@ -99,7 +132,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content-right">
+		<div class="content-right" id="body">
 			@RenderBody()
 		</div>
 		<div class="footer">
