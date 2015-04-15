@@ -37,7 +37,7 @@ namespace BKI_CRM.Controllers
             v_lst_khach_hang_model = v_lst_khach_hang_model.OrderByDescending(x => x.MA_TRANG_THAI).ToList();
             ViewBag.khach_hang = v_lst_khach_hang_model;
             LayDanhSach_TrangThai_Quyen();
-            return View();
+            return PartialView();
         }
 
         public ActionResult ThemKhachHang()
@@ -47,7 +47,7 @@ namespace BKI_CRM.Controllers
             layDanhMucLoaiKhachHang();
             layDanhMucSanPham();
             layDanhMucTrangThai();
-            return View();
+            return PartialView();
         }
 
         private List<DM_KHACH_HANG> layDanhSachKhachHang()
@@ -61,7 +61,7 @@ namespace BKI_CRM.Controllers
         public ActionResult CustommerInsert()
         {
             layDanhMucLoaiKhachHang();
-            return View();
+            return PartialView();
         }
 
         private void layDanhMucTrangThai()
@@ -434,7 +434,7 @@ namespace BKI_CRM.Controllers
 
         public ActionResult DinhNghiaTrangThai() {
             ViewBag.LstTrangThai = LayDanhSachTrangThai();
-            return View();
+            return PartialView();
         }
 
         private List<TrangThaiModel> LayDanhSachTrangThai()
@@ -472,19 +472,18 @@ namespace BKI_CRM.Controllers
 
         public ActionResult quanLyNguoiSuDung()
         {
-            return View();
-            
+            return PartialView();   
         }
 
         public ActionResult taiKhoanCaNhan()
         {
-            return View();
+            return PartialView();
         }
 
         public ActionResult thongTinLienHe()
         {
             layDanhMucLoaiKhachHang();
-            return View();
+            return PartialView();
         }
 
         public ActionResult importExcel()
@@ -505,7 +504,7 @@ namespace BKI_CRM.Controllers
             {
                 return RedirectToAction("login", "admin");
             }
-            return View();
+            return PartialView();
         }
         public ActionResult UploadFile(HttpPostedFileBase excelFile)
         {
@@ -585,7 +584,7 @@ namespace BKI_CRM.Controllers
             }
             //ViewBag.LstNhanVien = Lay_danh_sach_nhan_vien("");
             ViewBag.LstColumn = Lay_danh_sach_cot_table_khach_hang();
-            return View();
+            return PartialView();
         }
     }
 }
