@@ -29,7 +29,7 @@
     }
 </style>
 
-<table id="myTable">
+<table id="myTable" class="dataTable">
 </table>
 <div style="text-align: right; margin: 15px;">
     <button class="btn btn-primary" id="saveData">Lưu danh sách</button>
@@ -48,7 +48,6 @@
                 veData(data);
                 $('#myTable').dataTable({
                     "scrollY": "400px",
-                    "scrollX": true,
                     "ordering": false,
                     "paging": false,
                     "info": false,
@@ -91,9 +90,10 @@
             e.preventDefault();
             $(this).parent("tr").remove();
         });
-        function guid(){
-            var r=(((1+Math.random())*0x10000)|0).toString(16).substring(1);
-            return (r + r + "-" + r + "-4" + r.substr(0,3) + "-" + r + "-" + r + r + r).toLowerCase();
+        function guid(){function r(){
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+        }
+            return (r() + r() + "-" + r() + "-4" + r().substr(0,3) + "-" + r() + "-" + r() + r() + r()).toLowerCase();
         }
         $(document).on("click", "#saveData", function (e) {
             e.preventDefault();

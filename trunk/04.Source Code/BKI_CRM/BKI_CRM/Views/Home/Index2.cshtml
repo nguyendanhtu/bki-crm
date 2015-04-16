@@ -1,0 +1,389 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var lst_khach_hang = ViewBag.khach_hang as List<BKI_CRM.Models.KhachHangModel>;
+    var lst_trang_thai = ViewBag.LstTrangThai as List<BKI_CRM.Model.DM_TRANG_THAI>;
+    var lst_quyen = ViewBag.LstQuyen as List<BKI_CRM.Model.CM_DM_TU_DIEN>;
+}
+<div class="title">
+    <h3>CHUYỂN TRẠNG THÁI KHÁCH HÀNG</h3>
+</div>
+<div class="content">
+    <div class="data">
+        <table class="table table-condensed table-font-size" id="myTable">
+            <thead>
+                <tr class="table_header">
+                    <td>Tên khách hàng</td>
+                    <td>Sản phẩm - Dịch vụ</td>
+                    <td>Hiện tại</td>
+                    <td>Tiếp theo</td>
+                    <td>Ghi chú</td>
+                    <td>Chia sẻ</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in lst_khach_hang)
+                {
+                    <tr class="item-table">
+                        <td><button class="btn btn-success btn120" type="button" onclick="LayThongTinKhachHang('@item.ID_KHACH_HANG')">@item.TEN_KHACH_HANG</button></td>
+                        <td>@item.TEN_SAN_PHAM @item.TEN_SAN_PHAM_CHI_TIET</td>
+                        <td><a href="#" id="@item.ID_TRANG_THAI" onclick="showLevelDefine()">@item.MA_TRANG_THAI</a></td>
+                        <td>
+                            @foreach (var item2 in item.LstChuyenTrangThai)
+                            {
+                                if (item2.LOAI_TRANG_THAI_YN)
+                                {
+                                    <button class="btn btn-success btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><i class="icon-hand-up"></i> @item2.MA_TRANG_THAI</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-danger btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><i class="icon-hand-down"></i> @item2.MA_TRANG_THAI</button>
+                                }
+                            }
+                        </td>
+                        <td>@item.GHI_CHU</td>
+                        <td>
+                            <button class="btn btn-primary" type="button" onclick="LayThongTinNguoiQuanLy('@item.ID_KHACH_HANG','@item.TEN_KHACH_HANG','@item.ID_CONG_TY','@item.ID_KHACH_HANG_SU_DUNG_SAN_PHAM')"><i class="icon-share"></i> Chia sẻ</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="infoCustomer" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <h3>THÔNG TIN KHÁCH HÀNG</h3>
+    </div>
+    <div class="modal-body">
+        <div class="info">
+            <div class="left">
+                <img class="image-size" id="image" />
+            </div>
+            <div class="left" style="margin-left:20px;">
+                <div class="clear-both">
+                    <div class="dimention1 bold">Họ tên</div>
+                    <div class="left"><input id="hoten" type="text" placeholder="Type something…"></div>
+                </div>
+                <div class="clear-both">
+                    <div class="dimention1 bold">Loại khách hàng</div>
+                    <div class="left"><input id="loaikhachhang" type="text" placeholder="Type something…"></div>
+                </div>
+                <div class="clear-both">
+                    <div class="dimention1 bold">SĐT</div>
+                    <div class="left"><input id="sdt" type="text" placeholder="Type something…"></div>
+                </div>
+                <div class="clear-both">
+                    <div class="dimention1 bold">Địa chỉ</div>
+                    <div class="left"><input id="diachi" type="text" placeholder="Type something…"></div>
+                </div>
+                <div class="clear-both">
+                    <div class="dimention1 bold">Email</div>
+                    <div class="left"> <input id="email" type="text" placeholder="Type something…"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-header">
+        <h3>LỊCH SỬ KHÁCH HÀNG</h3>
+    </div>
+    <div class="modal-body" id="lichsukh">
+
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary" onclick="hideInfoCustomer()">Lưu lại</a>
+        <a href="#" class="btn" onclick="hideInfoCustomer()">Đóng</a>
+    </div>
+</div>
+
+<div id="levelDefine" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <h3>ĐỊNH NGHĨA TRẠNG THÁI KHÁCH HÀNG</h3>
+    </div>
+    <div class="modal-body">
+        <p>
+            <ol>
+                @foreach (var item in lst_trang_thai)
+                {
+                    <li>@item.MA_TRANG_THAI : là @item.MO_TA</li>
+                }
+            </ol>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" onclick="hideLevelDefine()">Đóng</a>
+    </div>
+</div>
+<div id="share" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <h3>CHIA SẺ KHÁCH HÀNG</h3>
+    </div>
+    <div class="modal-body">
+        Khách hàng: <b id="tenkhachhang">Phạm Hoàng Thái</b><br /><br />
+        Người có quyền quản lý khách hàng
+        <div id="nguoiquanly">
+
+
+        </div>
+        <div class="share-item">
+            <div class="left" style="width:250px;">
+                <select id="dsnhanvien">
+                    <option>Nguyễn Danh Tú</option>
+                </select>
+            </div>
+            <div class="left">
+                <select id="dsquyen">
+                    @foreach (var item in lst_quyen)
+                    {
+                        <option value="@item.ID">@item.TEN_TU_DIEN</option>
+                    }
+                </select>
+            </div>
+            <div class="right"><a href="#"><i class="icon-plus" onclick="ThemNguoiQuanLy(dsnhanvien.value,dsquyen.value)"></i></a></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" onclick="hideShare()">Đóng</a>
+    </div>
+</div>
+
+<div id="note" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <h3>GHI CHÚ CHUYỂN TRẠNG THÁI</h3>
+    </div>
+    <div class="modal-body">
+        <h4>Các yêu cầu để chuyển trạng thái khách hàng từ <span id="ma_trang_thai_truoc"></span> sang <span id="ma_trang_thai_sau"></span></h4>
+        <div class="left div400" id="yeucau">
+        </div>
+        <div class="left div240">
+            <div>
+                <div><input type="text" placeholder="Số tiền đã nhận" id="sotiendanhan" /></div>
+            </div>
+            <div>
+                <div><input type="text" placeholder="Ghi chú" id="ghichuchuyentt" /></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" onclick="ChuyenTrangThai()">Lưu lại</button>
+        <a href="#" class="btn" onclick="hideNote()">Đóng</a>
+    </div>
+</div>
+<div id="hiddenfield"></div>
+<script type="text/javascript">
+
+
+    function LayThongTinKhachHang(id_khach_hang) {
+        $.ajax({
+            url: '/Home/LayThongTinKhachHang',
+            data: { ip_str_id_khach_hang: id_khach_hang },
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                hoten.value = data.TEN_KHACH_HANG;
+                sdt.value = data.SDT;
+                diachi.value = data.DIA_CHI;
+                email.value = data.EMAIL;
+                image.src = "/Content/image/" + data.THONG_TIN_BO_SUNG_02;
+            }
+        });
+        $.ajax({
+            url: '/Home/LayLichSuKhachHang',
+            data: { ip_str_id_khach_hang: id_khach_hang },
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                optionhtml = "";
+                $.each(data, function (i) {
+                    if (data[i].LOAI_TRANG_THAI_YN == true) {
+                        optionhtml += "<p>" + data[i].TEN_SAN_PHAM + " " + data[i].TEN_SAN_PHAM_CHI_TIET + " --- Trạng thái <span class='blue bold'>" + data[i].MA_TRANG_THAI + "</span></p>";
+                    }
+                    else {
+                        optionhtml += "<p>" + data[i].TEN_SAN_PHAM + " " + data[i].TEN_SAN_PHAM_CHI_TIET + " --- Trạng thái <span class='red bold'>" + data[i].MA_TRANG_THAI + "</span></p>";
+                    }
+                });
+                document.getElementById('lichsukh').innerHTML = optionhtml;
+            }
+        });
+        $('#infoCustomer').modal('show');
+    }
+
+    function LayThongTinNguoiQuanLy(id_khach_hang, ten_khach_hang, id_cong_ty, id_khach_hang_sd_sp) {
+        hiddenfield.innerHTML = "<input type='hidden' value='" + id_khach_hang_sd_sp + "' id='id_khach_hang_sd_sp'>";
+        tenkhachhang.innerHTML = ten_khach_hang;
+        $.ajax({
+            url: '/Home/LayQuanLyKhachHang',
+            data: { ip_str_id_khach_hang_sd_sp: id_khach_hang_sd_sp },
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                var optionhtml = "";
+                $.each(data, function (i) {
+                    optionhtml += "<div class='share-item'>";
+                    optionhtml += "<div class='left' style='width:250px;'>" + data[i].HO_TEN_NHAN_VIEN + "</div>";
+                    optionhtml += "<div class='left role'>" + data[i].TEN_TU_DIEN + "</div>";
+                    optionhtml += "<div class='right'><a href='#' onclick='xoaquanlykhachhang(\"" + data[i].ID_NGUOI_SU_DUNG + "\")'><i class='icon-remove'></i></a></div>";
+                    optionhtml += "</div>";
+                });
+                document.getElementById('nguoiquanly').innerHTML = optionhtml;
+            }
+        });
+        $.ajax({
+            url: '/Home/LayDanhSachQuanLyKhachHang',
+            data: { ip_str_id_cong_ty: id_cong_ty },
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                var optionhtml = "";
+                $.each(data, function (i) {
+                    optionhtml += "<option value='" + data[i].ID_NHAN_VIEN + "'>" + data[i].HO_TEN_NHAN_VIEN + "</option>"
+                });
+                document.getElementById('dsnhanvien').innerHTML = optionhtml;
+            }
+        });
+        $('#share').modal('show');
+    }
+
+    function xoaquanlykhachhang(id_nguoi_quan_ly) {
+        var id_gd_khach_hang_sd_sp = id_khach_hang_sd_sp.value;
+        $.ajax({
+            url: '/Home/XoaQuanLyKhachHang',
+            data: { ip_str_id_nguoi_quan_ly: id_nguoi_quan_ly, ip_str_id_khach_hang_sd_sp: id_gd_khach_hang_sd_sp },
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                alert("Xóa quyền quản lý thành công");
+            }
+        });
+    }
+
+    function ThemNguoiQuanLy(id_nguoi_quan_ly, id_quyen) {
+        var id_gd_khach_hang_sd_sp = id_khach_hang_sd_sp.value;
+        $.ajax({
+            url: '/Home/ThemQuanLyKhachHang',
+            data: { ip_str_id_nguoi_quan_ly: id_nguoi_quan_ly, ip_str_id_quyen: id_quyen, ip_str_id_khach_hang_sd_sp: id_gd_khach_hang_sd_sp },
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                alert("Thêm quyền quản lý thành công");
+                $('#share').modal('hide');
+            }
+        });
+    }
+
+    function LayYeuCauChuyenTrangThai(id_trang_thai_truoc, id_trang_thai_sau, mtt_sau, id_gd_chuyen_trang_thai, id_khach_hang) {
+        htmldocument = "";
+        htmldocument += "<input type='hidden' value='" + id_gd_chuyen_trang_thai + "' id='id_gd_chuyen_trang_thai'>";
+        htmldocument += "<input type='hidden' value='" + id_khach_hang + "' id='id_khach_hang'>";
+        htmldocument += "<input type='hidden' value='" + id_trang_thai_sau + "' id='id_trang_thai_sau'>";
+        hiddenfield.innerHTML = htmldocument;
+        ma_trang_thai_truoc.innerHTML = document.getElementById(id_trang_thai_truoc).innerHTML;
+        ma_trang_thai_sau.innerHTML = mtt_sau;
+        $.ajax({
+            url: '/Home/LayYeuCauTrangThai',
+            data: { ip_str_id_trang_thai: id_trang_thai_sau, ip_str_id_kh_chuyen_trang_thai: id_gd_chuyen_trang_thai },
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                sotiendanhan.value = data.SO_TIEN_DA_NHAN;
+                ghichuchuyentt.value = data.GHI_CHU;
+                var optionhtml = "";
+                var dataChirl = data.LST_YEU_CAU;
+                $.each(dataChirl, function (i) {
+                    optionhtml += "<div>";
+                    optionhtml += "<div class='left div320' style='line-height: 35px;'>" + dataChirl[i].YEU_CAU + "</div>";
+                    if (dataChirl[i].DA_DUYET == true) {
+                        optionhtml += "<div class='left div50'><input type='checkbox' class='chuyentrangthai' checked='checked'/></div>";
+                    }
+                    else {
+                        optionhtml += "<div class='left div50'><input class='chuyentrangthai' type='checkbox'/></div>";
+                    }
+                    optionhtml += "</div>";
+                });
+                document.getElementById('yeucau').innerHTML = optionhtml;
+            }
+        });
+        $('#note').modal('show');
+    }
+
+    function ChuyenTrangThai() {
+        str_id_gd_chuyen_trang_thai = id_gd_chuyen_trang_thai.value;
+        str_id_khach_hang = id_khach_hang.value;
+        str_id_trang_thai_sau = id_trang_thai_sau.value;
+        str_id_nguoi_chuyen = '85d839fe-c5b0-4d08-b46d-fdceb33a0687';
+        str_sotiendanhan = sotiendanhan.value;
+        str_ghichuchuyentt = ghichuchuyentt.value;
+        var yeucau = document.getElementsByClassName('chuyentrangthai');
+        str_kiem_tra = "";
+        for (var i = 0; i < yeucau.length; i++) {
+            if (yeucau[i].checked) {
+                str_kiem_tra += "1";
+            }
+            else {
+                str_kiem_tra += "0";
+            }
+        }
+        $.ajax({
+            url: '/Home/CapNhatTrangThai',
+            data: { ip_id_chuyen_trang_thai_hien_tai: str_id_gd_chuyen_trang_thai, ip_str_id_khach_hang: str_id_khach_hang, ip_str_id_trang_thai: str_id_trang_thai_sau, ip_str_ip_nguoi_chuyen_tt: str_id_nguoi_chuyen, ip_dc_so_tien: str_sotiendanhan, ip_str_ghi_chu: str_ghichuchuyentt, ip_str_kiem_tra_yeu_cau: str_kiem_tra },
+            dataType: "json",
+            type: "POST",
+            error: function () {
+                alert("Xay ra loi");
+            },
+            success: function (data) {
+                alert("Cập nhật trạng thái khách hàng thành công!");
+                location.reload();
+            }
+        });
+    }
+
+    function hideInfoCustomer() {
+        $('#infoCustomer').modal('hide');
+    }
+
+    function showLevelDefine() {
+        $('#levelDefine').modal('show');
+    }
+
+    function hideLevelDefine() {
+        $('#levelDefine').modal('hide');
+    }
+
+    function showShare() {
+        $('#share').modal('show');
+    }
+
+    function hideShare() {
+        $('#share').modal('hide');
+    }
+
+    function hideNote() {
+        $('#note').modal('hide');
+    }
+
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>
