@@ -91,7 +91,10 @@
             e.preventDefault();
             $(this).parent("tr").remove();
         });
-
+        function guid(){
+            var r=(((1+Math.random())*0x10000)|0).toString(16).substring(1);
+            return (r + r + "-" + r + "-4" + r.substr(0,3) + "-" + r + "-" + r + r + r).toLowerCase();
+        }
         $(document).on("click", "#saveData", function (e) {
             e.preventDefault();
 
@@ -100,12 +103,13 @@
             if(row_count>0)
             {
                 var col_count = @lst_column.Count;
-                var query = "insert into DM_KHACH_HANG(";
+                var query = "insert into DM_KHACH_HANG(ID,";
                 for(var i =1;i<col_count-1;i++)
                     query+=$('#myTable tr:eq(0) th:eq('+i+') div').html()+',';
                 query+=$('#myTable tr:eq(0) th:eq('+(col_count-1)+') div').html()+') values ';
                 for(var i=0;i<row_count-1;i++){
-                    query+='(';
+                    var t=guid();
+                    query+='('+"'"+t+"'"+',';
                     for(var j=1;j<col_count-1;j++){
                         var temp=$('#myTable tr:eq('+(i+1)+') td:eq('+j+')').html();
                         query+=(temp.length==0||temp=="undefined"?'NULL':"'"+temp+"'")+",";
@@ -113,7 +117,8 @@
                     var temp=$('#myTable tr:eq('+(i+1)+') td:eq('+(col_count-1)+')').html();
                     query+=(temp.length==0||temp=="undefined"?'NULL':"'"+temp+"'")+"),";
                 }
-                query+='(';
+                var t=guid();
+                query+='('+"'"+t+"'"+',';
                 for(var j=1;j<col_count-1;j++){
                     var temp=$('#myTable tr:eq('+(row_count-1)+') td:eq('+j+')').html();
                     query+=(temp.length==0||temp=="undefined"?'NULL':"'"+temp+"'")+",";
