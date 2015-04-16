@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "ExcelToDB";
+    Layout = "~/Views/_LayoutCRM.cshtml";
     var lst_nhan_vien = ViewBag.LstNhanVien as List<BKI_CRM.Models.NhanVienModel>;
     var lst_column = ViewBag.LstColumn as List<BKI_CRM.Models.ColumnsModel>;
 }
@@ -28,12 +29,6 @@
     }
 </style>
 
-<select id="selectColumn" class="ColumnSelect">
-    @foreach (var item in lst_column)
-    {
-        <option value="@item.MA_TU_DIEN">@item.TEN_TU_DIEN</option>
-    }
-</select>
 <table id="myTable">
 </table>
 <div style="text-align: right; margin: 15px;">
@@ -51,12 +46,8 @@
             success: function (data) {
                 veHeader(data);
                 veData(data);
-                var el = $("#selectColumn").clone();
-                el.removeAttr("id")
-                $(".selectColumn").append(el);
-                $("#selectColumn").remove();
                 $('#myTable').dataTable({
-                    "scrollY": 400,
+                    "scrollY": "400px",
                     "scrollX": true,
                     "ordering": false,
                     "paging": false,
@@ -73,7 +64,7 @@
             var htmlheadertable = "<thead><tr>";
             htmlheadertable += "<th>Loại</th>";
             for (var i = 0; i < count_header_cell; i++) {
-                htmlheadertable += "<th class='selectColumn' style='text-align:left'></th>";
+                htmlheadertable += "<th style='text-align:left'>"+data.Headers[i]+"</th>";
             }
             htmlheadertable += "</tr></thead>";
             $("#myTable").append(htmlheadertable);
@@ -86,7 +77,7 @@
             for (var i = 0; i < count_data_row; i++) {
                 htmlbodytable += "<tr>";
                 var datarow = data.DataRows[i];
-                htmlbodytable += "<td class='loai'><button class='btn btn-danger'>Loại</button></td>";
+                htmlbodytable += "<td class='loai'><button class='btn btn-danger' id='"+i+"'>Loại</button></td>";
                 for (var j = 0; j < count_header_cell; j++) {
                     htmlbodytable += "<td>" + datarow[j] + "</td>";
                 }
@@ -106,24 +97,32 @@
 
             var lst_row = $("#myTable tbody tr");
             var row_count = lst_row.length;
-            var col_count = $("#myTable thead th").length;
-            lst_row.each(function (index) {
-
+            if(row_count>0)
+            {
+                var col_count = @lst_column.Count;
                 var query = "insert into DM_KHACH_HANG(";
-                var lst_cols = $("select");
-                for (var i = 0; i < col_count - 2; i++) {
-                    query += lst_cols[i].value + ',';
+                for(var i =1;i<col_count-1;i++)
+                    query+=$('#myTable tr:eq(0) th:eq('+i+') div').html()+',';
+                query+=$('#myTable tr:eq(0) th:eq('+(col_count-1)+') div').html()+') values ';
+                for(var i=0;i<row_count-1;i++){
+                    query+='(';
+                    for(var j=1;j<col_count-1;j++){
+                        var temp=$('#myTable tr:eq('+(i+1)+') td:eq('+j+')').html();
+                        query+=(temp.length==0||temp=="undefined"?'NULL':"'"+temp+"'")+",";
+                    }
+                    var temp=$('#myTable tr:eq('+(i+1)+') td:eq('+(col_count-1)+')').html();
+                    query+=(temp.length==0||temp=="undefined"?'NULL':"'"+temp+"'")+"),";
                 }
-                query += lst_cols[col_count - 2].value;
-                query += ") VALUES(";
-
-                var lst_data = $(this).children("td");
-                for (var i = 1; i < lst_data.length - 1; i++) {
-                    query += "'" + lst_data[i].innerHTML + "',";
+                query+='(';
+                for(var j=1;j<col_count-1;j++){
+                    var temp=$('#myTable tr:eq('+(row_count-1)+') td:eq('+j+')').html();
+                    query+=(temp.length==0||temp=="undefined"?'NULL':"'"+temp+"'")+",";
                 }
-                query += "'" + lst_data[lst_data.length - 1].innerHTML + "')";
+                var temp=$('#myTable tr:eq('+(row_count-1)+') td:eq('+(col_count-1)+')').html();
+                query+=(temp.length==0||temp=="undefined"?'NULL':"'"+temp+"'")+")";
                 insertKhachHang(query);
-            });
+            }
+            else alert("Khong co du lieu");
         });
 
         function insertKhachHang(ip_str_query) {
@@ -132,12 +131,13 @@
                 data: {
                     ip_str_query_insert: ip_str_query
                 },
-                dataType: "json",
                 type: "POST",
                 error: function () {
                     alert("Xay ra loi");
                 },
-                success: function (data) {
+                success: function (view) {
+                    alert("Thanh cong");
+                    $('#body').html(view);
                 }
             });
         }
