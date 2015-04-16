@@ -37,9 +37,28 @@ namespace BKI_CRM.Controllers
             v_lst_khach_hang_model = v_lst_khach_hang_model.OrderByDescending(x => x.MA_TRANG_THAI).ToList();
             ViewBag.khach_hang = v_lst_khach_hang_model;
             LayDanhSach_TrangThai_Quyen();
+            return View();
+        }
+        public ActionResult Index2()
+        {
+            BKI_CRMEntities v_model = new BKI_CRMEntities();
+            string v_id_user = Session["IdUser"].ToString();
+            List<V_GD_KHACH_HANG_CHUYEN_TRANG_THAI> v_lst_khach_hang = v_model.V_GD_KHACH_HANG_CHUYEN_TRANG_THAI.Where(x => x.ID_NGUOI_SU_DUNG == new Guid(v_id_user)).ToList();
+            List<KhachHangModel> v_lst_khach_hang_model = new List<KhachHangModel>();
+            foreach (var item in v_lst_khach_hang)
+            {
+                KhachHangModel v_khach_hang_model = item.CopyAs<KhachHangModel>();
+                v_khach_hang_model.LstChuyenTrangThai = v_model.V_GD_CHUYEN_TRANG_THAI.Where(x => x.ID_TRANG_THAI_BAN_DAU == item.ID_TRANG_THAI).ToList();
+                v_khach_hang_model.ID_KHACH_HANG = v_model.GD_KHACH_HANG_SU_DUNG_SAN_PHAM.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG_SU_DUNG_SAN_PHAM).First().ID_KHACH_HANG;
+                v_khach_hang_model.ID_CONG_TY = v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().ID_CONG_TY;
+                v_khach_hang_model.TEN_KHACH_HANG = v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().TEN_KHACH_HANG;
+                v_lst_khach_hang_model.Add(v_khach_hang_model);
+            }
+            v_lst_khach_hang_model = v_lst_khach_hang_model.OrderByDescending(x => x.MA_TRANG_THAI).ToList();
+            ViewBag.khach_hang = v_lst_khach_hang_model;
+            LayDanhSach_TrangThai_Quyen();
             return PartialView();
         }
-
         public ActionResult ThemKhachHang()
         {
             ViewBag.LstKhachHang = layDanhSachKhachHang();
