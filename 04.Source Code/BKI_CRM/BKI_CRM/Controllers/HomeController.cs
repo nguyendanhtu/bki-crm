@@ -502,7 +502,7 @@ namespace BKI_CRM.Controllers
                 , v_actionName);
             if (v_c == false)
             {
-                return RedirectToAction("login", "admin");
+                return RedirectToAction("Login", "Admin");
             }
             return PartialView();
         }
@@ -522,7 +522,7 @@ namespace BKI_CRM.Controllers
                 , v_actionName);
             if (v_c == false)
             {
-                return RedirectToAction("login", "admin");
+                return RedirectToAction("Login", "Admin");
             }
             var data = (new SLExcelReader()).ReadExcel(excelFile);
             Session["SessionExcelData"] = data;
@@ -531,17 +531,16 @@ namespace BKI_CRM.Controllers
 
         //private List<NhanVienModel> Lay_danh_sach_nhan_vien(string ip_dc_id_user_cap_tren)
         //{
-        //    //List<NhanVienModel> op_lst_nv = new List<NhanVienModel>();
-        //    //BKI_CRMEntities v_model = new BKI_CRMEntities();
-        //    //var v_lst_ht_user = v_model.HT_USER.Where(x => x.ID_USER_CAP_TREN == ip_dc_id_nhan_vien || ip_dc_id_nhan_vien == -1).ToList();
-        //    //foreach (var item in v_lst_ht_user)
-        //    //{
-        //    //    NhanVienModel v_nv = new NhanVienModel();
-        //    //    v_nv = item.CopyAs<NhanVienModel>();
-        //    //    op_lst_nv.Add(v_nv);
-        //    //}
-
-        //    //return op_lst_nv;
+        //    List<NhanVienModel> op_lst_nv = new List<NhanVienModel>();
+        //    BKI_CRMEntities v_model = new BKI_CRMEntities();
+        //    var v_lst_ht_user = v_model.HT_USER.Where(x => x.ID_USER_CAP_TREN == ip_dc_id_nhan_vien || ip_dc_id_nhan_vien == -1).ToList();
+        //    foreach (var item in v_lst_ht_user)
+        //    {
+        //        NhanVienModel v_nv = new NhanVienModel();
+        //        v_nv = item.CopyAs<NhanVienModel>();
+        //        op_lst_nv.Add(v_nv);
+        //    }
+        //    return op_lst_nv;
         //}
         [HttpPost]
         public ActionResult ExcelToTable()
@@ -580,11 +579,24 @@ namespace BKI_CRM.Controllers
                 , v_actionName);
             if (v_c == false)
             {
-                return RedirectToAction("login", "admin");
+                return RedirectToAction("Login", "Admin");
             }
-            //ViewBag.LstNhanVien = Lay_danh_sach_nhan_vien("");
+            ViewBag.LstNhanVien = ((SLExcelData)Session["SessionExcelData"]).DataRows;
             ViewBag.LstColumn = Lay_danh_sach_cot_table_khach_hang();
             return PartialView();
+        }
+        public ActionResult execQueryThemKhachHang(string ip_str_query_insert)
+        {
+            BKI_CRMEntities v_model = new BKI_CRMEntities();
+            try
+            {
+                v_model.Database.ExecuteSqlCommand(ip_str_query_insert);
+                return RedirectToAction("importExcel", "Home");
+            }
+            catch (Exception)
+            {
+                return new HttpStatusCodeResult(500, "SQL execution failed");
+            }
         }
     }
 }

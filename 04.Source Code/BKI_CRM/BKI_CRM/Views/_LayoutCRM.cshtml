@@ -42,6 +42,15 @@
                     }
                 });
             });
+            $('#bc').click(function () {
+                $.ajax({
+                    url: "/Home/importExcel",
+                    type: "Get",
+                    success: function (view) {
+                        $('#body').html(view);
+                    }
+                });
+            });
         });
     </script>
 </head>
@@ -50,7 +59,7 @@
 		<div class="menu">
 			<div class="home"><a href="#"><b class="icon-home"> </b> Trang chủ</a></div>
 			<div class="home"><a href="#"><b class="icon-user"> </b> Các khách hàng của tôi</a></div>
-			<div class="home"><a href="#"><b class="icon-list"> </b> Báo cáo</a></div>
+			<div class="home"><a href="#" id="bc"><b class="icon-list"> </b> Báo cáo</a></div>
 			<div class="home"><a href="#"><b class="icon-book"> </b> Trợ giúp</a></div>
 			<div class="logout">
 				<button class="btn btn-danger" type="button">Log out</button>
@@ -93,7 +102,7 @@
 						<div class="accordion-inner">
 							<ul style="list-style-type:none;margin:0px;">
 								<li><i class="icon-hand-right"></i><a href="#" id="dntt" class="right-menu">Định nghĩa trạng thái</a>
-								<li><i class="icon-hand-right"></i> <a href="#" class="right-menu">Sơ đồ chuyển trạng thái</a>
+								<li><i class="icon-hand-right"></i><a href="#" class="right-menu">Sơ đồ chuyển trạng thái</a>
 							</ul>
 						</div>
 					</div>
