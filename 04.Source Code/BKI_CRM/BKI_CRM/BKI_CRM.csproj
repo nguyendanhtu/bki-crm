@@ -487,6 +487,7 @@
     <Content Include="Views\Home\ExcelToDB.cshtml" />
     <Content Include="Views\Home\thongTinLienHe.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\Home\DMKhachHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
