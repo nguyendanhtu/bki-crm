@@ -505,6 +505,11 @@ namespace BKI_CRM.Controllers
             return PartialView();
         }
 
+        public ActionResult DMKhachHang() 
+        {
+            return View();
+        }
+
         public ActionResult importExcel()
         {
 
