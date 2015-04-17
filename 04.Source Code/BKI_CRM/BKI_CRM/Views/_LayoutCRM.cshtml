@@ -62,6 +62,15 @@
                     }
                 });
             });
+            $('#khinfo').click(function () {
+                $.ajax({
+                    url: "/Home/thongTinLienHe",
+                    type: "Get",
+                    success: function (view) {
+                        $('#body').html(view);
+                    }
+                });
+            });
         });
     </script>
 </head>
@@ -87,6 +96,7 @@
                                 <li><a href="#" id="cttkh">Chuyển trạng thái khách hàng</a></li>
                                 <li><a href="#" id="tkh">Thêm khách hàng</a></li>
                                 <li><a href="#" id="khsddv">Khách hàng sử dụng dịch vụ</a></li>
+                                <li><a href="#" id="khinfo">Thông tin khách hàng</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
