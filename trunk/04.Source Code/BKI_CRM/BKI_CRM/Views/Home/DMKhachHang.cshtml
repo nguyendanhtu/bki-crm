@@ -1,6 +1,79 @@
 ﻿@{
     ViewBag.Title = "DMKhachHang";
-    Layout = "~/Views/_LayoutCRM.cshtml";
+   // Layout = "~/Views/_LayoutCRM.cshtml";
 }
+<style>
+    .mau {
+        width:220px;
+        height: 40px;
+    }
+    .marginleft {
+        margin-left:200px;
+    }
 
-<h2>DANH MỤC KHÁCH HÀNG</h2>
+
+</style>
+<div class="title">
+    <h2>DANH MỤC KHÁCH HÀNG</h2>
+</div>
+<div style="margin: 20px 0px;">
+    <select class="js-example-basic-single " style="margin-left:100px;" >
+         <option value="thuc_hien">Thực hiện</option>
+      <option value="xuat_excel">Xuất Excel</option>
+      <option value="in">In</option>
+    </select>
+
+    <button type="button" class="btn btn-primary marginleft " ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Thêm khách hàng</button>
+
+    <select class="js-example-basic-single marginleft ">
+      <option value="loc_khach_hang">Lọc khách hàng</option>
+        <option value="khach_hang_tiem_nang">Khách hàng tiềm năng</option>
+      <option value="khach_hang_than_thiet">Khách hàng thân thiết</option>
+    </select>
+
+    <table id="example" class="display" >
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+ 
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+$(document).ready(function() {
+  $(".js-example-basic-single").select2();
+
+    $('#example').dataTable( {
+        "scrollY":        200,
+        "scrollCollapse": true,
+        "jQueryUI":       true
+    } );
+} );
+ </script>
