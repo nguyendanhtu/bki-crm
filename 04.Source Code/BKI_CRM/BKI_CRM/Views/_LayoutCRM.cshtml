@@ -26,6 +26,17 @@
                     }
                 });
             });
+
+            $('#khsddv').click(function () {
+                $.ajax({
+                    url: "/Home/DMKhachHang",
+                    type: "Get",
+                    success: function (view) {
+                        $('#body').html(view);
+                    }
+                });
+            });
+
             $('#dntt').click(function () {
                 $.ajax({
                     url: "/Home/DinhNghiaTrangThai",
