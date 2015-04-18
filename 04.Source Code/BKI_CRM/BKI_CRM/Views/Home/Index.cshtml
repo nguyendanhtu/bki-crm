@@ -33,17 +33,17 @@
                             {
                                 if (item2.LOAI_TRANG_THAI_YN)
                                 {
-                                    <button class="btn btn-success btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><i class="icon-hand-up"></i> @item2.MA_TRANG_THAI</button>
+                                    <button class="btn btn-success btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>@item2.MA_TRANG_THAI</button>
                                 }
                                 else
                                 {
-                                    <button class="btn btn-danger btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><i class="icon-hand-down"></i> @item2.MA_TRANG_THAI</button>
+                                    <button class="btn btn-danger btn80" type="button" onclick="LayYeuCauChuyenTrangThai('@item.ID_TRANG_THAI','@item2.ID_TRANG_THAI_SAU','@item2.MA_TRANG_THAI','@item.ID','@item.ID_KHACH_HANG')"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> @item2.MA_TRANG_THAI</button>
                                 }
                             }
                         </td>
                         <td>@item.GHI_CHU</td>
                         <td>
-                            <button class="btn btn-primary" type="button" onclick="LayThongTinNguoiQuanLy('@item.ID_KHACH_HANG','@item.TEN_KHACH_HANG','@item.ID_CONG_TY','@item.ID_KHACH_HANG_SU_DUNG_SAN_PHAM')"><i class="icon-share"></i> Chia sẻ</button>
+                            <button class="btn btn-primary" type="button" onclick="LayThongTinNguoiQuanLy('@item.ID_KHACH_HANG','@item.TEN_KHACH_HANG','@item.ID_CONG_TY','@item.ID_KHACH_HANG_SU_DUNG_SAN_PHAM')"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Chia sẻ</button>
                         </td>
                     </tr>
                 }
@@ -53,126 +53,160 @@
 </div>
 
 <div id="infoCustomer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <h3>THÔNG TIN KHÁCH HÀNG</h3>
-    </div>
-    <div class="modal-body">
-        <div class="info">
-            <div class="left">
-                <img class="image-size" id="image" />
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title title">THÔNG TIN KHÁCH HÀNG</h3>
             </div>
-            <div class="left" style="margin-left:20px;">
-                <div class="clear-both">
-                    <div class="dimention1 bold">Họ tên</div>
-                    <div class="left"><input id="hoten" type="text" placeholder="Type something…"></div>
+            <div class="modal-body">
+
+                <div class="" style="margin-left:20px;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">
+                                    <img class="image-size" id="image" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="dimention1 bold">Họ tên</div></td>
+                                <td><div class="left"><input id="hoten" type="text" placeholder="Type something…" class="form-control"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="dimention1 bold">Loại khách hàng</div></td>
+                                <td><div class="left"><input id="loaikhachhang" type="text" placeholder="Type something…" class="form-control"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="dimention1 bold">SĐT</div></td>
+                                <td><div class="left"><input id="sdt" type="text" placeholder="Type something…" class="form-control"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="dimention1 bold">Địa chỉ</div></td>
+                                <td><div class="left"><input id="diachi" type="text" placeholder="Type something…" class="form-control"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="dimention1 bold">Email</div></td>
+                                <td><div class="left"> <input id="email" type="text" placeholder="Type something…" class="form-control"></div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="clearfix">
+                                        <strong>LỊCH SỬ KHÁCH HÀNG</strong>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div id="lichsukh" class="clearfix">
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="clear-both">
-                    <div class="dimention1 bold">Loại khách hàng</div>
-                    <div class="left"><input id="loaikhachhang" type="text" placeholder="Type something…"></div>
-                </div>
-                <div class="clear-both">
-                    <div class="dimention1 bold">SĐT</div>
-                    <div class="left"><input id="sdt" type="text" placeholder="Type something…"></div>
-                </div>
-                <div class="clear-both">
-                    <div class="dimention1 bold">Địa chỉ</div>
-                    <div class="left"><input id="diachi" type="text" placeholder="Type something…"></div>
-                </div>
-                <div class="clear-both">
-                    <div class="dimention1 bold">Email</div>
-                    <div class="left"> <input id="email" type="text" placeholder="Type something…"></div>
-                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" onclick="hideInfoCustomer()">Lưu lại</a>
+                <a href="#" class="btn" onclick="hideInfoCustomer()">Đóng</a>
             </div>
         </div>
     </div>
-    <div class="modal-header">
-        <h3>LỊCH SỬ KHÁCH HÀNG</h3>
-    </div>
-    <div class="modal-body" id="lichsukh">
-
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn btn-primary" onclick="hideInfoCustomer()">Lưu lại</a>
-        <a href="#" class="btn" onclick="hideInfoCustomer()">Đóng</a>
-    </div>
 </div>
-
 <div id="levelDefine" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <h3>ĐỊNH NGHĨA TRẠNG THÁI KHÁCH HÀNG</h3>
-    </div>
-    <div class="modal-body">
-        <p>
-            <ol>
-                @foreach (var item in lst_trang_thai)
-                {
-                    <li>@item.MA_TRANG_THAI : là @item.MO_TA</li>
-                }
-            </ol>
-        </p>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn" onclick="hideLevelDefine()">Đóng</a>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title title">ĐỊNH NGHĨA TRẠNG THÁI KHÁCH HÀNG</h3>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <ol>
+                        @foreach (var item in lst_trang_thai)
+                        {
+                            <li>@item.MA_TRANG_THAI : là @item.MO_TA</li>
+                        }
+                    </ol>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" onclick="hideLevelDefine()">Đóng</a>
+            </div>
+        </div>
     </div>
 </div>
 <div id="share" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <h3>CHIA SẺ KHÁCH HÀNG</h3>
-    </div>
-    <div class="modal-body">
-        Khách hàng: <b id="tenkhachhang">Phạm Hoàng Thái</b><br /><br />
-        Người có quyền quản lý khách hàng
-        <div id="nguoiquanly">
-
-
-        </div>
-        <div class="share-item">
-            <div class="left" style="width:250px;">
-                <select id="dsnhanvien">
-                    <option>Nguyễn Danh Tú</option>
-                </select>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title title">CHIA SẺ KHÁCH HÀNG</h3>
             </div>
-            <div class="left">
-                <select id="dsquyen">
-                    @foreach (var item in lst_quyen)
-                    {
-                        <option value="@item.ID">@item.TEN_TU_DIEN</option>
-                    }
-                </select>
+            <div class="modal-body">
+                Khách hàng: <b id="tenkhachhang">Phạm Hoàng Thái</b><br /><br />
+                Người có quyền quản lý khách hàng
+                <table id="nguoiquanly" class="table">
+                    <tr>
+                        <td>
+                            <select id="dsnhanvien">
+                                <option>Nguyễn Danh Tú</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="dsquyen">
+                                @foreach (var item in lst_quyen)
+                                {
+                                    <option value="@item.ID">@item.TEN_TU_DIEN</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div class="right"><a href="#"><i class="icon-plus" onclick="ThemNguoiQuanLy(dsnhanvien.value,dsquyen.value)"></i></a></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="ThemNguoiQuanLy(dsnhanvien.value,dsquyen.value)">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Thêm
+                </button>
+                <a href="#" class="btn" onclick="hideShare()">Đóng</a>
+            </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn" onclick="hideShare()">Đóng</a>
     </div>
 </div>
-
 <div id="note" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <h3>GHI CHÚ CHUYỂN TRẠNG THÁI</h3>
-    </div>
-    <div class="modal-body">
-        <h4>Các yêu cầu để chuyển trạng thái khách hàng từ <span id="ma_trang_thai_truoc"></span> sang <span id="ma_trang_thai_sau"></span></h4>
-        <div class="left div400" id="yeucau">
-        </div>
-        <div class="left div240">
-            <div>
-                <div><input type="text" placeholder="Số tiền đã nhận" id="sotiendanhan" /></div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title title">GHI CHÚ CHUYỂN TRẠNG THÁI</h3>
             </div>
-            <div>
-                <div><input type="text" placeholder="Ghi chú" id="ghichuchuyentt" /></div>
+            <div class="modal-body">
+                <h4>Các yêu cầu để chuyển trạng thái khách hàng từ <span id="ma_trang_thai_truoc"></span> sang <span id="ma_trang_thai_sau"></span></h4>
+                <div class="div400" id="yeucau">
+                </div>
+                <div class="div240">
+                    <div>
+                        <div><input type="text" placeholder="Số tiền đã nhận" id="sotiendanhan" class="form-control" /></div>
+                    </div>
+                    <div>
+                        <div><input type="text" placeholder="Ghi chú" id="ghichuchuyentt" class="form-control" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" onclick="ChuyenTrangThai()">Lưu lại</button>
+                <a href="#" class="btn" onclick="hideNote()">Đóng</a>
             </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" type="button" onclick="ChuyenTrangThai()">Lưu lại</button>
-        <a href="#" class="btn" onclick="hideNote()">Đóng</a>
     </div>
 </div>
 <div id="hiddenfield"></div>
 <script type="text/javascript">
-
+    $(document).ready(function () {
+        $('select').select2();
+    });
 
     function LayThongTinKhachHang(id_khach_hang) {
         $.ajax({
@@ -229,13 +263,13 @@
             success: function (data) {
                 var optionhtml = "";
                 $.each(data, function (i) {
-                    optionhtml += "<div class='share-item'>";
-                    optionhtml += "<div class='left' style='width:250px;'>" + data[i].HO_TEN_NHAN_VIEN + "</div>";
-                    optionhtml += "<div class='left role'>" + data[i].TEN_TU_DIEN + "</div>";
-                    optionhtml += "<div class='right'><a href='#' onclick='xoaquanlykhachhang(\"" + data[i].ID_NGUOI_SU_DUNG + "\")'><i class='icon-remove'></i></a></div>";
-                    optionhtml += "</div>";
+                    optionhtml += "<tr>";
+                    optionhtml += "<td>" + data[i].HO_TEN_NHAN_VIEN + "</td>";
+                    optionhtml += "<td>" + data[i].TEN_TU_DIEN + "</td>";
+                    optionhtml += "<td><button type='button' style='height:30px' class='btn btn-danger' onclick='xoaquanlykhachhang(\"" + data[i].ID_NGUOI_SU_DUNG + "\")'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>Loại</button></td>";
+                    optionhtml += "</tr>";
                 });
-                document.getElementById('nguoiquanly').innerHTML = optionhtml;
+                $('#nguoiquanly').prepend(optionhtml);
             }
         });
         $.ajax({
@@ -269,6 +303,7 @@
             },
             success: function (data) {
                 alert("Xóa quyền quản lý thành công");
+                $('#share').modal('hide');
             }
         });
     }
@@ -312,17 +347,17 @@
                 var optionhtml = "";
                 var dataChirl = data.LST_YEU_CAU;
                 $.each(dataChirl, function (i) {
-                    optionhtml += "<div>";
-                    optionhtml += "<div class='left div320' style='line-height: 35px;'>" + dataChirl[i].YEU_CAU + "</div>";
+                    optionhtml += "<div class='checkbox'><label>";
                     if (dataChirl[i].DA_DUYET == true) {
-                        optionhtml += "<div class='left div50'><input type='checkbox' class='chuyentrangthai' checked='checked'/></div>";
+                        optionhtml += "<input type='checkbox' class='chuyentrangthai' checked='checked'/>";
                     }
                     else {
-                        optionhtml += "<div class='left div50'><input class='chuyentrangthai' type='checkbox'/></div>";
+                        optionhtml += "<input class='chuyentrangthai' type='checkbox'/>";
                     }
+                    optionhtml += dataChirl[i].YEU_CAU + "</label>";
                     optionhtml += "</div>";
                 });
-                document.getElementById('yeucau').innerHTML = optionhtml;
+                $('#yeucau').html(optionhtml);
             }
         });
         $('#note').modal('show');
