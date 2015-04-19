@@ -12,17 +12,10 @@ namespace BKI_CRM.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class GD_ACTION
+    public partial class DOC_COLUMN_COMMENT
     {
-        public System.Guid ID { get; set; }
-        public System.DateTime TAI_NGAY { get; set; }
-        public System.Guid ID_USER { get; set; }
-        public string LAM_GI { get; set; }
-        public string GHI_CHU_1 { get; set; }
-        public string GHI_CHU_2 { get; set; }
-        public Nullable<System.Guid> ID_KHACH_HANG { get; set; }
-    
-        public virtual DM_KHACH_HANG DM_KHACH_HANG { get; set; }
-        public virtual HT_USER HT_USER { get; set; }
+        public string COLUMN_NAME { get; set; }
+        public string TABLE_NAME { get; set; }
+        public string COLUMN_COMMENT { get; set; }
     }
 }

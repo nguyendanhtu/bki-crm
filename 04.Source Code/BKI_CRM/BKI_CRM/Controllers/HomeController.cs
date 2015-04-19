@@ -30,7 +30,7 @@ namespace BKI_CRM.Controllers
                 KhachHangModel v_khach_hang_model = item.CopyAs<KhachHangModel>();
                 v_khach_hang_model.LstChuyenTrangThai = v_model.V_GD_CHUYEN_TRANG_THAI.Where(x => x.ID_TRANG_THAI_BAN_DAU == item.ID_TRANG_THAI).ToList();
                 v_khach_hang_model.ID_KHACH_HANG = v_model.GD_KHACH_HANG_SU_DUNG_SAN_PHAM.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG_SU_DUNG_SAN_PHAM).First().ID_KHACH_HANG;
-                v_khach_hang_model.ID_CONG_TY = v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().ID_CONG_TY;
+                v_khach_hang_model.ID_CONG_TY = (v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().ID_CONG_TY);
                 v_khach_hang_model.TEN_KHACH_HANG = v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().TEN_KHACH_HANG;
                 v_lst_khach_hang_model.Add(v_khach_hang_model);
             }
@@ -507,9 +507,28 @@ namespace BKI_CRM.Controllers
 
         public ActionResult DMKhachHang() 
         {
+            BKI_CRMEntities v_model = new BKI_CRMEntities();
+            List<V_DM_KHACH_HANG> v_lst_kh = new List<V_DM_KHACH_HANG>();
+            v_lst_kh = v_model.V_DM_KHACH_HANG.ToList<V_DM_KHACH_HANG>();
+            ViewBag.v_lst_kh = v_lst_kh;
             return PartialView();
         }
-
+        [HttpPost]
+        public ActionResult LayThongTinLienHe(string id_kh){
+            BKI_CRMEntities db = new BKI_CRMEntities();
+            var id = Guid.Parse(id_kh);
+            var thong_tin = db.V_DM_KHACH_HANG.Where(x => x.ID == id).First();
+            return Json(thong_tin, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult XoaThongTinLienHe(string id_kh)
+        {
+            BKI_CRMEntities db = new BKI_CRMEntities();
+            var id = Guid.Parse(id_kh);
+            db.Database.ExecuteSqlCommand("delete from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where id='" + id+"'");
+            db.SaveChanges();
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult importExcel()
         {
 

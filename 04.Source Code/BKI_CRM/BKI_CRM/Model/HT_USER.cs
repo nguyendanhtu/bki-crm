@@ -16,10 +16,10 @@ namespace BKI_CRM.Model
     {
         public HT_USER()
         {
+            this.GD_ACTION = new HashSet<GD_ACTION>();
             this.GD_CHUYEN_TRANG_THAI = new HashSet<GD_CHUYEN_TRANG_THAI>();
             this.GD_NGUOI_QUAN_LY_KHACH_HANG = new HashSet<GD_NGUOI_QUAN_LY_KHACH_HANG>();
             this.HT_USER1 = new HashSet<HT_USER>();
-            this.GD_ACTION = new HashSet<GD_ACTION>();
         }
     
         public System.Guid ID { get; set; }
@@ -36,11 +36,11 @@ namespace BKI_CRM.Model
         public string ANH_CA_NHAN { get; set; }
     
         public virtual DM_PHONG_BAN DM_PHONG_BAN { get; set; }
+        public virtual ICollection<GD_ACTION> GD_ACTION { get; set; }
         public virtual ICollection<GD_CHUYEN_TRANG_THAI> GD_CHUYEN_TRANG_THAI { get; set; }
         public virtual ICollection<GD_NGUOI_QUAN_LY_KHACH_HANG> GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
         public virtual ICollection<HT_USER> HT_USER1 { get; set; }
         public virtual HT_USER HT_USER2 { get; set; }
         public virtual HT_USER_GROUP HT_USER_GROUP { get; set; }
-        public virtual ICollection<GD_ACTION> GD_ACTION { get; set; }
     }
 }

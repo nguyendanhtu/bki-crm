@@ -27,11 +27,11 @@ namespace BKI_CRM.Model
         public string TEN_CONG_TY { get; set; }
         public int SO_LUONG_USER { get; set; }
     
+        public virtual DM_ACTION DM_ACTION { get; set; }
         public virtual ICollection<DM_KHACH_HANG> DM_KHACH_HANG { get; set; }
         public virtual ICollection<DM_NHOM_SAN_PHAM> DM_NHOM_SAN_PHAM { get; set; }
         public virtual ICollection<DM_PHONG_BAN> DM_PHONG_BAN { get; set; }
         public virtual ICollection<DM_TRANG_THAI> DM_TRANG_THAI { get; set; }
         public virtual ICollection<HT_USER_GROUP> HT_USER_GROUP { get; set; }
-        public virtual DM_ACTION DM_ACTION { get; set; }
     }
 }
