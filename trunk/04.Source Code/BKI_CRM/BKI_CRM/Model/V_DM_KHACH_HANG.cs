@@ -12,14 +12,9 @@ namespace BKI_CRM.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class DM_KHACH_HANG
+    public partial class V_DM_KHACH_HANG
     {
-        public DM_KHACH_HANG()
-        {
-            this.GD_ACTION = new HashSet<GD_ACTION>();
-            this.GD_KHACH_HANG_SU_DUNG_SAN_PHAM = new HashSet<GD_KHACH_HANG_SU_DUNG_SAN_PHAM>();
-        }
-    
+        public string TEN_SAN_PHAM { get; set; }
         public System.Guid ID { get; set; }
         public string TEN_KHACH_HANG { get; set; }
         public string MA_SO_THUE { get; set; }
@@ -41,10 +36,5 @@ namespace BKI_CRM.Model
         public string FACEBOOK { get; set; }
         public string SKYPE { get; set; }
         public Nullable<System.DateTime> NGAY_SINH { get; set; }
-    
-        public virtual CM_DM_TU_DIEN CM_DM_TU_DIEN { get; set; }
-        public virtual DM_CONG_TY DM_CONG_TY { get; set; }
-        public virtual ICollection<GD_ACTION> GD_ACTION { get; set; }
-        public virtual ICollection<GD_KHACH_HANG_SU_DUNG_SAN_PHAM> GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
     }
 }

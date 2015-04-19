@@ -30,6 +30,7 @@ namespace BKI_CRM.Model
     
         public DbSet<CM_DM_LOAI_TD> CM_DM_LOAI_TD { get; set; }
         public DbSet<CM_DM_TU_DIEN> CM_DM_TU_DIEN { get; set; }
+        public DbSet<DM_ACTION> DM_ACTION { get; set; }
         public DbSet<DM_CHUYEN_TRANG_THAI> DM_CHUYEN_TRANG_THAI { get; set; }
         public DbSet<DM_CONG_TY> DM_CONG_TY { get; set; }
         public DbSet<DM_KHACH_HANG> DM_KHACH_HANG { get; set; }
@@ -38,10 +39,12 @@ namespace BKI_CRM.Model
         public DbSet<DM_SAN_PHAM> DM_SAN_PHAM { get; set; }
         public DbSet<DM_TRANG_THAI> DM_TRANG_THAI { get; set; }
         public DbSet<DM_YEU_CAU_TRANG_THAI> DM_YEU_CAU_TRANG_THAI { get; set; }
+        public DbSet<GD_ACTION> GD_ACTION { get; set; }
         public DbSet<GD_CHUYEN_TRANG_THAI> GD_CHUYEN_TRANG_THAI { get; set; }
         public DbSet<GD_KHACH_HANG_SU_DUNG_SAN_PHAM> GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
         public DbSet<GD_NGUOI_QUAN_LY_KHACH_HANG> GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
         public DbSet<GD_PHIEN_LAM_VIEC> GD_PHIEN_LAM_VIEC { get; set; }
+        public DbSet<GD_THONG_TIN_HOP_DONG> GD_THONG_TIN_HOP_DONG { get; set; }
         public DbSet<HT_ACTION> HT_ACTION { get; set; }
         public DbSet<HT_CONTROLLER> HT_CONTROLLER { get; set; }
         public DbSet<HT_LOG> HT_LOG { get; set; }
@@ -49,6 +52,8 @@ namespace BKI_CRM.Model
         public DbSet<HT_USER> HT_USER { get; set; }
         public DbSet<HT_USER_GROUP> HT_USER_GROUP { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<DOC_COLUMN_COMMENT> DOC_COLUMN_COMMENT { get; set; }
+        public DbSet<DOC_TABLE_COMMENT> DOC_TABLE_COMMENT { get; set; }
         public DbSet<V_DM_NHAN_VIEN_CONG_TY> V_DM_NHAN_VIEN_CONG_TY { get; set; }
         public DbSet<V_DM_YEU_CAU_TRANG_THAI> V_DM_YEU_CAU_TRANG_THAI { get; set; }
         public DbSet<V_GD_CHUYEN_TRANG_THAI> V_GD_CHUYEN_TRANG_THAI { get; set; }
@@ -57,12 +62,10 @@ namespace BKI_CRM.Model
         public DbSet<V_GD_NGUOI_QUAN_LY_KHACH_HANG> V_GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
         public DbSet<V_HT_PHAN_QUYEN_CHI_TIET> V_HT_PHAN_QUYEN_CHI_TIET { get; set; }
         public DbSet<V_HT_USER> V_HT_USER { get; set; }
+        public DbSet<V_NHAN_VIEN_QUAN_LY_KHACH_HANG> V_NHAN_VIEN_QUAN_LY_KHACH_HANG { get; set; }
         public DbSet<V_RPT_LUY_KE> V_RPT_LUY_KE { get; set; }
         public DbSet<V_RPT_PHAT_SINH_TRONG_THANG> V_RPT_PHAT_SINH_TRONG_THANG { get; set; }
-        public DbSet<V_NHAN_VIEN_QUAN_LY_KHACH_HANG> V_NHAN_VIEN_QUAN_LY_KHACH_HANG { get; set; }
-        public DbSet<DM_ACTION> DM_ACTION { get; set; }
-        public DbSet<GD_ACTION> GD_ACTION { get; set; }
-        public DbSet<GD_THONG_TIN_HOP_DONG> GD_THONG_TIN_HOP_DONG { get; set; }
+        public DbSet<V_DM_KHACH_HANG> V_DM_KHACH_HANG { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -165,6 +168,50 @@ namespace BKI_CRM.Model
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual int DOC_COMMENT_column(string table_name, string column_name, string comment)
+        {
+            var table_nameParameter = table_name != null ?
+                new ObjectParameter("table_name", table_name) :
+                new ObjectParameter("table_name", typeof(string));
+    
+            var column_nameParameter = column_name != null ?
+                new ObjectParameter("column_name", column_name) :
+                new ObjectParameter("column_name", typeof(string));
+    
+            var commentParameter = comment != null ?
+                new ObjectParameter("comment", comment) :
+                new ObjectParameter("comment", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DOC_COMMENT_column", table_nameParameter, column_nameParameter, commentParameter);
+        }
+    
+        public virtual int DOC_COMMENT_TABLE(string table_name, string comment)
+        {
+            var table_nameParameter = table_name != null ?
+                new ObjectParameter("table_name", table_name) :
+                new ObjectParameter("table_name", typeof(string));
+    
+            var commentParameter = comment != null ?
+                new ObjectParameter("comment", comment) :
+                new ObjectParameter("comment", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DOC_COMMENT_TABLE", table_nameParameter, commentParameter);
+        }
+    
+        public virtual int doc_reconcile_columns(string table_name)
+        {
+            var table_nameParameter = table_name != null ?
+                new ObjectParameter("table_name", table_name) :
+                new ObjectParameter("table_name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("doc_reconcile_columns", table_nameParameter);
+        }
+    
+        public virtual int doc_reconcile_tables()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("doc_reconcile_tables");
         }
     }
 }

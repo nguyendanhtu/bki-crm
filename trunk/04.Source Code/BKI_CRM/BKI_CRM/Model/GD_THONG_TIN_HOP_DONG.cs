@@ -22,6 +22,8 @@ namespace BKI_CRM.Model
         public string GHI_CHU_1 { get; set; }
         public string GHI_CHU_2 { get; set; }
         public string GHI_CHU_3 { get; set; }
-        public string GHI_CHU_4 { get; set; }
+        public System.Guid ID_GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
+    
+        public virtual GD_KHACH_HANG_SU_DUNG_SAN_PHAM GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
     }
 }

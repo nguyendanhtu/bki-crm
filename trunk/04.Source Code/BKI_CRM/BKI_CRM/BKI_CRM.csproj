@@ -219,6 +219,12 @@
     <Compile Include="Model\DM_YEU_CAU_TRANG_THAI.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DOC_COLUMN_COMMENT.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DOC_TABLE_COMMENT.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GD_ACTION.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -277,6 +283,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagram.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\V_DM_KHACH_HANG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_DM_NHAN_VIEN_CONG_TY.cs">
