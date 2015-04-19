@@ -188,7 +188,7 @@
                                 <label class="width100px left padding">Ngày sinh</label>
                             </td>
                             <td>
-                                <input type="date" class="form-control width220px" />
+                                <input type="date" class="form-control width220px"  style="height:34px !important;"  />
                             </td>
 
                             <td>
@@ -204,11 +204,10 @@
                                 <label class="width100px ">Giới tính</label>
                             </td>
                             <td>
-                                <select class="js-example-basic-single ">
-                                    <option value="loc_khach_hang">Nam</option>
-                                    <option value="khach_hang_tiem_nang">Nữ</option>
-
-                                </select>
+                               <select id="gioi_tinh" class="js-example-basic-single ">
+                                    <option value="nam">Nam</option>
+                                    <option value="nu">Nữ</option>
+                                 </select>
                             </td>
                             <td>
                                 <label class="width100px left padding" style="width:103px;">Loại khách hàng</label>
@@ -220,7 +219,7 @@
                                             <option value="@item.ID">@item.TEN_TU_DIEN</option>
                                         }
                                     </select>*@
-                                <select class="js-example-basic-single ">
+                                <select id="loai_khach_hang"class="js-example-basic-single ">
                                     <option value="loc_khach_hang">Khách hàng thân thiết</option>
                                     <option value="khach_hang_tiem_nang">Học viên</option>
                                     <option value="khach_hang_tiem_nang">Khách hàng lẻ</option>
@@ -272,6 +271,16 @@
         });
         $("#loc_khach_hang").select2({
             placeholder: "Lọc khách hàng",
+            allowClear: true
+        });
+
+        $("#gioi_tinh").select2({
+            placeholder: "",
+            allowClear: true
+        });
+
+        $("#loai_khach_hang").select2({
+            placeholder: "",
             allowClear: true
         });
         $('#example').dataTable();
