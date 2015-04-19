@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Index2";
+    ViewBag.Title = "Index";
     var lst_khach_hang = ViewBag.khach_hang as List<BKI_CRM.Models.KhachHangModel>;
     var lst_trang_thai = ViewBag.LstTrangThai as List<BKI_CRM.Model.DM_TRANG_THAI>;
     var lst_quyen = ViewBag.LstQuyen as List<BKI_CRM.Model.CM_DM_TU_DIEN>;
@@ -42,7 +42,7 @@
                         </td>
                         <td>@item.GHI_CHU</td>
                         <td>
-                            <button class="btn btn-primary" type="button" onclick="LayThongTinNguoiQuanLy('@item.ID_KHACH_HANG','@item.TEN_KHACH_HANG','@item.ID_CONG_TY','@item.ID_KHACH_HANG_SU_DUNG_SAN_PHAM')"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Chia sẻ</button>
+                            <button class="btn btn-primary" type="button" onclick="LayThongTinNguoiQuanLy('@item.ID_KHACH_HANG','@item.TEN_KHACH_HANG','@item.ID_CONG_TY','@item.ID_KHACH_HANG_SU_DUNG_SAN_PHAM');"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Chia sẻ</button>
                         </td>
                     </tr>
                 }
@@ -108,8 +108,8 @@
             </div>
 
             <div class="modal-footer">
-                <a href="#" class="btn btn-primary" onclick="hideInfoCustomer()">Lưu lại</a>
-                <a href="#" class="btn" onclick="hideInfoCustomer()">Đóng</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Lưu lại</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
@@ -132,7 +132,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <a href="#" class="btn" onclick="hideLevelDefine()">Đóng</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
@@ -148,28 +148,31 @@
                 Khách hàng: <b id="tenkhachhang">Phạm Hoàng Thái</b><br /><br />
                 Người có quyền quản lý khách hàng
                 <table id="nguoiquanly" class="table">
-                    <tr>
-                        <td>
-                            <select id="dsnhanvien">
-                                <option>Nguyễn Danh Tú</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select id="dsquyen">
-                                @foreach (var item in lst_quyen)
-                                {
-                                    <option value="@item.ID">@item.TEN_TU_DIEN</option>
-                                }
-                            </select>
-                        </td>
-                    </tr>
+                    <tbody id="nqlbody"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <select id="dsnhanvien">
+                                    <option>Nguyễn Danh Tú</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="dsquyen">
+                                    @foreach (var item in lst_quyen)
+                                    {
+                                        <option value="@item.ID">@item.TEN_TU_DIEN</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" onclick="ThemNguoiQuanLy(dsnhanvien.value,dsquyen.value)">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Thêm
                 </button>
-                <a href="#" class="btn" onclick="hideShare()">Đóng</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
@@ -196,7 +199,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" type="button" onclick="ChuyenTrangThai()">Lưu lại</button>
-                <a href="#" class="btn" onclick="hideNote()">Đóng</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
@@ -262,13 +265,13 @@
             success: function (data) {
                 var optionhtml = "";
                 $.each(data, function (i) {
-                    optionhtml += "<tr>";
+                    optionhtml += "<tr id='" + data[i].ID_NGUOI_SU_DUNG + "'>";
                     optionhtml += "<td>" + data[i].HO_TEN_NHAN_VIEN + "</td>";
                     optionhtml += "<td>" + data[i].TEN_TU_DIEN + "</td>";
                     optionhtml += "<td><button type='button' style='height:30px' class='btn btn-danger' onclick='xoaquanlykhachhang(\"" + data[i].ID_NGUOI_SU_DUNG + "\")'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>Loại</button></td>";
                     optionhtml += "</tr>";
                 });
-                $('#nguoiquanly').prepend(optionhtml);
+                $('#nqlbody').html(optionhtml);
             }
         });
         $.ajax({
@@ -284,7 +287,7 @@
                 $.each(data, function (i) {
                     optionhtml += "<option value='" + data[i].ID_NHAN_VIEN + "'>" + data[i].HO_TEN_NHAN_VIEN + "</option>"
                 });
-                document.getElementById('dsnhanvien').innerHTML = optionhtml;
+                $('#dsnhanvien').html(optionhtml);
             }
         });
         $('#share').modal('show');
@@ -302,7 +305,8 @@
             },
             success: function (data) {
                 alert("Xóa quyền quản lý thành công");
-                $('#share').modal('hide');
+                $('#' + id_nguoi_quan_ly).remove();
+                //$('#share').modal('show');
             }
         });
     }
@@ -394,28 +398,14 @@
         });
     }
 
-    function hideInfoCustomer() {
-        $('#infoCustomer').modal('hide');
-    }
 
     function showLevelDefine() {
         $('#levelDefine').modal('show');
     }
 
-    function hideLevelDefine() {
-        $('#levelDefine').modal('hide');
-    }
 
     function showShare() {
         $('#share').modal('show');
-    }
-
-    function hideShare() {
-        $('#share').modal('hide');
-    }
-
-    function hideNote() {
-        $('#note').modal('hide');
     }
 
     $(document).ready(function () {
