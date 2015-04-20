@@ -321,6 +321,9 @@
     <Compile Include="Model\V_RPT_PHAT_SINH_TRONG_THANG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\V_TU_DIEN.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

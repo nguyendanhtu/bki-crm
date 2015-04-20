@@ -508,26 +508,38 @@ namespace BKI_CRM.Controllers
         public ActionResult DMKhachHang() 
         {
             BKI_CRMEntities v_model = new BKI_CRMEntities();
-            List<V_DM_KHACH_HANG> v_lst_kh = new List<V_DM_KHACH_HANG>();
-            v_lst_kh = v_model.V_DM_KHACH_HANG.ToList<V_DM_KHACH_HANG>();
-            ViewBag.v_lst_kh = v_lst_kh;
+            List<DM_KHACH_HANG> v_dm_kh = new List<DM_KHACH_HANG>();
+            List<V_TU_DIEN> v_tu_dien = new List<V_TU_DIEN>();
+            List<DM_SAN_PHAM> v_sp = new List<DM_SAN_PHAM>();
+            v_dm_kh = v_model.DM_KHACH_HANG.ToList<DM_KHACH_HANG>();
+            v_tu_dien = v_model.V_TU_DIEN.Where(x => x.TEN_LOAI_TU_DIEN == "Loại khách hàng").ToList<V_TU_DIEN>();
+            v_sp = v_model.DM_SAN_PHAM.ToList<DM_SAN_PHAM>();
+            ViewBag.v_dm_kh = v_dm_kh;
+            ViewBag.v_tu_dien = v_tu_dien;
+            ViewBag.v_sp = v_sp;
             return PartialView();
         }
-        [HttpPost]
-        public ActionResult LayThongTinLienHe(string id_kh){
+        [HttpGet]
+        public ActionResult LayThongTinLienHe(string id_kh)
+        {
             BKI_CRMEntities db = new BKI_CRMEntities();
             var id = Guid.Parse(id_kh);
-            var thong_tin = db.V_DM_KHACH_HANG.Where(x => x.ID == id).First();
-            return Json(thong_tin, JsonRequestBehavior.AllowGet);
+            var thong_tin = db.V_DM_KHACH_HANG.Where(x => x.ID == id).ToList<V_DM_KHACH_HANG>();
+            var bday = thong_tin[0].NGAY_SINH.ToString();
+            if(bday.Length>6)
+                bday = bday.Substring(6, 4) + "-" + bday.Substring(0, 2) + "-" + bday.Substring(3, 2);
+            return Json(new {dat=thong_tin,bday=bday},JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public ActionResult XoaThongTinLienHe(string id_kh)
         {
             BKI_CRMEntities db = new BKI_CRMEntities();
             var id = Guid.Parse(id_kh);
-            db.Database.ExecuteSqlCommand("delete from GD_CHUYEN_TRANG_THAI where ID_KHACH_HANG_SU_DUNG_SAN_PHAM='" + id + "'");
-            db.Database.ExecuteSqlCommand("delete from GD_NGUOI_QUAN_LY_KHACH_HANG where ID_KHACH_HANG_SU_DUNG_SAN_PHAM='" + id + "'");
-            db.Database.ExecuteSqlCommand("delete from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID='" + id+"'");
+            db.Database.ExecuteSqlCommand("delete from GD_CHUYEN_TRANG_THAI where ID_KHACH_HANG_SU_DUNG_SAN_PHAM in (select ID from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID_KHACH_HANG='" + id + "')");
+            db.Database.ExecuteSqlCommand("delete from GD_NGUOI_QUAN_LY_KHACH_HANG where ID_KHACH_HANG_SU_DUNG_SAN_PHAM in (select ID from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID_KHACH_HANG='" + id + "')");
+            db.Database.ExecuteSqlCommand("delete from GD_THONG_TIN_HOP_DONG where ID_GD_KHACH_HANG_SU_DUNG_SAN_PHAM in (select ID from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID_KHACH_HANG='" + id + "')");
+            db.Database.ExecuteSqlCommand("delete from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID_KHACH_HANG='" + id+"'");
+            db.Database.ExecuteSqlCommand("delete from DM_KHACH_HANG where ID='" + id + "'");
             return Json(true, JsonRequestBehavior.AllowGet);
         }
         public ActionResult importExcel()

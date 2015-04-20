@@ -72,6 +72,7 @@
         <AssociationConnector Association="BKI_CRMModel.FK_HT_PHAN_QUYEN_CHO_NHOM_HT_USER_GROUP" />
         <AssociationConnector Association="BKI_CRMModel.FK_HT_USER_HT_USER" />
         <AssociationConnector Association="BKI_CRMModel.FK_HT_USER_HT_USER_GROUP" />
+        <EntityTypeShape EntityType="BKI_CRMModel.V_TU_DIEN" Width="1.5" PointX="14.375" PointY="14.75" />
         <EntityTypeShape EntityType="BKI_CRMModel.V_DM_KHACH_HANG" Width="1.5" PointX="6.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
