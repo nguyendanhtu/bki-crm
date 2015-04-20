@@ -298,6 +298,7 @@ warning 6002: The table/view 'BKI_CRM.dbo.V_DM_KHACH_HANG' does not have a prima
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="TEN_KHACH_HANG" />
+            <PropertyRef Name="ID_GD" />
           </Key>
           <Property Name="TEN_SAN_PHAM" Type="nvarchar" MaxLength="100" />
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
@@ -321,6 +322,7 @@ warning 6002: The table/view 'BKI_CRM.dbo.V_DM_KHACH_HANG' does not have a prima
           <Property Name="FACEBOOK" Type="nvarchar" MaxLength="50" />
           <Property Name="SKYPE" Type="nvarchar" MaxLength="50" />
           <Property Name="NGAY_SINH" Type="datetime" />
+          <Property Name="ID_GD" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'BKI_CRM.dbo.V_DM_NHAN_VIEN_CONG_TY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1016,7 +1018,8 @@ FROM [dbo].[DOC_TABLE_COMMENT] AS [DOC_TABLE_COMMENT]</DefiningQuery>
 [V_DM_KHACH_HANG].[NOI_CONG_TAC] AS [NOI_CONG_TAC], 
 [V_DM_KHACH_HANG].[FACEBOOK] AS [FACEBOOK], 
 [V_DM_KHACH_HANG].[SKYPE] AS [SKYPE], 
-[V_DM_KHACH_HANG].[NGAY_SINH] AS [NGAY_SINH]
+[V_DM_KHACH_HANG].[NGAY_SINH] AS [NGAY_SINH], 
+[V_DM_KHACH_HANG].[ID_GD] AS [ID_GD]
 FROM [dbo].[V_DM_KHACH_HANG] AS [V_DM_KHACH_HANG]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_DM_NHAN_VIEN_CONG_TY" EntityType="Self.V_DM_NHAN_VIEN_CONG_TY" store:Type="Views" store:Schema="dbo">
@@ -2419,6 +2422,7 @@ FROM [dbo].[V_RPT_PHAT_SINH_TRONG_THANG] AS [V_RPT_PHAT_SINH_TRONG_THANG]</Defin
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="TEN_KHACH_HANG" />
+            <PropertyRef Name="ID_GD" />
           </Key>
           <Property Name="TEN_SAN_PHAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ID" Type="Guid" Nullable="false" />
@@ -2442,6 +2446,7 @@ FROM [dbo].[V_RPT_PHAT_SINH_TRONG_THANG] AS [V_RPT_PHAT_SINH_TRONG_THANG]</Defin
           <Property Name="FACEBOOK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SKYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NGAY_SINH" Type="DateTime" Precision="3" />
+          <Property Name="ID_GD" Type="Guid" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2957,6 +2962,7 @@ FROM [dbo].[V_RPT_PHAT_SINH_TRONG_THANG] AS [V_RPT_PHAT_SINH_TRONG_THANG]</Defin
           <EntitySetMapping Name="V_DM_KHACH_HANG">
             <EntityTypeMapping TypeName="BKI_CRMModel.V_DM_KHACH_HANG">
               <MappingFragment StoreEntitySet="V_DM_KHACH_HANG">
+                <ScalarProperty Name="ID_GD" ColumnName="ID_GD" />
                 <ScalarProperty Name="NGAY_SINH" ColumnName="NGAY_SINH" />
                 <ScalarProperty Name="SKYPE" ColumnName="SKYPE" />
                 <ScalarProperty Name="FACEBOOK" ColumnName="FACEBOOK" />

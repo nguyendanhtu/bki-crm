@@ -525,8 +525,9 @@ namespace BKI_CRM.Controllers
         {
             BKI_CRMEntities db = new BKI_CRMEntities();
             var id = Guid.Parse(id_kh);
-            db.Database.ExecuteSqlCommand("delete from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where id='" + id+"'");
-            db.SaveChanges();
+            db.Database.ExecuteSqlCommand("delete from GD_CHUYEN_TRANG_THAI where ID_KHACH_HANG_SU_DUNG_SAN_PHAM='" + id + "'");
+            db.Database.ExecuteSqlCommand("delete from GD_NGUOI_QUAN_LY_KHACH_HANG where ID_KHACH_HANG_SU_DUNG_SAN_PHAM='" + id + "'");
+            db.Database.ExecuteSqlCommand("delete from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID='" + id+"'");
             return Json(true, JsonRequestBehavior.AllowGet);
         }
         public ActionResult importExcel()

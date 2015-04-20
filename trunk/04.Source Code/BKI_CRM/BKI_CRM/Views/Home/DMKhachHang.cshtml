@@ -73,7 +73,7 @@
                 var ten = t[t.Count - 1];
                 var ho = t[0];
                 for (int i = 1; i < t.Count - 1; i++) { ho += ' ' + t[i]; }
-                <tr id="@item.ID">
+                <tr id="@item.ID_GD">
                     <td class="c"><input type="checkbox" /></td>
                     <td class="ho">@ho</td>
                     <td class="ten">@ten</td>
@@ -81,7 +81,7 @@
                     <td class="email">@item.EMAIL</td>
                     <td class="sp">@item.TEN_SAN_PHAM</td>
                     <td><span class="glyphicon glyphicon-pencil edit" aria-hidden="true" onclick="sua('@item.ID')"></span></td>
-                    <td><span class="glyphicon glyphicon-trash delete" onclick="hienxoa('@item.ID')" aria-hidden="true"></span></td>
+                    <td><span class="glyphicon glyphicon-trash delete" onclick="hienxoa('@item.ID_GD')" aria-hidden="true"></span></td>
                 </tr>
             }
         </tbody>

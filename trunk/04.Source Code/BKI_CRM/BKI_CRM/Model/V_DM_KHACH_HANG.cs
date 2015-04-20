@@ -36,5 +36,6 @@ namespace BKI_CRM.Model
         public string FACEBOOK { get; set; }
         public string SKYPE { get; set; }
         public Nullable<System.DateTime> NGAY_SINH { get; set; }
+        public System.Guid ID_GD { get; set; }
     }
 }
