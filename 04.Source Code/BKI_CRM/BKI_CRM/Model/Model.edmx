@@ -298,7 +298,6 @@ warning 6002: The table/view 'BKI_CRM.dbo.V_DM_KHACH_HANG' does not have a prima
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="TEN_KHACH_HANG" />
-            <PropertyRef Name="ID_GD" />
           </Key>
           <Property Name="TEN_SAN_PHAM" Type="nvarchar" MaxLength="100" />
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
@@ -322,7 +321,8 @@ warning 6002: The table/view 'BKI_CRM.dbo.V_DM_KHACH_HANG' does not have a prima
           <Property Name="FACEBOOK" Type="nvarchar" MaxLength="50" />
           <Property Name="SKYPE" Type="nvarchar" MaxLength="50" />
           <Property Name="NGAY_SINH" Type="datetime" />
-          <Property Name="ID_GD" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_GD" Type="uniqueidentifier" />
+          <Property Name="ID_SAN_PHAM" Type="uniqueidentifier" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'BKI_CRM.dbo.V_DM_NHAN_VIEN_CONG_TY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -552,6 +552,21 @@ warning 6002: The table/view 'BKI_CRM.dbo.V_RPT_PHAT_SINH_TRONG_THANG' does not 
           </Key>
           <Property Name="MA_TRANG_THAI" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="LUY_KE" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BKI_CRM.dbo.V_TU_DIEN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_TU_DIEN">
+          <Key>
+            <PropertyRef Name="ID_LOAI" />
+            <PropertyRef Name="TEN_LOAI_TU_DIEN" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TEN_TU_DIEN" />
+          </Key>
+          <Property Name="ID_LOAI" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TEN_LOAI_TU_DIEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TEN_TU_DIEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GHI_CHU" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <Association Name="FK_CM_DM_TU_DIEN_CM_DM_LOAI_TD">
           <End Role="CM_DM_LOAI_TD" Type="Self.CM_DM_LOAI_TD" Multiplicity="1" />
@@ -1019,7 +1034,8 @@ FROM [dbo].[DOC_TABLE_COMMENT] AS [DOC_TABLE_COMMENT]</DefiningQuery>
 [V_DM_KHACH_HANG].[FACEBOOK] AS [FACEBOOK], 
 [V_DM_KHACH_HANG].[SKYPE] AS [SKYPE], 
 [V_DM_KHACH_HANG].[NGAY_SINH] AS [NGAY_SINH], 
-[V_DM_KHACH_HANG].[ID_GD] AS [ID_GD]
+[V_DM_KHACH_HANG].[ID_GD] AS [ID_GD], 
+[V_DM_KHACH_HANG].[ID_SAN_PHAM] AS [ID_SAN_PHAM]
 FROM [dbo].[V_DM_KHACH_HANG] AS [V_DM_KHACH_HANG]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="V_DM_NHAN_VIEN_CONG_TY" EntityType="Self.V_DM_NHAN_VIEN_CONG_TY" store:Type="Views" store:Schema="dbo">
@@ -1168,6 +1184,15 @@ FROM [dbo].[V_RPT_LUY_KE] AS [V_RPT_LUY_KE]</DefiningQuery>
 [V_RPT_PHAT_SINH_TRONG_THANG].[MA_TRANG_THAI] AS [MA_TRANG_THAI], 
 [V_RPT_PHAT_SINH_TRONG_THANG].[LUY_KE] AS [LUY_KE]
 FROM [dbo].[V_RPT_PHAT_SINH_TRONG_THANG] AS [V_RPT_PHAT_SINH_TRONG_THANG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_TU_DIEN" EntityType="Self.V_TU_DIEN" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[V_TU_DIEN].[ID_LOAI] AS [ID_LOAI], 
+[V_TU_DIEN].[TEN_LOAI_TU_DIEN] AS [TEN_LOAI_TU_DIEN], 
+[V_TU_DIEN].[ID] AS [ID], 
+[V_TU_DIEN].[TEN_TU_DIEN] AS [TEN_TU_DIEN], 
+[V_TU_DIEN].[GHI_CHU] AS [GHI_CHU]
+FROM [dbo].[V_TU_DIEN] AS [V_TU_DIEN]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CM_DM_TU_DIEN_CM_DM_LOAI_TD" Association="Self.FK_CM_DM_TU_DIEN_CM_DM_LOAI_TD">
             <End Role="CM_DM_LOAI_TD" EntitySet="CM_DM_LOAI_TD" />
@@ -1495,6 +1520,7 @@ FROM [dbo].[V_RPT_PHAT_SINH_TRONG_THANG] AS [V_RPT_PHAT_SINH_TRONG_THANG]</Defin
             <End Role="HT_USER_GROUP" EntitySet="HT_USER_GROUP" />
             <End Role="HT_USER" EntitySet="HT_USER" />
           </AssociationSet>
+          <EntitySet Name="V_TU_DIEN" EntityType="BKI_CRMModel.V_TU_DIEN" />
           <EntitySet Name="V_DM_KHACH_HANG" EntityType="BKI_CRMModel.V_DM_KHACH_HANG" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -2418,11 +2444,23 @@ FROM [dbo].[V_RPT_PHAT_SINH_TRONG_THANG] AS [V_RPT_PHAT_SINH_TRONG_THANG]</Defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="V_TU_DIEN">
+          <Key>
+            <PropertyRef Name="ID_LOAI" />
+            <PropertyRef Name="TEN_LOAI_TU_DIEN" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TEN_TU_DIEN" />
+          </Key>
+          <Property Name="ID_LOAI" Type="Guid" Nullable="false" />
+          <Property Name="TEN_LOAI_TU_DIEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="TEN_TU_DIEN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GHI_CHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="V_DM_KHACH_HANG">
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="TEN_KHACH_HANG" />
-            <PropertyRef Name="ID_GD" />
           </Key>
           <Property Name="TEN_SAN_PHAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ID" Type="Guid" Nullable="false" />
@@ -2446,7 +2484,8 @@ FROM [dbo].[V_RPT_PHAT_SINH_TRONG_THANG] AS [V_RPT_PHAT_SINH_TRONG_THANG]</Defin
           <Property Name="FACEBOOK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SKYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NGAY_SINH" Type="DateTime" Precision="3" />
-          <Property Name="ID_GD" Type="Guid" Nullable="false" />
+          <Property Name="ID_GD" Type="Guid" />
+          <Property Name="ID_SAN_PHAM" Type="Guid" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2959,9 +2998,21 @@ FROM [dbo].[V_RPT_PHAT_SINH_TRONG_THANG] AS [V_RPT_PHAT_SINH_TRONG_THANG]</Defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="V_TU_DIEN">
+            <EntityTypeMapping TypeName="BKI_CRMModel.V_TU_DIEN">
+              <MappingFragment StoreEntitySet="V_TU_DIEN">
+                <ScalarProperty Name="GHI_CHU" ColumnName="GHI_CHU" />
+                <ScalarProperty Name="TEN_TU_DIEN" ColumnName="TEN_TU_DIEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TEN_LOAI_TU_DIEN" ColumnName="TEN_LOAI_TU_DIEN" />
+                <ScalarProperty Name="ID_LOAI" ColumnName="ID_LOAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="V_DM_KHACH_HANG">
             <EntityTypeMapping TypeName="BKI_CRMModel.V_DM_KHACH_HANG">
               <MappingFragment StoreEntitySet="V_DM_KHACH_HANG">
+                <ScalarProperty Name="ID_SAN_PHAM" ColumnName="ID_SAN_PHAM" />
                 <ScalarProperty Name="ID_GD" ColumnName="ID_GD" />
                 <ScalarProperty Name="NGAY_SINH" ColumnName="NGAY_SINH" />
                 <ScalarProperty Name="SKYPE" ColumnName="SKYPE" />
