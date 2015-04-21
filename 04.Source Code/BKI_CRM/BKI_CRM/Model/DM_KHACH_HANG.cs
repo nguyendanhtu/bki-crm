@@ -17,7 +17,9 @@ namespace BKI_CRM.Model
         public DM_KHACH_HANG()
         {
             this.GD_ACTION = new HashSet<GD_ACTION>();
-            this.GD_KHACH_HANG_SU_DUNG_SAN_PHAM = new HashSet<GD_KHACH_HANG_SU_DUNG_SAN_PHAM>();
+            this.GD_CHUYEN_TRANG_THAI = new HashSet<GD_CHUYEN_TRANG_THAI>();
+            this.GD_THONG_TIN_HOP_DONG = new HashSet<GD_THONG_TIN_HOP_DONG>();
+            this.GD_NGUOI_QUAN_LY_KHACH_HANG = new HashSet<GD_NGUOI_QUAN_LY_KHACH_HANG>();
         }
     
         public System.Guid ID { get; set; }
@@ -45,6 +47,8 @@ namespace BKI_CRM.Model
         public virtual CM_DM_TU_DIEN CM_DM_TU_DIEN { get; set; }
         public virtual DM_CONG_TY DM_CONG_TY { get; set; }
         public virtual ICollection<GD_ACTION> GD_ACTION { get; set; }
-        public virtual ICollection<GD_KHACH_HANG_SU_DUNG_SAN_PHAM> GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
+        public virtual ICollection<GD_CHUYEN_TRANG_THAI> GD_CHUYEN_TRANG_THAI { get; set; }
+        public virtual ICollection<GD_THONG_TIN_HOP_DONG> GD_THONG_TIN_HOP_DONG { get; set; }
+        public virtual ICollection<GD_NGUOI_QUAN_LY_KHACH_HANG> GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
     }
 }

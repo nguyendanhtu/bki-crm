@@ -231,9 +231,6 @@
     <Compile Include="Model\GD_CHUYEN_TRANG_THAI.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\GD_KHACH_HANG_SU_DUNG_SAN_PHAM.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\GD_NGUOI_QUAN_LY_KHACH_HANG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -283,9 +280,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\V_DM_KHACH_HANG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\V_DM_NHAN_VIEN_CONG_TY.cs">
@@ -488,9 +482,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_LayoutCRM.cshtml" />
-    <Content Include="Views\Home\CustommerInsert.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\ThemKhachHang.cshtml" />
     <Content Include="Views\Home\DinhNghiaTrangThai.cshtml" />
     <Content Include="Views\Home\bao_cao_01.cshtml" />
     <Content Include="Views\Home\quanLyNguoiSuDung.cshtml" />

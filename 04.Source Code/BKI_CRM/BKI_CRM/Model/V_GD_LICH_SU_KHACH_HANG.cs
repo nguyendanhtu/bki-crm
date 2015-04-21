@@ -15,12 +15,10 @@ namespace BKI_CRM.Model
     public partial class V_GD_LICH_SU_KHACH_HANG
     {
         public System.Guid ID { get; set; }
-        public System.Guid ID_KHACH_HANG { get; set; }
-        public string TEN_SAN_PHAM { get; set; }
-        public string TEN_SAN_PHAM_CHI_TIET { get; set; }
         public bool DANG_CHAM_SOC_YN { get; set; }
         public bool TRANG_THAI_HIEN_TAI_YN { get; set; }
         public string MA_TRANG_THAI { get; set; }
         public bool LOAI_TRANG_THAI_YN { get; set; }
+        public Nullable<System.Guid> ID_KHACH_HANG { get; set; }
     }
 }

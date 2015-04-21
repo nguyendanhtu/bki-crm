@@ -20,10 +20,10 @@ namespace BKI_CRM.Model
         public Nullable<System.DateTime> NGAY_CAP_QUYEN { get; set; }
         public bool ACTIVE_YN { get; set; }
         public string GHI_CHU { get; set; }
-        public Nullable<System.Guid> ID_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
+        public Nullable<System.Guid> ID_KHACH_HANG { get; set; }
     
         public virtual CM_DM_TU_DIEN CM_DM_TU_DIEN { get; set; }
-        public virtual GD_KHACH_HANG_SU_DUNG_SAN_PHAM GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
+        public virtual DM_KHACH_HANG DM_KHACH_HANG { get; set; }
         public virtual HT_USER HT_USER { get; set; }
     }
 }

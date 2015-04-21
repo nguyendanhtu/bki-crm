@@ -40,11 +40,7 @@ namespace BKI_CRM.Model
         public DbSet<DM_TRANG_THAI> DM_TRANG_THAI { get; set; }
         public DbSet<DM_YEU_CAU_TRANG_THAI> DM_YEU_CAU_TRANG_THAI { get; set; }
         public DbSet<GD_ACTION> GD_ACTION { get; set; }
-        public DbSet<GD_CHUYEN_TRANG_THAI> GD_CHUYEN_TRANG_THAI { get; set; }
-        public DbSet<GD_KHACH_HANG_SU_DUNG_SAN_PHAM> GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
-        public DbSet<GD_NGUOI_QUAN_LY_KHACH_HANG> GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
         public DbSet<GD_PHIEN_LAM_VIEC> GD_PHIEN_LAM_VIEC { get; set; }
-        public DbSet<GD_THONG_TIN_HOP_DONG> GD_THONG_TIN_HOP_DONG { get; set; }
         public DbSet<HT_ACTION> HT_ACTION { get; set; }
         public DbSet<HT_CONTROLLER> HT_CONTROLLER { get; set; }
         public DbSet<HT_LOG> HT_LOG { get; set; }
@@ -55,18 +51,20 @@ namespace BKI_CRM.Model
         public DbSet<DOC_COLUMN_COMMENT> DOC_COLUMN_COMMENT { get; set; }
         public DbSet<DOC_TABLE_COMMENT> DOC_TABLE_COMMENT { get; set; }
         public DbSet<V_DM_NHAN_VIEN_CONG_TY> V_DM_NHAN_VIEN_CONG_TY { get; set; }
-        public DbSet<V_DM_YEU_CAU_TRANG_THAI> V_DM_YEU_CAU_TRANG_THAI { get; set; }
-        public DbSet<V_GD_CHUYEN_TRANG_THAI> V_GD_CHUYEN_TRANG_THAI { get; set; }
-        public DbSet<V_GD_KHACH_HANG_CHUYEN_TRANG_THAI> V_GD_KHACH_HANG_CHUYEN_TRANG_THAI { get; set; }
-        public DbSet<V_GD_LICH_SU_KHACH_HANG> V_GD_LICH_SU_KHACH_HANG { get; set; }
-        public DbSet<V_GD_NGUOI_QUAN_LY_KHACH_HANG> V_GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
         public DbSet<V_HT_PHAN_QUYEN_CHI_TIET> V_HT_PHAN_QUYEN_CHI_TIET { get; set; }
         public DbSet<V_HT_USER> V_HT_USER { get; set; }
-        public DbSet<V_NHAN_VIEN_QUAN_LY_KHACH_HANG> V_NHAN_VIEN_QUAN_LY_KHACH_HANG { get; set; }
         public DbSet<V_RPT_LUY_KE> V_RPT_LUY_KE { get; set; }
         public DbSet<V_RPT_PHAT_SINH_TRONG_THANG> V_RPT_PHAT_SINH_TRONG_THANG { get; set; }
         public DbSet<V_TU_DIEN> V_TU_DIEN { get; set; }
-        public DbSet<V_DM_KHACH_HANG> V_DM_KHACH_HANG { get; set; }
+        public DbSet<GD_CHUYEN_TRANG_THAI> GD_CHUYEN_TRANG_THAI { get; set; }
+        public DbSet<GD_THONG_TIN_HOP_DONG> GD_THONG_TIN_HOP_DONG { get; set; }
+        public DbSet<GD_NGUOI_QUAN_LY_KHACH_HANG> GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
+        public DbSet<V_DM_YEU_CAU_TRANG_THAI> V_DM_YEU_CAU_TRANG_THAI { get; set; }
+        public DbSet<V_GD_CHUYEN_TRANG_THAI> V_GD_CHUYEN_TRANG_THAI { get; set; }
+        public DbSet<V_GD_KHACH_HANG_CHUYEN_TRANG_THAI> V_GD_KHACH_HANG_CHUYEN_TRANG_THAI { get; set; }
+        public DbSet<V_GD_NGUOI_QUAN_LY_KHACH_HANG> V_GD_NGUOI_QUAN_LY_KHACH_HANG { get; set; }
+        public DbSet<V_NHAN_VIEN_QUAN_LY_KHACH_HANG> V_NHAN_VIEN_QUAN_LY_KHACH_HANG { get; set; }
+        public DbSet<V_GD_LICH_SU_KHACH_HANG> V_GD_LICH_SU_KHACH_HANG { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

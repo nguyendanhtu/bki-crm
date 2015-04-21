@@ -14,11 +14,6 @@ namespace BKI_CRM.Model
     
     public partial class DM_SAN_PHAM
     {
-        public DM_SAN_PHAM()
-        {
-            this.GD_KHACH_HANG_SU_DUNG_SAN_PHAM = new HashSet<GD_KHACH_HANG_SU_DUNG_SAN_PHAM>();
-        }
-    
         public System.Guid ID { get; set; }
         public System.Guid ID_NHOM_SAN_PHAM { get; set; }
         public string TEN_SAN_PHAM { get; set; }
@@ -30,6 +25,5 @@ namespace BKI_CRM.Model
         public string THONG_TIN_BO_SUNG_05 { get; set; }
     
         public virtual DM_NHOM_SAN_PHAM DM_NHOM_SAN_PHAM { get; set; }
-        public virtual ICollection<GD_KHACH_HANG_SU_DUNG_SAN_PHAM> GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
     }
 }
