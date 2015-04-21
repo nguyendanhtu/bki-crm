@@ -15,13 +15,10 @@ namespace BKI_CRM.Model
     public partial class V_GD_KHACH_HANG_CHUYEN_TRANG_THAI
     {
         public System.Guid ID { get; set; }
-        public string TEN_SAN_PHAM { get; set; }
-        public string TEN_SAN_PHAM_CHI_TIET { get; set; }
         public Nullable<decimal> SO_TIEN_DA_NHAN { get; set; }
         public string GHI_CHU { get; set; }
         public System.Guid ID_TRANG_THAI { get; set; }
         public string MA_TRANG_THAI { get; set; }
-        public Nullable<System.Guid> ID_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
         public bool TRANG_THAI_HIEN_TAI_YN { get; set; }
         public System.Guid ID_NGUOI_SU_DUNG { get; set; }
         public string HO_TEN_NHAN_VIEN { get; set; }
@@ -29,5 +26,6 @@ namespace BKI_CRM.Model
         public string TEN_PHONG_BAN { get; set; }
         public string MA_PHONG_BAN { get; set; }
         public string TEN_CONG_TY { get; set; }
+        public Nullable<System.Guid> ID_KHACH_HANG { get; set; }
     }
 }

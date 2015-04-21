@@ -21,6 +21,6 @@ namespace BKI_CRM.Model
         public bool ACTIVE_YN { get; set; }
         public string HO_TEN_NHAN_VIEN { get; set; }
         public System.Guid ID_USER { get; set; }
-        public Nullable<System.Guid> ID_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
+        public Nullable<System.Guid> ID_KHACH_HANG { get; set; }
     }
 }

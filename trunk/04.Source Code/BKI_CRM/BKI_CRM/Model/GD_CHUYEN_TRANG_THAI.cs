@@ -23,10 +23,10 @@ namespace BKI_CRM.Model
         public bool TRANG_THAI_HIEN_TAI_YN { get; set; }
         public string GHI_CHU { get; set; }
         public string KIEM_TRA_YEU_CAU_CHUYEN_TRANG_THAI { get; set; }
-        public Nullable<System.Guid> ID_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
+        public Nullable<System.Guid> ID_KHACH_HANG { get; set; }
     
+        public virtual DM_KHACH_HANG DM_KHACH_HANG { get; set; }
         public virtual DM_TRANG_THAI DM_TRANG_THAI { get; set; }
-        public virtual GD_KHACH_HANG_SU_DUNG_SAN_PHAM GD_KHACH_HANG_SU_DUNG_SAN_PHAM { get; set; }
         public virtual HT_USER HT_USER { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace BKI_CRM.Controllers
             {
                 KhachHangModel v_khach_hang_model = item.CopyAs<KhachHangModel>();
                 v_khach_hang_model.LstChuyenTrangThai = v_model.V_GD_CHUYEN_TRANG_THAI.Where(x => x.ID_TRANG_THAI_BAN_DAU == item.ID_TRANG_THAI).ToList();
-                v_khach_hang_model.ID_KHACH_HANG = v_model.GD_KHACH_HANG_SU_DUNG_SAN_PHAM.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG_SU_DUNG_SAN_PHAM).First().ID_KHACH_HANG;
+                v_khach_hang_model.ID_KHACH_HANG = v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().ID;
                 v_khach_hang_model.ID_CONG_TY = (v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().ID_CONG_TY);
                 v_khach_hang_model.TEN_KHACH_HANG = v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().TEN_KHACH_HANG;
                 v_lst_khach_hang_model.Add(v_khach_hang_model);
@@ -49,7 +49,7 @@ namespace BKI_CRM.Controllers
             {
                 KhachHangModel v_khach_hang_model = item.CopyAs<KhachHangModel>();
                 v_khach_hang_model.LstChuyenTrangThai = v_model.V_GD_CHUYEN_TRANG_THAI.Where(x => x.ID_TRANG_THAI_BAN_DAU == item.ID_TRANG_THAI).ToList();
-                v_khach_hang_model.ID_KHACH_HANG = v_model.GD_KHACH_HANG_SU_DUNG_SAN_PHAM.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG_SU_DUNG_SAN_PHAM).First().ID_KHACH_HANG;
+                v_khach_hang_model.ID_KHACH_HANG = v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().ID;
                 v_khach_hang_model.ID_CONG_TY = v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().ID_CONG_TY;
                 v_khach_hang_model.TEN_KHACH_HANG = v_model.DM_KHACH_HANG.Where(x => x.ID == v_khach_hang_model.ID_KHACH_HANG).First().TEN_KHACH_HANG;
                 v_lst_khach_hang_model.Add(v_khach_hang_model);
@@ -204,13 +204,13 @@ namespace BKI_CRM.Controllers
 
         }
         [HttpPost]
-        public ActionResult LayQuanLyKhachHang(string ip_str_id_khach_hang_sd_sp)
+        public ActionResult LayQuanLyKhachHang(string ip_str_id_khach_hang)
         {
             try
             {
                 BKI_CRMEntities v_model = new BKI_CRMEntities();
                 List<V_GD_NGUOI_QUAN_LY_KHACH_HANG> v_lst_gd_ql_kh = new List<V_GD_NGUOI_QUAN_LY_KHACH_HANG>();
-                v_lst_gd_ql_kh = v_model.V_GD_NGUOI_QUAN_LY_KHACH_HANG.Where(x => x.ID_KHACH_HANG_SU_DUNG_SAN_PHAM == new Guid(ip_str_id_khach_hang_sd_sp)).ToList();
+                v_lst_gd_ql_kh = v_model.V_GD_NGUOI_QUAN_LY_KHACH_HANG.Where(x => x.ID_KHACH_HANG == new Guid(ip_str_id_khach_hang)).ToList();
                 return Json(v_lst_gd_ql_kh, JsonRequestBehavior.AllowGet);
             }
             catch (System.Exception v_e)
@@ -268,7 +268,7 @@ namespace BKI_CRM.Controllers
                     v_model.SaveChanges();
                     GD_CHUYEN_TRANG_THAI v_gd_chuyen_tt = new GD_CHUYEN_TRANG_THAI();
                     //--------------------------------------------------------------------
-                    v_gd_chuyen_tt.ID_KHACH_HANG_SU_DUNG_SAN_PHAM = v_model_gd_chuyen_tt.ID_KHACH_HANG_SU_DUNG_SAN_PHAM;
+                    v_gd_chuyen_tt.ID_KHACH_HANG = v_model_gd_chuyen_tt.ID_KHACH_HANG;
                     v_gd_chuyen_tt.NGAY_CHUYEN_TRANG_THAI = DateTime.Now;
                     v_gd_chuyen_tt.DANG_CHAM_SOC_YN = true;
                     v_gd_chuyen_tt.TRANG_THAI_HIEN_TAI_YN = true;
@@ -297,7 +297,7 @@ namespace BKI_CRM.Controllers
             try
             {
                 BKI_CRMEntities v_model = new BKI_CRMEntities();
-                var v_gd_nguoi_quan_ly = v_model.GD_NGUOI_QUAN_LY_KHACH_HANG.Where(x => x.ID_KHACH_HANG_SU_DUNG_SAN_PHAM == new Guid(ip_str_id_khach_hang_sd_sp) && x.ID_NGUOI_SU_DUNG == new Guid(ip_str_id_nguoi_quan_ly)).First();
+                var v_gd_nguoi_quan_ly = v_model.GD_NGUOI_QUAN_LY_KHACH_HANG.Where(x => x.ID_KHACH_HANG == new Guid(ip_str_id_khach_hang_sd_sp) && x.ID_NGUOI_SU_DUNG == new Guid(ip_str_id_nguoi_quan_ly)).First();
                 v_model.GD_NGUOI_QUAN_LY_KHACH_HANG.Remove(v_gd_nguoi_quan_ly);
                 v_model.SaveChanges();
                 return Json(true, JsonRequestBehavior.AllowGet);
@@ -318,7 +318,7 @@ namespace BKI_CRM.Controllers
                 GD_NGUOI_QUAN_LY_KHACH_HANG v_gd_nguoi_quan_ly_kh = new GD_NGUOI_QUAN_LY_KHACH_HANG();
                 v_gd_nguoi_quan_ly_kh.ID = Guid.NewGuid();
                 v_gd_nguoi_quan_ly_kh.ID_NGUOI_SU_DUNG = new Guid(ip_str_id_nguoi_quan_ly);
-                v_gd_nguoi_quan_ly_kh.ID_KHACH_HANG_SU_DUNG_SAN_PHAM = new Guid(ip_str_id_khach_hang_sd_sp);
+                v_gd_nguoi_quan_ly_kh.ID_KHACH_HANG = new Guid(ip_str_id_khach_hang_sd_sp);
                 v_gd_nguoi_quan_ly_kh.ID_QUYEN_QUAN_LY = new Guid(ip_str_id_quyen);
                 v_gd_nguoi_quan_ly_kh.ACTIVE_YN = true;
                 v_gd_nguoi_quan_ly_kh.NGAY_CAP_QUYEN = DateTime.Now;
@@ -332,76 +332,6 @@ namespace BKI_CRM.Controllers
                 return Json(false);
             }
         }
-
-        [HttpPost]
-        public ActionResult InsertCustommer(
-            string ip_str_ten_khach_hang,
-            string ip_id_loai_khach_hang,
-            string ip_str_sdt,
-            string ip_str_email,
-            string ip_str_dia_chi,
-            string ip_str_ten_cong_ty,
-            string ip_str_anh_khach_hang)
-        {
-            try
-            {
-                BKI_CRMEntities v_model = new BKI_CRMEntities();
-                DM_KHACH_HANG v_dm_khach_hang = new DM_KHACH_HANG();
-                v_dm_khach_hang.ID = Guid.NewGuid();
-                v_dm_khach_hang.TEN_KHACH_HANG = ip_str_ten_khach_hang;
-                v_dm_khach_hang.EMAIL = ip_str_email;
-                v_dm_khach_hang.SDT = ip_str_sdt;
-                v_dm_khach_hang.DIA_CHI = ip_str_dia_chi;
-                v_dm_khach_hang.ID_LOAI_KHACH_HANG = new Guid(ip_id_loai_khach_hang);
-                v_dm_khach_hang.ID_CONG_TY = new Guid("c2a1b448-d15b-4877-a373-2f7ee30c665e");
-                v_dm_khach_hang.THONG_TIN_BO_SUNG_01 = ip_str_ten_cong_ty;
-                v_dm_khach_hang.THONG_TIN_BO_SUNG_02 = ip_str_anh_khach_hang;
-                v_model.DM_KHACH_HANG.Add(v_dm_khach_hang);
-                v_model.SaveChanges();
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-            catch (System.Exception v_e)
-            {
-                v_e.Log();
-                return Json(false);
-            }
-        }
-
-        [HttpPost]
-        public ActionResult ThemKhachHangSuDungSanPham(
-            string ip_id_khach_hang,
-            string ip_str_nguoi_gioi_thieu,
-            string ip_id_san_pham_su_dung,
-            string ip_str_ten_san_pham,
-            string ip_id_nguoi_quan_ly,
-            string ip_id_trang_thai,
-            string ip_str_so_tien,
-            string ip_str_ghi_chu,
-            string ip_str_dang_cham_soc)
-        {
-            try
-            {
-                BKI_CRMEntities v_model = new BKI_CRMEntities();
-                GD_KHACH_HANG_SU_DUNG_SAN_PHAM v_gd_khach_hang_sd_sp = new GD_KHACH_HANG_SU_DUNG_SAN_PHAM();
-                v_gd_khach_hang_sd_sp.ID = Guid.NewGuid();
-                v_gd_khach_hang_sd_sp.ID_KHACH_HANG = new Guid(ip_id_khach_hang);
-                v_gd_khach_hang_sd_sp.ID_SAN_PHAM = new Guid(ip_id_san_pham_su_dung);
-                v_gd_khach_hang_sd_sp.TEN_SAN_PHAM = ip_str_ten_san_pham;
-                v_gd_khach_hang_sd_sp.NGUOI_GIOI_THIEU = ip_str_nguoi_gioi_thieu;
-                v_model.GD_KHACH_HANG_SU_DUNG_SAN_PHAM.Add(v_gd_khach_hang_sd_sp);
-                v_model.SaveChanges();
-
-                ThemNguoiQuanLyKhachHang(ip_id_nguoi_quan_ly, v_gd_khach_hang_sd_sp.ID);
-                capNhatTrangThaiKhachHang(ip_id_trang_thai, v_gd_khach_hang_sd_sp.ID, ip_str_so_tien, ip_str_ghi_chu, ip_str_dang_cham_soc);
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-            catch (System.Exception v_e)
-            {
-                v_e.Log();
-                return Json(false, JsonRequestBehavior.AllowGet);
-            }
-        }
-
         public void ThemNguoiQuanLyKhachHang(string ip_id_nguoi_quan_ly, Guid ip_id_khach_hang_sd_sp)
         {
             try
@@ -411,7 +341,7 @@ namespace BKI_CRM.Controllers
 
                 v_gd_nguoi_quan_ly.ID = Guid.NewGuid();
                 v_gd_nguoi_quan_ly.ID_NGUOI_SU_DUNG = new Guid(ip_id_nguoi_quan_ly);
-                v_gd_nguoi_quan_ly.ID_KHACH_HANG_SU_DUNG_SAN_PHAM = ip_id_khach_hang_sd_sp;
+                v_gd_nguoi_quan_ly.ID_KHACH_HANG = ip_id_khach_hang_sd_sp;
                 v_gd_nguoi_quan_ly.ACTIVE_YN = true;
                 v_gd_nguoi_quan_ly.NGAY_CAP_QUYEN = DateTime.Now.Date;
                 v_gd_nguoi_quan_ly.ID_QUYEN_QUAN_LY = new Guid("b2891955-3080-4b5f-a761-ce9ceb551637");
@@ -435,7 +365,7 @@ namespace BKI_CRM.Controllers
                 v_gd_chuyen_trang_thai.ID = Guid.NewGuid();
                 v_gd_chuyen_trang_thai.TRANG_THAI_HIEN_TAI_YN = true;
                 v_gd_chuyen_trang_thai.ID_TRANG_THAI = new Guid(ip_id_trang_thai);
-                v_gd_chuyen_trang_thai.ID_KHACH_HANG_SU_DUNG_SAN_PHAM = ip_id_khach_hang_sd_sp;
+                v_gd_chuyen_trang_thai.ID_KHACH_HANG = ip_id_khach_hang_sd_sp;
                 v_gd_chuyen_trang_thai.ID_NGUOI_CHUYEN_TRANG_THAI = new Guid("31a0d5da-6d48-482b-ac68-1273ba8c5bf6");
                 v_gd_chuyen_trang_thai.SO_TIEN_DA_NHAN = decimal.Parse(ip_str_so_tien);
                 v_gd_chuyen_trang_thai.GHI_CHU = ip_str_ghi_chu;
@@ -521,7 +451,7 @@ namespace BKI_CRM.Controllers
         {
             BKI_CRMEntities db = new BKI_CRMEntities();
             var id = Guid.Parse(id_kh);
-            var thong_tin = db.V_DM_KHACH_HANG.Where(x => x.ID == id).ToList<V_DM_KHACH_HANG>();
+            var thong_tin = db.DM_KHACH_HANG.Where(x => x.ID == id).ToList<DM_KHACH_HANG>();
             string bday = "";
             if(thong_tin.Count>0)bday=thong_tin[0].NGAY_SINH.ToString();
             if(bday.Length>6)

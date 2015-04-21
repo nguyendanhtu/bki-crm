@@ -13,7 +13,6 @@
             <thead>
                 <tr class="table_header">
                     <td>Tên khách hàng</td>
-                    <td>Sản phẩm - Dịch vụ</td>
                     <td>Hiện tại</td>
                     <td>Tiếp theo</td>
                     <td>Ghi chú</td>
@@ -25,7 +24,6 @@
                 {
                     <tr class="item-table">
                         <td><button class="btn btn-success btn120" type="button" onclick="LayThongTinKhachHang('@item.ID_KHACH_HANG')">@item.TEN_KHACH_HANG</button></td>
-                        <td>@item.TEN_SAN_PHAM @item.TEN_SAN_PHAM_CHI_TIET</td>
                         <td><a href="#" id="@item.ID_TRANG_THAI" onclick="showLevelDefine()">@item.MA_TRANG_THAI</a></td>
                         <td>
                             @foreach (var item2 in item.LstChuyenTrangThai)
@@ -42,7 +40,7 @@
                         </td>
                         <td>@item.GHI_CHU</td>
                         <td>
-                            <button class="btn btn-primary" type="button" onclick="LayThongTinNguoiQuanLy('@item.ID_KHACH_HANG','@item.TEN_KHACH_HANG','@item.ID_CONG_TY','@item.ID_KHACH_HANG_SU_DUNG_SAN_PHAM');"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Chia sẻ</button>
+                            <button class="btn btn-primary" type="button" onclick="LayThongTinNguoiQuanLy('@item.ID_KHACH_HANG','@item.TEN_KHACH_HANG','@item.ID_CONG_TY');"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Chia sẻ</button>
                         </td>
                     </tr>
                 }
@@ -249,12 +247,12 @@
         $('#infoCustomer').modal('show');
     }
 
-    function LayThongTinNguoiQuanLy(id_khach_hang, ten_khach_hang, id_cong_ty, id_khach_hang_sd_sp) {
-        hiddenfield.innerHTML = "<input type='hidden' value='" + id_khach_hang_sd_sp + "' id='id_khach_hang_sd_sp'>";
+    function LayThongTinNguoiQuanLy(id_khach_hang, ten_khach_hang, id_cong_ty) {
+        hiddenfield.innerHTML = "<input type='hidden' value='" + id_khach_hang + "' id='id_khach_hang_sd_sp'>";
         tenkhachhang.innerHTML = ten_khach_hang;
         $.ajax({
             url: '/Home/LayQuanLyKhachHang',
-            data: { ip_str_id_khach_hang_sd_sp: id_khach_hang_sd_sp },
+            data: { ip_str_id_khach_hang: id_khach_hang },
             dataType: "json",
             type: "POST",
             error: function () {
