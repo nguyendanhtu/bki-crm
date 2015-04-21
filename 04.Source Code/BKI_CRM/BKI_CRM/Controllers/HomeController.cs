@@ -510,13 +510,10 @@ namespace BKI_CRM.Controllers
             BKI_CRMEntities v_model = new BKI_CRMEntities();
             List<DM_KHACH_HANG> v_dm_kh = new List<DM_KHACH_HANG>();
             List<V_TU_DIEN> v_tu_dien = new List<V_TU_DIEN>();
-            List<DM_SAN_PHAM> v_sp = new List<DM_SAN_PHAM>();
             v_dm_kh = v_model.DM_KHACH_HANG.ToList<DM_KHACH_HANG>();
             v_tu_dien = v_model.V_TU_DIEN.Where(x => x.TEN_LOAI_TU_DIEN == "Loại khách hàng").ToList<V_TU_DIEN>();
-            v_sp = v_model.DM_SAN_PHAM.ToList<DM_SAN_PHAM>();
             ViewBag.v_dm_kh = v_dm_kh;
             ViewBag.v_tu_dien = v_tu_dien;
-            ViewBag.v_sp = v_sp;
             return PartialView();
         }
         [HttpGet]
@@ -525,7 +522,8 @@ namespace BKI_CRM.Controllers
             BKI_CRMEntities db = new BKI_CRMEntities();
             var id = Guid.Parse(id_kh);
             var thong_tin = db.V_DM_KHACH_HANG.Where(x => x.ID == id).ToList<V_DM_KHACH_HANG>();
-            var bday = thong_tin[0].NGAY_SINH.ToString();
+            string bday = "";
+            if(thong_tin.Count>0)bday=thong_tin[0].NGAY_SINH.ToString();
             if(bday.Length>6)
                 bday = bday.Substring(6, 4) + "-" + bday.Substring(0, 2) + "-" + bday.Substring(3, 2);
             return Json(new {dat=thong_tin,bday=bday},JsonRequestBehavior.AllowGet);
