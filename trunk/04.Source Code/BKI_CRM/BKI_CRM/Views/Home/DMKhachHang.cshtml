@@ -3,7 +3,6 @@
     ViewBag.Title = "thongTinLienHe";
     var dm_khach_hang = ViewBag.v_dm_kh as List<BKI_CRM.Model.DM_KHACH_HANG>;
     var tu_dien = ViewBag.v_tu_dien as List<BKI_CRM.Model.V_TU_DIEN>;
-    var san_pham = ViewBag.v_sp as List<BKI_CRM.Model.DM_SAN_PHAM>;
 }
 <style>
     .mau {
@@ -32,7 +31,9 @@
         <option value="in">In</option>
     </select>
 
-    <button type="button" class="btn btn-primary marginleft" data-toggle="modal" data-target="#thay_doi" aria-hidden="true"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Thêm khách hàng</button>
+    <button type="button" class="btn btn-primary marginleft" aria-hidden="true" onclick="sua(guid());">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Thêm khách hàng
+    </button>
 
     <select id="loc_khach_hang" style="float:right;margin-right:100px;">
         <option></option>
@@ -85,7 +86,6 @@
                 <h3 class="modal-title title">THÔNG TIN LIÊN HỆ</h3>
             </div>
             <div class="modal-body">
-
                 <div class="container">
                     <table class="table table-condensed table-font-size " style="margin-top:20px;width:75%; ">
                         <tr>
@@ -102,41 +102,30 @@
                                 <input type="email" placeholder="Nhập địa chỉ nơi ở hiện nay" class="form-control width220px height_input " style="height:34px !important;" id="diachi" />
                             </td>
                         </tr>
-
                         <tr>
-
                             <td>
                                 <label class="width100px left padding">Nơi công tác</label>
                             </td>
                             <td>
                                 <input type="email" placeholder="Nhập địa chỉ nơi công tác" class="form-control width220px height_input " style="height:34px !important;" id="noict" />
                             </td>
-
-
                         </tr>
                         <tr>
-
                             <td>
                                 <label class="width100px left padding">Điện thoại</label>
                             </td>
                             <td>
-                                <input type="email" placeholder="Nhập số điện thoại" class="form-control width220px height_input " style="height:34px !important;" id="sdt" />
+                                <input type="tel" placeholder="Nhập số điện thoại" class="form-control width220px height_input " style="height:34px !important;" id="sdt" />
                             </td>
-
-
                         </tr>
-
                         <tr>
-
                             <td>
                                 <label class="padding">ĐT nhà riêng</label>
                             </td>
                             <td>
                                 <input type="tel" placeholder="Nhập số ĐT nhà riêng" class="form-control width220px height_input " style="height:34px !important;" id="sdt2" />
                             </td>
-
                         </tr>
-
                         <tr>
                             <td>
                                 <label class="width100px left padding">Họ và tên</label>
@@ -144,7 +133,6 @@
                             <td>
                                 <input type="text" placeholder="Nhập Họ và tên" class="form-control width220px height_input " style="height:34px !important;" id="hoten" />
                             </td>
-
                             <td>
                                 <label class="padding">Email</label>
                             </td>
@@ -152,7 +140,6 @@
                                 <input type="email" placeholder="Nhập địa chỉ Email" class="form-control width220px height_input " style="height:34px !important;" id="email" />
                             </td>
                         </tr>
-
                         <tr>
                             <td>
                                 <label class="width100px left padding">Mã số thuế</label>
@@ -160,7 +147,6 @@
                             <td>
                                 <input type="text" placeholder="Nhập Mã số thuế" class="form-control width220px height_input " style="height:34px !important;" id="masothue" />
                             </td>
-
                             <td>
                                 <label class="width100px left padding">Facebook</label>
                             </td>
@@ -168,7 +154,6 @@
                                 <input type="email" placeholder="Nhập địa chỉ Facebook " class="form-control width220px height_input " style="height:34px !important;" id="fb" />
                             </td>
                         </tr>
-
                         <tr>
                             <td>
                                 <label class="width100px left padding">Ngày sinh</label>
@@ -176,7 +161,6 @@
                             <td>
                                 <input type="date" class="form-control width220px" style="height:34px !important;" id="ngaysinh" />
                             </td>
-
                             <td>
                                 <label class="width100px left padding ">Skype</label>
                             </td>
@@ -184,7 +168,6 @@
                                 <input type="text" placeholder="Nhập địa chỉ Skype" class="form-control width220px height_input " id="skype" style="height:34px !important;" />
                             </td>
                         </tr>
-
                         <tr>
                             <td>
                                 <label class="width100px ">Giới tính</label>
@@ -207,32 +190,14 @@
                                         <option value="@item.ID">@item.TEN_TU_DIEN</option>
                                     }
                                 </select>
-
                             </td>
                         </tr>
-                        <tr>
-                            <td><label class="width100px left padding" style="width:103px;" id="sp">Dùng sản phẩm</label></td>
-                            <td colspan="4">
-                                <select id="san_pham" class="js-example-basic-single " style="width:700px" multiple="multiple">
-                                    <option></option>
-                                    @foreach (var item in san_pham)
-                                    {
-                                        <option value="@item.ID">@item.TEN_SAN_PHAM</option>
-                                    }
-                                </select>
-                            </td>
-                        </tr>
-
                     </table>
-
-
                 </div>
-
             </div>
             <div class="modal-footer">
-                  <button type="button" class="btn btn-warning" onclick="">  Xóa trắng
-                </button>
-                <button type="button" class="btn btn-primary">Lưu lại</button>
+                <button type="button" class="btn btn-warning" id="clear">Xóa trắng</button>
+                <button type="button" class="btn btn-primary" onclick="thuchiensua($('#thay_doi').attr('name'));">Lưu lại</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
             </div>
         </div><!-- /.modal-content -->
@@ -260,6 +225,12 @@
 
 <script>
     $(document).ready(function () {
+        $('#clear').click(function () {
+            clear();
+        });
+        $('#thay_doi').on('hidden.bs.modal', function () {
+            clear();
+        });
         $("#thuc_hien").select2({
             placeholder: "Thực hiện",
             allowClear: true
@@ -280,13 +251,38 @@
         });
 
         $('#example').dataTable();
-        $('#thay_doi').on('hidden.bs.modal', function () {
-            $("#san_pham option:selected").removeAttr("selected");
-        });
-
-
     });
+    function guid() {
+        function r() {
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        }
+        return (r() + r() + "-" + r() + "-4" + r().substr(0, 3) + "-" + r() + "-" + r() + r() + r()).toLowerCase();
+    }
+    function thuchiensua(id_kh) {
+        var TEN_KHACH_HANG = hoten.value;
+        var MA_SO_THUE = masothue.value;
+        var ID_LOAI_KHACH_HANG = loai_khach_hang.value;
+        var SDT = sdt.value;
+        var SDT_2 = sdt2;
+        var EMAIL = email.value;
+        var DIA_CHI = diachi;
+        var HAN_KHACH_HANG = Date.now.toString();
+        var GIOI_TINH = gioi_tinh.value;
+    }
+    function clear() {
+        $('#thongtinlienhe').find('input').val('');
+        $('#loai_khach_hang,#gioi_tinh').select2('data', null);
+        $('#thuc_hien').select2({
+            placeholder: 'Thực hiện',
+            allowClear: true
+        });
+        $('#loc_khach_hang').select2({
+            placeholder: 'Lọc khách hàng',
+            allowClear: true
+        });
+    }
     function sua(id_kh) {
+        $('#thay_doi').attr('name', id_kh);
         $.ajax({
             url: "/Home/LayThongTinLienHe",
             type: "GET",
@@ -297,6 +293,7 @@
             success: function (get) {
                 var data = get.dat;
                 var date = get.bday;
+                if (data[0] == undefined) { $('#thay_doi').modal('show'); return; }
                 hoten.value = data[0].TEN_KHACH_HANG;
                 email.value = data[0].EMAIL;
                 sdt.value = data[0].SDT;
@@ -309,16 +306,6 @@
                 gioi_tinh.value = data[0].GIOI_TINH ? "nam" : "nu";
                 ngaysinh.value = date;
                 anh.src = data[0].IMAGE;
-                if (data[0].ID_SAN_PHAM != null) {
-                    var sp = [data[0].ID_SAN_PHAM.toString()];
-                    for (i = 1; i < data.Count; i++)
-                        sp.push(data[i].ID_SAN_PHAM.toString());
-                    $('#san_pham').val(sp);
-                }
-                $("#san_pham").select2({
-                    placeholder: "Chọn sản phẩm",
-                    allowClear: true
-                });
                 $('#thay_doi').modal('show');
             }
         });
