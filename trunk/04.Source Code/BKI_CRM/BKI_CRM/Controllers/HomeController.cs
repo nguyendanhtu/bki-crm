@@ -210,7 +210,7 @@ namespace BKI_CRM.Controllers
             {
                 BKI_CRMEntities v_model = new BKI_CRMEntities();
                 List<V_GD_NGUOI_QUAN_LY_KHACH_HANG> v_lst_gd_ql_kh = new List<V_GD_NGUOI_QUAN_LY_KHACH_HANG>();
-                v_lst_gd_ql_kh = v_model.V_GD_NGUOI_QUAN_LY_KHACH_HANG.Where(x => x.ID_KHACH_HANG == new Guid(ip_str_id_khach_hang)).ToList();
+                v_lst_gd_ql_kh = v_model.V_GD_NGUOI_QUAN_LY_KHACH_HANG.Where(x => x.ID_KHACH_HANG_SU_DUNG_SAN_PHAM == new Guid(ip_str_id_khach_hang)).ToList();
                 return Json(v_lst_gd_ql_kh, JsonRequestBehavior.AllowGet);
             }
             catch (System.Exception v_e)
@@ -463,10 +463,10 @@ namespace BKI_CRM.Controllers
         {
             BKI_CRMEntities db = new BKI_CRMEntities();
             var id = Guid.Parse(id_kh);
-            db.Database.ExecuteSqlCommand("delete from GD_CHUYEN_TRANG_THAI where ID_KHACH_HANG_SU_DUNG_SAN_PHAM in (select ID from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID_KHACH_HANG='" + id + "')");
-            db.Database.ExecuteSqlCommand("delete from GD_NGUOI_QUAN_LY_KHACH_HANG where ID_KHACH_HANG_SU_DUNG_SAN_PHAM in (select ID from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID_KHACH_HANG='" + id + "')");
-            db.Database.ExecuteSqlCommand("delete from GD_THONG_TIN_HOP_DONG where ID_GD_KHACH_HANG_SU_DUNG_SAN_PHAM in (select ID from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID_KHACH_HANG='" + id + "')");
-            db.Database.ExecuteSqlCommand("delete from GD_KHACH_HANG_SU_DUNG_SAN_PHAM where ID_KHACH_HANG='" + id+"'");
+            db.Database.ExecuteSqlCommand("delete from GD_THONG_TIN_HOP_DONG where ID_KHACH_HANG='" + id + "'");
+            db.Database.ExecuteSqlCommand("delete from GD_NGUOI_QUAN_LY_KHACH_HANG where ID_KHACH_HANG='" + id + "'");
+            db.Database.ExecuteSqlCommand("delete from GD_CHUYEN_TRANG_THAI where ID_KHACH_HANG='" + id + "'");
+            db.Database.ExecuteSqlCommand("delete from GD_ACTION where ID_KHACH_HANG='" + id + "'");
             db.Database.ExecuteSqlCommand("delete from DM_KHACH_HANG where ID='" + id + "'");
             return Json(true, JsonRequestBehavior.AllowGet);
         }
